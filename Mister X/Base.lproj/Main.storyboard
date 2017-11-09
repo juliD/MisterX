@@ -207,7 +207,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="DBz-IO-4FC"/>
+                                    <segue destination="khd-0s-y1Z" kind="show" id="Xls-xA-xyR"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH6-FT-GCL">
@@ -307,6 +307,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rBM-Ih-R8U"/>
-        <segue reference="dgS-7s-WJu"/>
     </inferredMetricsTieBreakers>
 </document>
