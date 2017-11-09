@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../Downloads/icons8-man-2.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-man-filled-2.png">
+   </FileRef>
+   <FileRef
       location = "group:../../../Downloads/icons8-man-filled.png">
    </FileRef>
    <FileRef
