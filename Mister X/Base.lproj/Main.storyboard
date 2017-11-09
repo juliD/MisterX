@@ -211,7 +211,7 @@
         <!--Einstellungen-->
         <scene sceneID="5zW-Ly-PQ3">
             <objects>
-                <viewController id="fCy-FF-ppv" sceneMemberID="viewController">
+                <viewController id="fCy-FF-ppv" customClass="ViewControllerEinstellungen" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="71G-q5-o9L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,7 +224,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="khd-0s-y1Z" kind="show" id="Xls-xA-xyR"/>
+                                    <action selector="button_newgame:" destination="fCy-FF-ppv" eventType="touchUpInside" id="Mjw-8R-cdJ"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH6-FT-GCL">
@@ -247,6 +247,9 @@
                         <viewLayoutGuide key="safeArea" id="FZU-KQ-Iw0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="settings" selectedImage="settings-filled" id="j9c-iI-SrK"/>
+                    <connections>
+                        <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="B7r-RM-SnD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
