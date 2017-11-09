@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		847D59AF1FB4DC4900B4040B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59AE1FB4DC4000B4040B /* MapKit.framework */; };
+		847D59B11FB4FA8D00B4040B /* ViewControllerGruppe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59B01FB4FA8D00B4040B /* ViewControllerGruppe.swift */; };
 		84D5E4561FB33FA700A3D703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4551FB33FA700A3D703 /* AppDelegate.swift */; };
 		84D5E4581FB33FA700A3D703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4571FB33FA700A3D703 /* ViewController.swift */; };
 		84D5E45B1FB33FA700A3D703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D5E4591FB33FA700A3D703 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		847D59AE1FB4DC4000B4040B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		847D59B01FB4FA8D00B4040B /* ViewControllerGruppe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerGruppe.swift; path = "/Users/admin/Documents/Mister X/Mister X/ViewControllerGruppe.swift"; sourceTree = "<absolute>"; };
 		84D5E4521FB33FA700A3D703 /* Mister X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mister X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4551FB33FA700A3D703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5E4571FB33FA700A3D703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				84D5E4551FB33FA700A3D703 /* AppDelegate.swift */,
 				84D5E4571FB33FA700A3D703 /* ViewController.swift */,
+				847D59B01FB4FA8D00B4040B /* ViewControllerGruppe.swift */,
 				84D5E4591FB33FA700A3D703 /* Main.storyboard */,
 				84D5E45C1FB33FA700A3D703 /* Assets.xcassets */,
 				84D5E45E1FB33FA700A3D703 /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847D59B11FB4FA8D00B4040B /* ViewControllerGruppe.swift in Sources */,
 				84D5E4581FB33FA700A3D703 /* ViewController.swift in Sources */,
 				84D5E4561FB33FA700A3D703 /* AppDelegate.swift in Sources */,
 			);
