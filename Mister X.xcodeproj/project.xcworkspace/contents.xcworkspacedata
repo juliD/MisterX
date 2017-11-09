@@ -2,6 +2,24 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Mister X.xcodeproj">
+      location = "group:../../../Downloads/icons8-settings-filled.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-settings.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-map-filled.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-map.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-speech-bubble-filled.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/icons8-speech-bubble.png">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

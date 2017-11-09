@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,180 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajF-m5-F6c">
+                                <rect key="frame" x="130" y="76" width="114" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="yWw-vG-nsn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister X Beschreibung ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGy-0v-gfH">
+                                <rect key="frame" x="55" y="111" width="264" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
+                                <rect key="frame" x="87" y="279" width="200" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bYA-cg-NGp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Mister X"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ncE-C4-1Lf" kind="show" id="DQT-hm-fUw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
+                                <rect key="frame" x="87" y="337" width="200" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MOh-W4-dZi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Jäger"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vGy-0v-gfH" firstAttribute="centerX" secondItem="1YY-Ol-lem" secondAttribute="centerX" id="1bJ-7L-Ppw"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="leading" secondItem="3wQ-FZ-TeR" secondAttribute="leading" id="2JT-AW-lwt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3wQ-FZ-TeR" secondAttribute="bottom" constant="280" id="7Of-pw-Oeu"/>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ai-Kr-I04"/>
+                            <constraint firstItem="vGy-0v-gfH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="91" id="AYP-o8-pVP"/>
+                            <constraint firstItem="vGy-0v-gfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="K4B-ig-ed3"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="top" secondItem="vGy-0v-gfH" secondAttribute="bottom" constant="95" id="M4S-y1-8OW"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="ToB-CU-JCI"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="top" secondItem="1YY-Ol-lem" secondAttribute="bottom" constant="8" symbolic="YES" id="bcM-02-o9p"/>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="centerX" secondItem="vGy-0v-gfH" secondAttribute="centerX" id="hb9-Oy-JYg"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="trailing" secondItem="3wQ-FZ-TeR" secondAttribute="trailing" id="obu-cb-h6c"/>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="p0s-en-too"/>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="rKt-lv-XS7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="Skt-bR-1jE">
+            <objects>
+                <viewController id="l3n-Hj-DOl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iuv-vn-vax">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="a3R-GY-FB6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Chat" image="speech-bubble" selectedImage="speech-bubble-filled" id="xSC-iG-QzI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pjG-Fd-fDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2199" y="33"/>
+        </scene>
+        <!--Einstellungen-->
+        <scene sceneID="5zW-Ly-PQ3">
+            <objects>
+                <viewController id="fCy-FF-ppv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="71G-q5-o9L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bou-p7-GTn">
+                                <rect key="frame" x="0.0" y="563" width="375" height="55"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Neues Spiel">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="JhO-gF-Q8d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bou-p7-GTn" firstAttribute="bottom" secondItem="FZU-KQ-Iw0" secondAttribute="bottom" id="Ibg-Kd-Bb4"/>
+                            <constraint firstItem="bou-p7-GTn" firstAttribute="leading" secondItem="71G-q5-o9L" secondAttribute="leading" id="JXr-In-Ysy"/>
+                            <constraint firstAttribute="trailing" secondItem="bou-p7-GTn" secondAttribute="trailing" id="Y3A-D2-4qz"/>
+                            <constraint firstItem="bou-p7-GTn" firstAttribute="top" secondItem="FZU-KQ-Iw0" secondAttribute="top" constant="543" id="xl2-rz-z82"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FZU-KQ-Iw0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Einstellungen" image="settings" selectedImage="settings-filled" id="j9c-iI-SrK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2197.5999999999999" y="750.67466266866575"/>
+        </scene>
+        <!--Karte-->
+        <scene sceneID="Yrv-mm-sGx">
+            <objects>
+                <viewController id="lQ9-38-U9l" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N0E-wI-bFp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-xW-R1t">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="iqZ-he-jy0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Karte" image="map" selectedImage="map-filled" id="xlj-3l-lZQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1QZ-gV-6aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2197.5999999999999" y="-631.0344827586207"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qXf-sV-Qgk">
+            <objects>
+                <tabBarController id="ncE-C4-1Lf" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mff-e2-xgF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="lQ9-38-U9l" kind="relationship" relationship="viewControllers" id="XDw-P0-Bpw"/>
+                        <segue destination="l3n-Hj-DOl" kind="relationship" relationship="viewControllers" id="vPm-2l-VVZ"/>
+                        <segue destination="fCy-FF-ppv" kind="relationship" relationship="viewControllers" id="Wc5-6h-cmi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eHB-3m-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="33"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map" width="25" height="25"/>
+        <image name="map-filled" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
+        <image name="settings-filled" width="25" height="25"/>
+        <image name="speech-bubble" width="25" height="25"/>
+        <image name="speech-bubble-filled" width="25" height="25"/>
+    </resources>
 </document>
