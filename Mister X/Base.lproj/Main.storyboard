@@ -115,18 +115,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man-filled" translatesAutoresizingMaskIntoConstraints="NO" id="ZeH-4C-emL">
-                                <rect key="frame" x="75" y="308" width="50" height="50"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="gSM-ZY-OaI">
-                                <rect key="frame" x="133" y="308" width="50" height="50"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="VeO-6n-TIl">
-                                <rect key="frame" x="191" y="308" width="50" height="50"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="mIV-Gl-bmW">
-                                <rect key="frame" x="249" y="308" width="50" height="50"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4Z-8z-Rck">
                                 <rect key="frame" x="87" y="460" width="200" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -144,23 +132,23 @@
                                     <action selector="button_start:" destination="4Xz-Mb-Q7U" eventType="touchUpInside" id="Cbf-FH-8wg"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonControler" customModule="Mister_X" customModuleProvider="target">
+                                <rect key="frame" x="37" y="318" width="300" height="75"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="37" id="66M-gF-Buf"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="4AK-g5-Gsj" secondAttribute="centerX" id="775-NU-Stk"/>
-                            <constraint firstItem="ZeH-4C-emL" firstAttribute="top" secondItem="gSM-ZY-OaI" secondAttribute="top" id="F8Q-KE-kn5"/>
+                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="top" secondItem="4AK-g5-Gsj" secondAttribute="bottom" constant="50" id="DrQ-fZ-ZH3"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="top" secondItem="ZLT-FQ-xTg" secondAttribute="bottom" constant="38" id="FJC-oM-ofp"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="92" id="JC4-0n-NLD"/>
-                            <constraint firstItem="gSM-ZY-OaI" firstAttribute="leading" secondItem="ZeH-4C-emL" secondAttribute="trailing" constant="8" symbolic="YES" id="NAG-kq-L8b"/>
-                            <constraint firstItem="mIV-Gl-bmW" firstAttribute="leading" secondItem="VeO-6n-TIl" secondAttribute="trailing" constant="8" symbolic="YES" id="PTK-eZ-zjq"/>
-                            <constraint firstItem="ZeH-4C-emL" firstAttribute="centerY" secondItem="BiT-sH-8HI" secondAttribute="centerY" id="bXS-Ik-QVF"/>
-                            <constraint firstItem="VeO-6n-TIl" firstAttribute="top" secondItem="mIV-Gl-bmW" secondAttribute="top" id="do8-Em-3zf"/>
+                            <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d4Z-8z-Rck" secondAttribute="trailing" id="WPg-Ca-baM"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="bottom" secondItem="d4Z-8z-Rck" secondAttribute="bottom" constant="147" id="dyh-Ad-1dZ"/>
-                            <constraint firstItem="gSM-ZY-OaI" firstAttribute="top" secondItem="VeO-6n-TIl" secondAttribute="top" id="hZM-F8-gHz"/>
+                            <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="aQc-3n-Cvg" secondAttribute="trailing" constant="38" id="fvv-4c-7mI"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="centerX" secondItem="d4Z-8z-Rck" secondAttribute="centerX" id="iPC-P9-0kB"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="64" id="iUR-hx-fK4"/>
-                            <constraint firstItem="ZeH-4C-emL" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="75" id="jUG-a6-k5k"/>
-                            <constraint firstItem="VeO-6n-TIl" firstAttribute="leading" secondItem="gSM-ZY-OaI" secondAttribute="trailing" constant="8" symbolic="YES" id="ogE-AJ-40Q"/>
+                            <constraint firstItem="d4Z-8z-Rck" firstAttribute="top" secondItem="aQc-3n-Cvg" secondAttribute="bottom" constant="67" id="qb1-tP-XUK"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="BiT-sH-8HI" secondAttribute="centerX" id="rnm-7i-US0"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="top" secondItem="BjW-Ll-bz9" secondAttribute="top" constant="75" id="yOg-25-Zow"/>
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="87" id="ywb-0B-oMq"/>
@@ -316,8 +304,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="man" width="50" height="50"/>
-        <image name="man-filled" width="50" height="50"/>
         <image name="map" width="25" height="25"/>
         <image name="map-filled" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
