@@ -249,7 +249,7 @@
         <!--Karte-->
         <scene sceneID="Yrv-mm-sGx">
             <objects>
-                <viewController id="lQ9-38-U9l" sceneMemberID="viewController">
+                <viewController title="Karte" id="lQ9-38-U9l" customClass="ViewControllerKarte" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N0E-wI-bFp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
