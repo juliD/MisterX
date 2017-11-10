@@ -134,18 +134,21 @@
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonControler" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="37" y="318" width="300" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Cv6-ie-xkl"/>
+                                    <constraint firstAttribute="height" constant="75" id="Ye2-Ur-2RX"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="37" id="66M-gF-Buf"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="4AK-g5-Gsj" secondAttribute="centerX" id="775-NU-Stk"/>
+                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="centerX" secondItem="BjW-Ll-bz9" secondAttribute="centerX" id="ANJ-Xf-T3G"/>
                             <constraint firstItem="aQc-3n-Cvg" firstAttribute="top" secondItem="4AK-g5-Gsj" secondAttribute="bottom" constant="50" id="DrQ-fZ-ZH3"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="top" secondItem="ZLT-FQ-xTg" secondAttribute="bottom" constant="38" id="FJC-oM-ofp"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="92" id="JC4-0n-NLD"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d4Z-8z-Rck" secondAttribute="trailing" id="WPg-Ca-baM"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="bottom" secondItem="d4Z-8z-Rck" secondAttribute="bottom" constant="147" id="dyh-Ad-1dZ"/>
-                            <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="aQc-3n-Cvg" secondAttribute="trailing" constant="38" id="fvv-4c-7mI"/>
                             <constraint firstItem="4AK-g5-Gsj" firstAttribute="centerX" secondItem="d4Z-8z-Rck" secondAttribute="centerX" id="iPC-P9-0kB"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="64" id="iUR-hx-fK4"/>
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="top" secondItem="aQc-3n-Cvg" secondAttribute="bottom" constant="67" id="qb1-tP-XUK"/>
