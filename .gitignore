@@ -1,0 +1,5 @@
+/Mister X.xcodeproj
+.DS_Store
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
