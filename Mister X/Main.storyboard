@@ -266,6 +266,15 @@
                                     <action selector="button_ich:" destination="lQ9-38-U9l" eventType="touchUpInside" id="p2k-Jf-pTu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-TM-dTF">
+                                <rect key="frame" x="309" y="100" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="button_x:" destination="lQ9-38-U9l" eventType="touchUpInside" id="6a5-WP-2pa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -278,7 +287,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Karte" image="map" selectedImage="map-filled" id="xlj-3l-lZQ"/>
                     <connections>
-                        <outlet property="button_ich" destination="UJH-KW-llW" id="tgk-Lh-Oxy"/>
+                        <outlet property="button_ich" destination="UJH-KW-llW" id="FZg-aZ-6fo"/>
+                        <outlet property="button_x" destination="WdJ-TM-dTF" id="dWs-Jm-jRz"/>
                         <outlet property="mapView" destination="jN9-xW-R1t" id="mN3-IO-ISk"/>
                     </connections>
                 </viewController>

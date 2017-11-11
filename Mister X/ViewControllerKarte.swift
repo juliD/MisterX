@@ -15,13 +15,17 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
-    @IBOutlet var button_ich: UIButton!
-    @IBAction func button_ich(_ sender: UIButton) {
+    @IBOutlet var button_x: UIButton!
+    @IBAction func button_x(_ sender: UIButton) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = (locationManager.location?.coordinate)!
         annotation.title = "Mister X"
         annotation.subtitle = "Position von Mister X"
         mapView.addAnnotation(annotation)
+    }
+    @IBOutlet var button_ich: UIButton!
+    @IBAction func button_ich(_ sender: UIButton) {
+        locationManager.startUpdatingLocation()
     }
     
     
@@ -39,13 +43,17 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
         
         // Do any additional setup after loading the view.
         
-        button_ich.layer.cornerRadius = 5
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
-        blur.frame = button_ich.bounds
-        blur.isUserInteractionEnabled = false //This allows touches to forward to the button.
-        button_ich.insertSubview(blur, at: 0)
-        blur.layer.cornerRadius = 5//0.5 * button_ich.bounds.size.width
-        blur.clipsToBounds = true
+        func doblur(_ button:UIButton) {
+            button.layer.cornerRadius = 5
+            let blur = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
+            blur.frame = button.bounds
+            blur.isUserInteractionEnabled = false //This allows touches to forward to the button.
+            button.insertSubview(blur, at: 0)
+            blur.layer.cornerRadius = 5//0.5 * button_ich.bounds.size.width
+            blur.clipsToBounds = true
+        }
+        doblur(button_ich)
+        doblur(button_x)
         
         //mapView.setUserTrackingMode(.follow, animated: true)
         
@@ -58,10 +66,13 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        let location = locations.last! as CLLocation
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(region, animated: true)
+        //let location = locations.last! as CLLocation
+        if let location = locations.last {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            self.mapView.setRegion(region, animated: true)
+        }
+        manager.stopUpdatingLocation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
