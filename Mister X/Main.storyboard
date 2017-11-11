@@ -132,7 +132,7 @@
                                     <action selector="button_start:" destination="4Xz-Mb-Q7U" eventType="touchUpInside" id="Cbf-FH-8wg"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonControler" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="37" y="318" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Cv6-ie-xkl"/>
@@ -254,9 +254,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-xW-R1t">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-xW-R1t">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
+                                <rect key="frame" x="309" y="42" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ich"/>
+                                <connections>
+                                    <action selector="button_ich:" destination="lQ9-38-U9l" eventType="touchUpInside" id="p2k-Jf-pTu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -268,10 +277,14 @@
                         <viewLayoutGuide key="safeArea" id="iqZ-he-jy0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Karte" image="map" selectedImage="map-filled" id="xlj-3l-lZQ"/>
+                    <connections>
+                        <outlet property="button_ich" destination="UJH-KW-llW" id="tgk-Lh-Oxy"/>
+                        <outlet property="mapView" destination="jN9-xW-R1t" id="mN3-IO-ISk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QZ-gV-6aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="-648"/>
+            <point key="canvasLocation" x="2536.8000000000002" y="-648.12593703148434"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qXf-sV-Qgk">
