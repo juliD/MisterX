@@ -208,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="3390" y="32"/>
         </scene>
-        <!--Einstellungen-->
+        <!--Mister X-->
         <scene sceneID="5zW-Ly-PQ3">
             <objects>
                 <viewController id="fCy-FF-ppv" customClass="ViewControllerEinstellungen" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,11 +232,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FZU-KQ-Iw0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Einstellungen" id="SXg-lK-zqS"/>
+                    <navigationItem key="navigationItem" title="Mister X" id="SXg-lK-zqS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3389.5999999999999" y="798.35082458770626"/>
+            <point key="canvasLocation" x="3390" y="799"/>
         </scene>
         <!--View Controller Einstellungen Table-->
         <scene sceneID="KO2-Xs-IUN">
@@ -257,23 +257,48 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einstellung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evU-uA-eaR">
-                                                    <rect key="frame" x="23" y="11" width="270" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evU-uA-eaR">
+                                                    <rect key="frame" x="23" y="11" width="52" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EvU-3Q-oDK">
-                                                    <rect key="frame" x="301" y="6" width="51" height="31"/>
-                                                </switch>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name von Mister X" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="66f-DL-bVQ">
+                                                    <rect key="frame" x="107" y="7" width="250" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="nickname"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="evU-uA-eaR" firstAttribute="centerY" secondItem="UeB-K1-7Hn" secondAttribute="centerY" id="7W8-p1-1xa"/>
-                                                <constraint firstItem="evU-uA-eaR" firstAttribute="leading" secondItem="UeB-K1-7Hn" secondAttribute="leadingMargin" constant="15" id="8dq-wt-WI3"/>
-                                                <constraint firstItem="evU-uA-eaR" firstAttribute="centerY" secondItem="EvU-3Q-oDK" secondAttribute="centerY" id="Ru9-Ye-qyK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="EvU-3Q-oDK" secondAttribute="trailing" constant="17" id="d4k-RY-aaE"/>
-                                                <constraint firstItem="EvU-3Q-oDK" firstAttribute="leading" secondItem="evU-uA-eaR" secondAttribute="trailing" constant="8" symbolic="YES" id="jSx-4R-0I2"/>
-                                                <constraint firstItem="evU-uA-eaR" firstAttribute="top" secondItem="UeB-K1-7Hn" secondAttribute="topMargin" constant="3" id="sa5-tH-od4"/>
+                                                <constraint firstItem="evU-uA-eaR" firstAttribute="top" secondItem="UeB-K1-7Hn" secondAttribute="topMargin" constant="3" id="3UJ-rM-uSW"/>
+                                                <constraint firstItem="66f-DL-bVQ" firstAttribute="leading" secondItem="evU-uA-eaR" secondAttribute="trailing" constant="32" id="Ddo-Lw-8bc"/>
+                                                <constraint firstItem="evU-uA-eaR" firstAttribute="centerY" secondItem="66f-DL-bVQ" secondAttribute="centerY" id="UNn-4H-OxK"/>
+                                                <constraint firstItem="evU-uA-eaR" firstAttribute="leading" secondItem="UeB-K1-7Hn" secondAttribute="leadingMargin" constant="15" id="USA-Sj-Mrk"/>
+                                                <constraint firstItem="evU-uA-eaR" firstAttribute="centerY" secondItem="UeB-K1-7Hn" secondAttribute="centerY" id="WqB-eP-FbO"/>
+                                                <constraint firstItem="66f-DL-bVQ" firstAttribute="top" secondItem="UeB-K1-7Hn" secondAttribute="topMargin" constant="-1" id="tF5-eB-xz6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="66f-DL-bVQ" secondAttribute="trailing" constant="10" id="uOF-oJ-3wn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sec1_set2" id="s8S-PD-8Bk" customClass="TableViewCellEinstellungen" customModule="Mister_X" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s8S-PD-8Bk" id="yfr-r4-2wP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-ca-T7d">
+                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Mister X gefunden"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Gu-ca-T7d" firstAttribute="centerY" secondItem="yfr-r4-2wP" secondAttribute="centerY" id="47N-c9-TGT"/>
+                                                <constraint firstItem="7Gu-ca-T7d" firstAttribute="leading" secondItem="yfr-r4-2wP" secondAttribute="leadingMargin" id="DK3-sS-WcV"/>
+                                                <constraint firstItem="7Gu-ca-T7d" firstAttribute="top" secondItem="yfr-r4-2wP" secondAttribute="topMargin" constant="-1" id="mnF-VY-68w"/>
+                                                <constraint firstItem="7Gu-ca-T7d" firstAttribute="trailing" secondItem="yfr-r4-2wP" secondAttribute="trailingMargin" id="vCC-sQ-pCc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -282,7 +307,7 @@
                             <tableViewSection headerTitle="Spiel" id="ztz-jl-S8E">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sec2_set1" id="e5F-2Q-GwX" customClass="TableViewCellEinstellungen" customModule="Mister_X" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e5F-2Q-GwX" id="mxc-Af-Fg1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -299,17 +324,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="top" secondItem="mxc-Af-Fg1" secondAttribute="topMargin" constant="3" id="CMq-Od-mtU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TLz-h7-Wdx" secondAttribute="trailing" constant="17" id="KQk-ib-Msq"/>
-                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="centerY" secondItem="TLz-h7-Wdx" secondAttribute="centerY" id="aOr-iO-leI"/>
-                                                <constraint firstItem="TLz-h7-Wdx" firstAttribute="leading" secondItem="W9D-wx-GgO" secondAttribute="trailing" constant="8" symbolic="YES" id="g0L-Ve-bNU"/>
-                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="leading" secondItem="mxc-Af-Fg1" secondAttribute="leadingMargin" constant="15" id="mdd-FD-u49"/>
-                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="centerY" secondItem="mxc-Af-Fg1" secondAttribute="centerY" id="nJ0-yr-RLf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TLz-h7-Wdx" secondAttribute="trailing" constant="17" id="HTa-UE-7RL"/>
+                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="top" secondItem="mxc-Af-Fg1" secondAttribute="topMargin" constant="3" id="b3y-4h-R1p"/>
+                                                <constraint firstItem="TLz-h7-Wdx" firstAttribute="leading" secondItem="W9D-wx-GgO" secondAttribute="trailing" constant="8" symbolic="YES" id="bQZ-I6-zff"/>
+                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="centerY" secondItem="mxc-Af-Fg1" secondAttribute="centerY" id="f6I-kI-rRL"/>
+                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="centerY" secondItem="TLz-h7-Wdx" secondAttribute="centerY" id="tHm-kG-3tG"/>
+                                                <constraint firstItem="W9D-wx-GgO" firstAttribute="leading" secondItem="mxc-Af-Fg1" secondAttribute="leadingMargin" constant="15" id="vEP-0k-9HB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sec2_set2" id="kCj-ae-KWG" customClass="TableViewCellEinstellungen" customModule="Mister_X" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCj-ae-KWG" id="O01-4Z-YmE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -327,10 +352,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="leading" secondItem="O01-4Z-YmE" secondAttribute="leadingMargin" id="c1O-0K-5Wj"/>
-                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="centerY" secondItem="O01-4Z-YmE" secondAttribute="centerY" id="f91-U5-CTq"/>
-                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="top" secondItem="O01-4Z-YmE" secondAttribute="topMargin" constant="-1" id="zS7-MY-yeU"/>
-                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="trailing" secondItem="O01-4Z-YmE" secondAttribute="trailingMargin" id="zVQ-lE-NH2"/>
+                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="top" secondItem="O01-4Z-YmE" secondAttribute="topMargin" constant="-1" id="dOo-pb-0mH"/>
+                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="trailing" secondItem="O01-4Z-YmE" secondAttribute="trailingMargin" id="dX1-wf-bL8"/>
+                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="centerY" secondItem="O01-4Z-YmE" secondAttribute="centerY" id="l9O-fi-dAF"/>
+                                                <constraint firstItem="dlT-Vb-CkX" firstAttribute="leading" secondItem="O01-4Z-YmE" secondAttribute="leadingMargin" id="lR3-WT-Por"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -348,7 +373,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qA-0p-Kx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="799"/>
+            <point key="canvasLocation" x="1600.8" y="798.80059970014997"/>
         </scene>
         <!--Karte-->
         <scene sceneID="Yrv-mm-sGx">
@@ -465,11 +490,11 @@
             </objects>
             <point key="canvasLocation" x="2536" y="32.383808095952027"/>
         </scene>
-        <!--Einstellungen-->
+        <!--Mister X-->
         <scene sceneID="NCg-MN-7ls">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="G6c-eD-5Jl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Einstellungen" image="settings" selectedImage="settings-filled" id="j9c-iI-SrK"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G6c-eD-5Jl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mister X" image="anonymous-mask" selectedImage="anonymous-mask-filled" id="j9c-iI-SrK"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BQV-9k-Rle">
@@ -490,10 +515,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="anonymous-mask" width="33" height="33"/>
+        <image name="anonymous-mask-filled" width="33" height="33"/>
         <image name="map" width="25" height="25"/>
         <image name="map-filled" width="25" height="25"/>
-        <image name="settings" width="25" height="25"/>
-        <image name="settings-filled" width="25" height="25"/>
         <image name="speech-bubble" width="25" height="25"/>
         <image name="speech-bubble-filled" width="25" height="25"/>
     </resources>
