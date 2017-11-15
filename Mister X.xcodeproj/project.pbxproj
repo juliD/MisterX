@@ -17,10 +17,10 @@
 		847D59C71FB5DA7600B4040B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847D59BE1FB5DA7500B4040B /* Info.plist */; };
 		847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59BF1FB5DA7500B4040B /* ViewController.swift */; };
 		847D59C91FB5DA7600B4040B /* ViewControllerGruppe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */; };
-		847D59CA1FB5DA7600B4040B /* PersonControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59C11FB5DA7500B4040B /* PersonControler.swift */; };
 		847D59CB1FB5DA7600B4040B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59C21FB5DA7500B4040B /* AppDelegate.swift */; };
 		84D5E46B1FB33FA700A3D703 /* Mister_XTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E46A1FB33FA700A3D703 /* Mister_XTests.swift */; };
 		84D5E4761FB33FA700A3D703 /* Mister_XUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */; };
+		B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F053DA1FBC6063003A102E /* PersonController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,6 @@
 		847D59BE1FB5DA7500B4040B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847D59BF1FB5DA7500B4040B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerGruppe.swift; sourceTree = "<group>"; };
-		847D59C11FB5DA7500B4040B /* PersonControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonControler.swift; sourceTree = "<group>"; };
 		847D59C21FB5DA7500B4040B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5E4521FB33FA700A3D703 /* Mister X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mister X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4661FB33FA700A3D703 /* Mister XTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mister XTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +59,7 @@
 		84D5E4711FB33FA700A3D703 /* Mister XUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mister XUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mister_XUITests.swift; sourceTree = "<group>"; };
 		84D5E4771FB33FA700A3D703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8F053DA1FBC6063003A102E /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 				847D59BE1FB5DA7500B4040B /* Info.plist */,
 				844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */,
 				844CF3751FB5F452006AAFF9 /* Main.storyboard */,
-				847D59C11FB5DA7500B4040B /* PersonControler.swift */,
+				B8F053DA1FBC6063003A102E /* PersonController.swift */,
 				847D59BF1FB5DA7500B4040B /* ViewController.swift */,
 				847D59BC1FB5DA7500B4040B /* ViewControllerChat.swift */,
 				847D59BD1FB5DA7500B4040B /* ViewControllerEinstellungen.swift */,
@@ -293,9 +293,9 @@
 				847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */,
 				847D59C61FB5DA7600B4040B /* ViewControllerEinstellungen.swift in Sources */,
 				847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */,
+				B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */,
 				844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */,
 				847D59C91FB5DA7600B4040B /* ViewControllerGruppe.swift in Sources */,
-				847D59CA1FB5DA7600B4040B /* PersonControler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable class PersonControler: UIStackView {
+@IBDesignable class PersonController: UIStackView {
     
     private var personViews = [UIImageView]()
     

@@ -120,7 +120,7 @@
                                     <action selector="button_start:" destination="4Xz-Mb-Q7U" eventType="touchUpInside" id="Cbf-FH-8wg"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonControler" customModule="Mister_X" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="37" y="318" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Cv6-ie-xkl"/>
@@ -147,6 +147,7 @@
                         <viewLayoutGuide key="safeArea" id="BjW-Ll-bz9"/>
                     </view>
                     <connections>
+                        <outlet property="personController" destination="aQc-3n-Cvg" id="YC9-uG-AXB"/>
                         <segue destination="ncE-C4-1Lf" kind="presentation" identifier="toNoNav" id="6hv-Ip-vUS"/>
                     </connections>
                 </viewController>

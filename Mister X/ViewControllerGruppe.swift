@@ -9,12 +9,14 @@ import UIKit
 
 class ViewControllerGruppe: UIViewController {
 
+    @IBOutlet weak var personController: PersonController!
+    
     @IBAction func button_start(_ sender: UIButton) {
         performSegue(withIdentifier: "toNoNav", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        personController.persons = 2
         // Do any additional setup after loading the view.
     }
 
