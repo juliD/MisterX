@@ -12,8 +12,13 @@ import FirebaseDatabase
 
 class ViewController: UIViewController {
 
+    
+    var ref: DatabaseReference!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         
         //if userid does not exist yet sign into firebase
         //always use locally stored uid otherwise we get problems with firebase
@@ -48,19 +53,30 @@ class ViewController: UIViewController {
             defaults.set(0, forKey:"boost1")
             defaults.set(0, forKey:"boost2")
             
+
             //set up firebase user
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
-            
             let boosts = [
                 "username" : "Agent",
                 "boost1" : 0,
                 "boost2" : 0
                 ] as [String : Any]
-            ref.child("user").child(user!.uid).setValue(boosts)
+            self.ref.child("user").child(user!.uid).setValue(boosts)
         })
-
     }
+    
+    @IBAction func createNewGame(_ sender: UIButton) {
+        //get userid
+        let defaults = UserDefaults.standard
+        let uid = defaults.string(forKey: "uid")
+        
+        //create new game in firebase
+        let key = self.ref.child("games").childByAutoId().key
+        self.ref.child("game").child(key).child("player").child(uid!).setValue(["MisterX" : true])
+        
+        //save gameid locally
+        defaults.set(key, forKey: "currentGame")
+    }
+    
 
 }
 

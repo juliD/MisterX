@@ -38,6 +38,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="createNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V2y-hp-svX"/>
                                     <segue destination="4Xz-Mb-Q7U" kind="show" id="RqI-r3-P1j"/>
                                 </connections>
                             </button>
@@ -53,7 +54,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="4Xz-Mb-Q7U" kind="show" id="rBM-Ih-R8U"/>
+                                    <segue destination="r44-0d-5DV" kind="show" id="1J6-i7-Wh7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mister" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajF-m5-F6c">
@@ -78,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255.19999999999999" y="32.833583208395808"/>
+            <point key="canvasLocation" x="-286" y="33"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -89,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="H3Bj6Zc4" borderStyle="roundedRect" placeholder="Code hier!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AK-g5-Gsj">
-                                <rect key="frame" x="92" y="238" width="190" height="30"/>
+                                <rect key="frame" x="92" y="238" width="191" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WtJ-gI-gxh"/>
                                 </constraints>
@@ -98,13 +99,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jäger müssen diesen Code eingeben. Ihr braucht mindestens 4 Personen!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLT-FQ-xTg">
-                                <rect key="frame" x="64" y="139" width="246" height="61"/>
+                                <rect key="frame" x="64" y="139" width="247" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4Z-8z-Rck">
-                                <rect key="frame" x="87" y="460" width="200" height="60"/>
+                                <rect key="frame" x="87" y="460" width="201" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="HaP-Wv-wvZ"/>
@@ -121,7 +122,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
-                                <rect key="frame" x="37" y="318" width="300" height="75"/>
+                                <rect key="frame" x="37.5" y="318" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Cv6-ie-xkl"/>
                                     <constraint firstAttribute="height" constant="75" id="Ye2-Ur-2RX"/>
@@ -147,6 +148,7 @@
                         <viewLayoutGuide key="safeArea" id="BjW-Ll-bz9"/>
                     </view>
                     <connections>
+                        <outlet property="gameCode" destination="4AK-g5-Gsj" id="FBu-JK-n1o"/>
                         <outlet property="personController" destination="aQc-3n-Cvg" id="YC9-uG-AXB"/>
                         <segue destination="ncE-C4-1Lf" kind="presentation" identifier="toNoNav" id="6hv-Ip-vUS"/>
                     </connections>
@@ -468,7 +470,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2a3-eN-2Wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1260" y="33"/>
+            <point key="canvasLocation" x="-1303" y="31"/>
         </scene>
         <!--Chat-->
         <scene sceneID="Xm5-m8-yLd">
@@ -513,6 +515,44 @@
             </objects>
             <point key="canvasLocation" x="2536" y="799.70014992503752"/>
         </scene>
+        <!--Gruppe beitreten-->
+        <scene sceneID="P3n-n0-VB1">
+            <objects>
+                <viewController title="Gruppe beitreten" id="r44-0d-5DV" customClass="ViewControllerBeitreten" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4NZ-Lb-ytV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gib den Code des Spieles ein dem du beitreten willst!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-aV-hsU">
+                                <rect key="frame" x="64" y="139" width="247" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spiel Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x3e-Oe-bgf">
+                                <rect key="frame" x="64" y="238" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vea-aV-hsU" firstAttribute="top" secondItem="vD9-1P-CMo" secondAttribute="top" constant="75" id="BqS-1w-lrr"/>
+                            <constraint firstItem="Vea-aV-hsU" firstAttribute="centerX" secondItem="4NZ-Lb-ytV" secondAttribute="centerX" id="r11-Xs-aLC"/>
+                            <constraint firstItem="Vea-aV-hsU" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="zW0-P7-Xx7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vD9-1P-CMo"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="x3e-Oe-bgf" id="eKT-pe-HX0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0W-DO-Ycq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="-628.33583208395805"/>
+        </scene>
     </scenes>
     <resources>
         <image name="anonymous-mask" width="33" height="33"/>
@@ -522,7 +562,4 @@
         <image name="speech-bubble" width="25" height="25"/>
         <image name="speech-bubble-filled" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="rBM-Ih-R8U"/>
-    </inferredMetricsTieBreakers>
 </document>
