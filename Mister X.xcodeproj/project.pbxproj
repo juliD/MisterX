@@ -13,6 +13,7 @@
 		844CF3761FB5F452006AAFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */; };
 		844CF3771FB5F452006AAFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CF3751FB5F452006AAFF9 /* Main.storyboard */; };
 		844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */; };
+		846984301FBE3CCF0020B7B3 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469842F1FBE3CCF0020B7B3 /* ScannerViewController.swift */; };
 		847D59AF1FB4DC4900B4040B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59AE1FB4DC4000B4040B /* MapKit.framework */; };
 		847D59C31FB5DA7500B4040B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847D59BA1FB5DA7500B4040B /* Assets.xcassets */; };
 		847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59BC1FB5DA7500B4040B /* ViewControllerChat.swift */; };
@@ -55,6 +56,7 @@
 		844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844CF3751FB5F452006AAFF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerKarte.swift; sourceTree = "<group>"; };
+		8469842F1FBE3CCF0020B7B3 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		847D59AE1FB4DC4000B4040B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		847D59BA1FB5DA7500B4040B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		847D59BC1FB5DA7500B4040B /* ViewControllerChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerChat.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */,
 				844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */,
 				8405E2EB1FBE07FF0098AA3C /* ViewControllerBeitreten.swift */,
+				8469842F1FBE3CCF0020B7B3 /* ScannerViewController.swift */,
 			);
 			path = "Mister X";
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				8405E2EC1FBE07FF0098AA3C /* ViewControllerBeitreten.swift in Sources */,
 				847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */,
 				847D59C61FB5DA7600B4040B /* ViewControllerEinstellungen.swift in Sources */,
+				846984301FBE3CCF0020B7B3 /* ScannerViewController.swift in Sources */,
 				847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */,
 				B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */,
 				844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */,

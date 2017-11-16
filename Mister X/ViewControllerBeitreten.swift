@@ -9,9 +9,10 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewControllerBeitreten: UIViewController, UITextFieldDelegate {
+class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 
     
+    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
@@ -31,6 +32,13 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+
+    @IBAction func scanQR(_ sender: UITapGestureRecognizer) {
+        print("clicked image")
+        let scanner = ScannerViewController()
+        self.navigationController?.pushViewController(scanner, animated: true)
+    }
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //add this user to game if game code is correct
@@ -46,6 +54,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate {
                 
                 ref.child(textField.text!).child("player").child(uid!).setValue(["MisterX" : false])
                 textField.isUserInteractionEnabled = false;
+                self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
                 
             }else{
                 print("game code doesn't exist")

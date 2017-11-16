@@ -19,16 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mister X muss gefangen werden! Die Jäger sind ihm auf den Fersen. Es dürfen nur öffentliche Verkehrsmittel genutzt werden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGy-0v-gfH">
-                                <rect key="frame" x="55" y="255" width="265" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister X muss gefangen werden! Die Jäger sind ihm auf den Fersen. Es dürfen nur öffentliche Verkehrsmittel genutzt werden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGy-0v-gfH">
+                                <rect key="frame" x="55" y="255" width="265" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
-                                <rect key="frame" x="87" y="416" width="201" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
+                                <rect key="frame" x="87" y="393" width="201" height="49"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Mister X"/>
@@ -42,9 +40,8 @@
                                     <segue destination="4Xz-Mb-Q7U" kind="show" id="RqI-r3-P1j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
-                                <rect key="frame" x="87" y="499" width="201" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
+                                <rect key="frame" x="87" y="484" width="201" height="53"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Jäger"/>
@@ -57,29 +54,44 @@
                                     <segue destination="r44-0d-5DV" kind="show" id="1J6-i7-Wh7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mister" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajF-m5-F6c">
-                                <rect key="frame" x="87" y="103" width="201" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajF-m5-F6c">
+                                <rect key="frame" x="87" y="103" width="201" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-Ph-xbQ">
-                                <rect key="frame" x="87" y="173" width="201" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-Ph-xbQ">
+                                <rect key="frame" x="87" y="173" width="201" height="72"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="39" id="0sB-9f-jtp"/>
+                            <constraint firstItem="MnY-Ph-xbQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="26f-s3-5uT"/>
+                            <constraint firstItem="MnY-Ph-xbQ" firstAttribute="top" secondItem="ajF-m5-F6c" secondAttribute="bottom" constant="22" id="4lU-mR-g0i"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="top" secondItem="vGy-0v-gfH" secondAttribute="bottom" constant="56" id="6qo-S7-wXa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ajF-m5-F6c" secondAttribute="trailing" constant="87" id="DgF-i3-v9k"/>
+                            <constraint firstItem="vGy-0v-gfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="H3k-Db-OS8"/>
+                            <constraint firstItem="1YY-Ol-lem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Nk0-Bg-7Fz"/>
+                            <constraint firstItem="ajF-m5-F6c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="NkE-3Q-c9g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MnY-Ph-xbQ" secondAttribute="trailing" constant="87" id="QZi-49-2nw"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="top" secondItem="1YY-Ol-lem" secondAttribute="bottom" constant="55" id="TIu-lh-Dsa"/>
+                            <constraint firstItem="vGy-0v-gfH" firstAttribute="top" secondItem="MnY-Ph-xbQ" secondAttribute="bottom" constant="10" id="WlA-Sk-ELQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3wQ-FZ-TeR" secondAttribute="trailing" constant="87" id="bTy-Vq-oJf"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="boJ-za-hxt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1YY-Ol-lem" secondAttribute="trailing" constant="87" id="vr0-zR-g24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vGy-0v-gfH" secondAttribute="trailing" constant="55" id="xaG-ad-kbG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Start" id="sDB-4q-psa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="33"/>
+            <point key="canvasLocation" x="-287.19999999999999" y="32.833583208395808"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -518,7 +530,7 @@
         <!--Gruppe beitreten-->
         <scene sceneID="P3n-n0-VB1">
             <objects>
-                <viewController title="Gruppe beitreten" id="r44-0d-5DV" customClass="ViewControllerBeitreten" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GruppeBeitreten" title="Gruppe beitreten" id="r44-0d-5DV" customClass="ViewControllerBeitreten" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4NZ-Lb-ytV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,32 +541,69 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spiel Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x3e-Oe-bgf">
-                                <rect key="frame" x="64" y="238" width="247" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spiel Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x3e-Oe-bgf">
+                                <rect key="frame" x="64" y="220" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj6-pQ-gA0">
+                                <rect key="frame" x="85" y="343" width="205" height="150"/>
+                                <state key="normal" image="QR Scanner Image"/>
+                                <connections>
+                                    <segue destination="aRm-t8-CLs" kind="show" id="U8q-Ph-af3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="x3e-Oe-bgf" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="3VP-ah-SRr"/>
+                            <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="Rj6-pQ-gA0" secondAttribute="trailing" constant="85" id="53X-0m-1PO"/>
                             <constraint firstItem="Vea-aV-hsU" firstAttribute="top" secondItem="vD9-1P-CMo" secondAttribute="top" constant="75" id="BqS-1w-lrr"/>
+                            <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="Vea-aV-hsU" secondAttribute="trailing" constant="64" id="GIK-2Q-9tw"/>
+                            <constraint firstItem="Vea-aV-hsU" firstAttribute="top" secondItem="vD9-1P-CMo" secondAttribute="top" constant="75" id="I4H-4g-9cn"/>
+                            <constraint firstItem="x3e-Oe-bgf" firstAttribute="top" secondItem="Vea-aV-hsU" secondAttribute="bottom" constant="40" id="eHY-4j-eX4"/>
+                            <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="x3e-Oe-bgf" secondAttribute="trailing" constant="64" id="jET-TW-kEQ"/>
+                            <constraint firstItem="Vea-aV-hsU" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="ofA-Uj-Dvx"/>
                             <constraint firstItem="Vea-aV-hsU" firstAttribute="centerX" secondItem="4NZ-Lb-ytV" secondAttribute="centerX" id="r11-Xs-aLC"/>
+                            <constraint firstItem="Rj6-pQ-gA0" firstAttribute="top" secondItem="x3e-Oe-bgf" secondAttribute="bottom" constant="93" id="tIQ-0J-TQr"/>
+                            <constraint firstItem="Rj6-pQ-gA0" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="85" id="vhz-Sn-7nU"/>
                             <constraint firstItem="Vea-aV-hsU" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="zW0-P7-Xx7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vD9-1P-CMo"/>
                     </view>
                     <connections>
                         <outlet property="textField" destination="x3e-Oe-bgf" id="eKT-pe-HX0"/>
+                        <outlet property="textLabel" destination="Vea-aV-hsU" id="JYx-QZ-Ify"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0W-DO-Ycq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BrQ-mw-WrS">
+                    <connections>
+                        <action selector="scanQR:" destination="r44-0d-5DV" id="Q5s-m7-vKR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="580" y="-628.33583208395805"/>
         </scene>
+        <!--Scanner-->
+        <scene sceneID="gOn-j6-m6M">
+            <objects>
+                <viewController storyboardIdentifier="Scanner" title="Scanner" id="aRm-t8-CLs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hLF-eP-B4f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7E7-tG-UaF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B36-bI-xBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1526" y="-628"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="QR Scanner Image" width="150" height="150"/>
         <image name="anonymous-mask" width="33" height="33"/>
         <image name="anonymous-mask-filled" width="33" height="33"/>
         <image name="map" width="25" height="25"/>
