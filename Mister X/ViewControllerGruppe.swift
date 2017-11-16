@@ -12,6 +12,7 @@ class ViewControllerGruppe: UIViewController {
 
     @IBOutlet weak var personController: PersonController!
     @IBOutlet weak var gameCode: UITextField!
+    @IBOutlet weak var startButton: UIButton!
     
     
     @IBAction func button_start(_ sender: UIButton) {
@@ -20,7 +21,7 @@ class ViewControllerGruppe: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         personController.persons = 0
-        
+        startButton.isEnabled = false
         
         let defaults = UserDefaults.standard
         let currentGame = defaults.string(forKey: "currentGame")
@@ -33,6 +34,9 @@ class ViewControllerGruppe: UIViewController {
         ref = Database.database().reference().child("game").child(currentGame!).child("player")
         ref.observe(.childAdded, with: {(snapshot) -> Void in
             self.personController.persons = self.personController.persons+1
+            if self.personController.persons == 4 {
+                self.startButton.isEnabled = true
+            }
         })
         
         

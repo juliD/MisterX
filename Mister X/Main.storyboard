@@ -162,6 +162,7 @@
                     <connections>
                         <outlet property="gameCode" destination="4AK-g5-Gsj" id="FBu-JK-n1o"/>
                         <outlet property="personController" destination="aQc-3n-Cvg" id="YC9-uG-AXB"/>
+                        <outlet property="startButton" destination="d4Z-8z-Rck" id="F71-Oh-cEA"/>
                         <segue destination="ncE-C4-1Lf" kind="presentation" identifier="toNoNav" id="6hv-Ip-vUS"/>
                     </connections>
                 </viewController>

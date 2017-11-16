@@ -18,6 +18,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
