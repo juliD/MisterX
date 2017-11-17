@@ -13,6 +13,8 @@ class ViewControllerGruppe: UIViewController {
     @IBOutlet weak var personController: PersonController!
     @IBOutlet weak var gameCode: UITextField!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var qrcode: UIImageView!
+    
     
     
     @IBAction func button_start(_ sender: UIButton) {
@@ -26,9 +28,7 @@ class ViewControllerGruppe: UIViewController {
         let time = "\(hour):\(minutes)"
         var ref: DatabaseReference
         ref = Database.database().reference()
-        ref.child("game").child(currentGame!).setValue(["startetAt" : time])
-        
-        
+        ref.child("game/\(currentGame!)/startetAt").setValue(time)
         performSegue(withIdentifier: "toNoNav", sender: self)
         
     }
@@ -42,13 +42,14 @@ class ViewControllerGruppe: UIViewController {
         
         //show currentGame code
         gameCode.text = currentGame
+        qrcode.image = generateQRCode(from: currentGame!)
         
         //add listener for new players
         var ref: DatabaseReference
         ref = Database.database().reference().child("game").child(currentGame!).child("player")
         ref.observe(.childAdded, with: {(snapshot) -> Void in
             self.personController.persons = self.personController.persons+1
-            if self.personController.persons == 2 {
+            if self.personController.persons == 4 {
                 self.startButton.isEnabled = true
             }
         })
@@ -60,8 +61,21 @@ class ViewControllerGruppe: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+        
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+            
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+        
+        return nil
+    }
     
-
 
 
 }
