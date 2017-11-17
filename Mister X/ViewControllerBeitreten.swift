@@ -33,14 +33,10 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         textField.resignFirstResponder()
         return true
     }
-
-    @IBAction func scanQR(_ sender: UITapGestureRecognizer) {
-        print("clicked image")
-        let scanner = ScannerViewController()
-        self.navigationController?.pushViewController(scanner, animated: true)
+    func startGame(){
+        performSegue(withIdentifier: "startGame", sender: self)
     }
 
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         //add this user to game if game code is correct
         var ref: DatabaseReference!
@@ -57,11 +53,20 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 textField.isUserInteractionEnabled = false;
                 self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
                 
+                ref = Database.database().reference().child("game").child(textField.text!)
+                ref.observe(.childAdded, with: {(snapshot) -> Void in
+                    if snapshot.key == "startetAt"{
+                        self.startGame()
+                    }
+                })
+                
             }else{
                 print("game code doesn't exist")
                 textField.text = "Spiel existiert nicht"
             }
         })
+        
+        
         
     }
 

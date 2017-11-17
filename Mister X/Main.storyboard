@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287.19999999999999" y="32.833583208395808"/>
+            <point key="canvasLocation" x="-287" y="9"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -402,7 +402,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
-                                <rect key="frame" x="309" y="42" width="50" height="50"/>
+                                <rect key="frame" x="309" y="86" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1wr-xr-sTd"/>
                                 </constraints>
@@ -413,7 +413,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-TM-dTF">
-                                <rect key="frame" x="309" y="100" width="50" height="50"/>
+                                <rect key="frame" x="309" y="144" width="50" height="6"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="X"/>
                                 <connections>
@@ -483,7 +483,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2a3-eN-2Wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="31"/>
+            <point key="canvasLocation" x="-1303" y="10"/>
         </scene>
         <!--Chat-->
         <scene sceneID="Xm5-m8-yLd">
@@ -576,6 +576,7 @@
                     <connections>
                         <outlet property="textField" destination="x3e-Oe-bgf" id="eKT-pe-HX0"/>
                         <outlet property="textLabel" destination="Vea-aV-hsU" id="JYx-QZ-Ify"/>
+                        <segue destination="ncE-C4-1Lf" kind="show" identifier="startGame" id="kHc-7g-be8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0W-DO-Ycq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -585,7 +586,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="580" y="-628.33583208395805"/>
+            <point key="canvasLocation" x="580" y="-717"/>
         </scene>
         <!--Scanner-->
         <scene sceneID="gOn-j6-m6M">
@@ -600,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B36-bI-xBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="-628"/>
+            <point key="canvasLocation" x="1601" y="-717"/>
         </scene>
     </scenes>
     <resources>
@@ -612,4 +613,7 @@
         <image name="speech-bubble" width="25" height="25"/>
         <image name="speech-bubble-filled" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kHc-7g-be8"/>
+    </inferredMetricsTieBreakers>
 </document>
