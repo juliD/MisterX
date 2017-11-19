@@ -27,6 +27,7 @@ class ViewController: UIViewController {
             print("already logged in: "+uid)
         }
         else {
+            displayTutorial()
             logInOnce()
         }
     }
@@ -76,6 +77,13 @@ class ViewController: UIViewController {
         
         //save gameid locally
         defaults.set(key, forKey: "currentGame")
+    }
+    
+    func displayTutorial(){
+        //if the storyboard for the Page View Controller exist show it to the user
+        if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController"){
+            self.present(pageViewController, animated: true, completion: nil)
+        }
     }
     
 
