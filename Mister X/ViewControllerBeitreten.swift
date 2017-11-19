@@ -19,7 +19,27 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         super.viewDidLoad()
         textField.delegate = self
         
-        // Do any additional setup after loading the view.
+        let defaults = UserDefaults.standard
+        let gameCode = defaults.string(forKey: "gameCode")
+        if (gameCode?.isEmpty)! {
+            print("gameCode is empty")
+        }else{
+            textField.isUserInteractionEnabled = false;
+            self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
+            
+            var ref: DatabaseReference!
+            ref = Database.database().reference().child("game").child(gameCode!)
+            
+            ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                if snapshot.hasChild("startetAt"){
+                    self.startGame()
+                }else{
+                    print("game code doesn't exist")
+                }
+            })
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +72,8 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 ref.child(textField.text!).child("player").child(uid!).setValue(["MisterX" : false])
                 textField.isUserInteractionEnabled = false;
                 self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
+                
+                defaults.set(textField.text, forKey:"gameCode")
                 
                 ref = Database.database().reference().child("game").child(textField.text!)
                 ref.observe(.childAdded, with: {(snapshot) -> Void in

@@ -52,6 +52,7 @@ class ViewController: UIViewController {
             defaults.set(user!.uid, forKey:"uid")
             defaults.set(0, forKey:"boost1")
             defaults.set(0, forKey:"boost2")
+            defaults.set("", forKey:"gameCode")
             
 
             //set up firebase user

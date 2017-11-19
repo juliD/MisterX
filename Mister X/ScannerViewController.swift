@@ -8,6 +8,7 @@
 
 import AVFoundation
 import UIKit
+import FirebaseDatabase
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
@@ -94,6 +95,28 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     func found(code: String) {
         print(code)
+        let defaults = UserDefaults.standard
+        
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child("game")
+        
+        ref.observeSingleEvent(of: .value, with: {(snapshot) in
+            if snapshot.hasChild(code){
+                
+                //get userid
+                let defaults = UserDefaults.standard
+                let uid = defaults.string(forKey: "uid")
+                ref.child(code).child("player").child(uid!).setValue(["MisterX" : false])
+                ref = Database.database().reference().child("game").child(code)
+                defaults.set(code, forKey:"gameCode")
+                
+            }else{
+                print("Wrong QR Code")
+            }
+        })
+        
+        performSegue(withIdentifier: "backToGroup", sender: self)
     }
     
     override var prefersStatusBarHidden: Bool {
