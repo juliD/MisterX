@@ -6,10 +6,12 @@ target 'Mister X' do
   use_frameworks!
 
   # Pods for Mister X
+  pod 'Firebase/Storage' 
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
+  pod 'JSQMessagesViewController'
 
   target 'Mister XTests' do
     inherit! :search_paths

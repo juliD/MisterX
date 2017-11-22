@@ -55,6 +55,8 @@ class ViewController: UIViewController {
             defaults.set(0, forKey:"boost2")
             defaults.set("", forKey:"gameCode")
             
+            //>>>>>>>>>>>>>>Needs to be replaced sometime in the future with real name in settings
+            defaults.set("Horst Schlämmer", forKey:"name")
 
             //set up firebase user
             let boosts = [

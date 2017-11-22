@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		08662CEC889FCFBF5EDC6827 /* Pods_Mister_XUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7DC71D20270D562C9096E /* Pods_Mister_XUITests.framework */; };
 		8405E2EC1FBE07FF0098AA3C /* ViewControllerBeitreten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405E2EB1FBE07FF0098AA3C /* ViewControllerBeitreten.swift */; };
-		84090D571FBCEAD400FE4F0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84090D561FBCEAD400FE4F0A /* GoogleService-Info.plist */; };
 		844CF3761FB5F452006AAFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */; };
 		844CF3771FB5F452006AAFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844CF3751FB5F452006AAFF9 /* Main.storyboard */; };
 		844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */; };
@@ -26,6 +25,8 @@
 		84BF47AA1FC233190016592F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF47A91FC233190016592F /* TutorialPageViewController.swift */; };
 		84D5E46B1FB33FA700A3D703 /* Mister_XTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E46A1FB33FA700A3D703 /* Mister_XTests.swift */; };
 		84D5E4761FB33FA700A3D703 /* Mister_XUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */; };
+		84FF6D721FC6126C00A7EAC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */; };
+		84FF6D741FC6325000A7EAC7 /* ViewControllerAddPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */; };
 		919E8B4918CDB447E03D0399 /* Pods_Mister_XTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506B9182F292C8EE40ABCFD8 /* Pods_Mister_XTests.framework */; };
 		B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F053DA1FBC6063003A102E /* PersonController.swift */; };
 		E945A01C92C6B5FDD154621C /* Pods_Mister_X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C7BB341281427D20E8E975 /* Pods_Mister_X.framework */; };
@@ -54,7 +55,6 @@
 		6B4C56D8EDF2CEF1B6259607 /* Pods-Mister X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister X.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mister X/Pods-Mister X.release.xcconfig"; sourceTree = "<group>"; };
 		7C6736684FB84CD1A97ACB82 /* Pods-Mister X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mister X/Pods-Mister X.debug.xcconfig"; sourceTree = "<group>"; };
 		8405E2EB1FBE07FF0098AA3C /* ViewControllerBeitreten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerBeitreten.swift; sourceTree = "<group>"; };
-		84090D561FBCEAD400FE4F0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844CF3751FB5F452006AAFF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerKarte.swift; sourceTree = "<group>"; };
@@ -76,6 +76,8 @@
 		84D5E4711FB33FA700A3D703 /* Mister XUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mister XUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mister_XUITests.swift; sourceTree = "<group>"; };
 		84D5E4771FB33FA700A3D703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAddPhoto.swift; sourceTree = "<group>"; };
 		AC8F726F846C8AE3BBC277D7 /* Pods-Mister XUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister XUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mister XUITests/Pods-Mister XUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B8F053DA1FBC6063003A102E /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
 		D0C7DC71D20270D562C9096E /* Pods_Mister_XUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mister_XUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,7 +151,7 @@
 		84D5E4541FB33FA700A3D703 /* Mister X */ = {
 			isa = PBXGroup;
 			children = (
-				84090D561FBCEAD400FE4F0A /* GoogleService-Info.plist */,
+				84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */,
 				847D59C21FB5DA7500B4040B /* AppDelegate.swift */,
 				847D59BA1FB5DA7500B4040B /* Assets.xcassets */,
 				847D59BE1FB5DA7500B4040B /* Info.plist */,
@@ -158,6 +160,7 @@
 				B8F053DA1FBC6063003A102E /* PersonController.swift */,
 				847D59BF1FB5DA7500B4040B /* ViewController.swift */,
 				847D59BC1FB5DA7500B4040B /* ViewControllerChat.swift */,
+				84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */,
 				847D59BD1FB5DA7500B4040B /* ViewControllerEinstellungen.swift */,
 				847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */,
 				844CF3781FB621B5006AAFF9 /* ViewControllerKarte.swift */,
@@ -319,7 +322,7 @@
 			files = (
 				844CF3761FB5F452006AAFF9 /* LaunchScreen.storyboard in Resources */,
 				847D59C31FB5DA7500B4040B /* Assets.xcassets in Resources */,
-				84090D571FBCEAD400FE4F0A /* GoogleService-Info.plist in Resources */,
+				84FF6D721FC6126C00A7EAC7 /* GoogleService-Info.plist in Resources */,
 				847D59C71FB5DA7600B4040B /* Info.plist in Resources */,
 				844CF3771FB5F452006AAFF9 /* Main.storyboard in Resources */,
 			);
@@ -513,6 +516,7 @@
 				847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */,
 				84BF47AA1FC233190016592F /* TutorialPageViewController.swift in Sources */,
 				B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */,
+				84FF6D741FC6325000A7EAC7 /* ViewControllerAddPhoto.swift in Sources */,
 				844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */,
 				847D59C91FB5DA7600B4040B /* ViewControllerGruppe.swift in Sources */,
 			);
@@ -668,7 +672,7 @@
 				INFOPLIST_FILE = "Mister X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.praktikum.Mister-X";
+				PRODUCT_BUNDLE_IDENTIFIER = de.misterX.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -687,7 +691,7 @@
 				INFOPLIST_FILE = "Mister X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.praktikum.Mister-X";
+				PRODUCT_BUNDLE_IDENTIFIER = de.misterX.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
