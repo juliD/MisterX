@@ -14,6 +14,7 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
 
     
     var index = 0           //for keeping track where you are inside the tutorial
@@ -25,6 +26,8 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerLabel.text = headerText
+        descriptionLabel.text = descriptionText
+        pageControl.currentPage = index
 
         //hides or shows the next and start button depending on which page is displayed
         if(index == 3){

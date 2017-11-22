@@ -472,58 +472,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qus-41-Ipf">
-                                <rect key="frame" x="311" y="621" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextClickedWithSender:" destination="e4K-kf-878" eventType="touchUpInside" id="1iG-OS-7ur"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGq-ea-baz">
                                 <rect key="frame" x="32" y="52" width="311" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn2-8t-7ol">
-                                <rect key="frame" x="325" y="605" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn2-8t-7ol">
+                                <rect key="frame" x="32" y="558" width="311" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="startClickedWithSender:" destination="e4K-kf-878" eventType="touchUpInside" id="uJP-Gy-GO2"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="CP5-Or-Bfp">
+                                <rect key="frame" x="160" y="614" width="55" height="37"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-in-ghL">
+                                <rect key="frame" x="166" y="491" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qus-41-Ipf">
+                                <rect key="frame" x="32" y="568" width="311" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Weiter">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextClickedWithSender:" destination="e4K-kf-878" eventType="touchUpInside" id="1iG-OS-7ur"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.25719866071428571" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7ld-in-ghL" firstAttribute="centerX" secondItem="ZtQ-Ab-Cdo" secondAttribute="centerX" id="19p-vI-sEJ"/>
                             <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="FGq-ea-baz" secondAttribute="trailing" constant="32" id="3eN-7g-rWd"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="32" id="4hS-d8-msL"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="wn2-8t-7ol" secondAttribute="trailing" constant="32" id="F3x-QT-ENr"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="32" id="FFE-KD-Qte"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="32" id="GOu-We-PCm"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="wn2-8t-7ol" secondAttribute="trailing" constant="32" id="I3Z-bJ-fvq"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="KAD-1R-N2p"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="RhY-C9-aOD"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="qus-41-Ipf" secondAttribute="trailing" constant="32" id="S2B-Zn-FeO"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="32" id="Wck-Dy-ETF"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="qus-41-Ipf" secondAttribute="trailing" constant="16" id="X94-rz-q5F"/>
+                            <constraint firstItem="CP5-Or-Bfp" firstAttribute="top" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="16" id="DNl-8f-C86"/>
+                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="CP5-Or-Bfp" secondAttribute="bottom" constant="16" id="Eim-2J-CAF"/>
+                            <constraint firstItem="qus-41-Ipf" firstAttribute="leading" secondItem="KGh-ki-qP1" secondAttribute="leading" constant="32" id="JBf-QI-Ek0"/>
+                            <constraint firstItem="CP5-Or-Bfp" firstAttribute="centerX" secondItem="ZtQ-Ab-Cdo" secondAttribute="centerX" id="LXy-7X-GAP"/>
+                            <constraint firstItem="qus-41-Ipf" firstAttribute="top" secondItem="7ld-in-ghL" secondAttribute="bottom" constant="56" id="Lgt-Zj-8rs"/>
+                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="wn2-8t-7ol" secondAttribute="trailing" constant="32" id="P4q-0p-xHq"/>
+                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="CP5-Or-Bfp" secondAttribute="bottom" constant="16" id="UIL-GP-ZI2"/>
+                            <constraint firstItem="CP5-Or-Bfp" firstAttribute="top" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="16" id="Uac-nc-17S"/>
+                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="qus-41-Ipf" secondAttribute="trailing" constant="32" id="aEl-mR-er8"/>
                             <constraint firstItem="FGq-ea-baz" firstAttribute="leading" secondItem="KGh-ki-qP1" secondAttribute="leading" constant="32" id="aWb-gO-kLh"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="qus-41-Ipf" secondAttribute="trailing" constant="32" id="db5-Ui-YXp"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="16" id="eL9-ss-XCn"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="wn2-8t-7ol" secondAttribute="trailing" constant="32" id="fX0-HY-4CF"/>
+                            <constraint firstItem="CP5-Or-Bfp" firstAttribute="top" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="16" id="dyI-AZ-w9g"/>
                             <constraint firstItem="FGq-ea-baz" firstAttribute="top" secondItem="KGh-ki-qP1" secondAttribute="top" constant="32" id="jwD-G9-qdK"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="jyX-dO-8vY"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="ohb-pH-UDy"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="uCF-7U-LDA"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="32" id="uRl-bz-a4A"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="trailing" secondItem="wn2-8t-7ol" secondAttribute="trailing" constant="16" id="vZ0-s6-Hh2"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="wn2-8t-7ol" secondAttribute="bottom" constant="32" id="wgq-RI-Zqp"/>
-                            <constraint firstItem="KGh-ki-qP1" firstAttribute="bottom" secondItem="qus-41-Ipf" secondAttribute="bottom" constant="16" id="yzY-Ed-ghI"/>
+                            <constraint firstItem="wn2-8t-7ol" firstAttribute="leading" secondItem="KGh-ki-qP1" secondAttribute="leading" constant="32" id="lRi-Wd-Fi9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KGh-ki-qP1"/>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="7ld-in-ghL" id="F7c-ZO-Ain"/>
                         <outlet property="headerLabel" destination="FGq-ea-baz" id="kEx-Zm-Pzp"/>
                         <outlet property="nextButton" destination="qus-41-Ipf" id="CxS-TE-Xqn"/>
+                        <outlet property="pageControl" destination="CP5-Or-Bfp" id="z99-gw-Jod"/>
                         <outlet property="startButton" destination="wn2-8t-7ol" id="6Yj-Ob-G5V"/>
                     </connections>
                 </viewController>

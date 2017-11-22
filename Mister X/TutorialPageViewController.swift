@@ -10,9 +10,22 @@ import UIKit
 
 class TutorialPageViewController: UIPageViewController {
     
-    let pageHeaders =  ["Entkomme Scotland Yard!", "Finde Mr. X!", "Nutze öffentliche Verkehrsmittel", "Bleib auf dem Laufenden"]
-    let pageDescriptions = ["Die bschreibung", "noch ne beschreibung", "bla", "blub"]
     
+    let pageHeaders =  ["Entkomme Scotland Yard!", "Ziel", "Standort mitteilen", "Bleib auf dem Laufenden"]
+    let pageDescriptions = ["Versuche deinen Gegenspielern zu entkommen indem du öffentliche Verkehrsmittel benutzt", "Wenn du 2 Stunden lang unentdeckt fliehen konntest, hast du gewonnen!", "Alle 10 Minuten wird dein Standort mit den Mitspielern geteilt, damit diese wissen, an welher Station du gerade warst", "Sieh was im Chat los ist und werde über den Standort von Mister X über Push Benachrichtigungen benachrichtigt."]
+    let colors = [UIColor(rgb: 0xACD8AA),UIColor(rgb: 0xAFC6471),UIColor(rgb: 0xC5D9E2),UIColor(rgb: 0xFFCAB1)]
+    
+
+
+    //can generate a UIColor from a hexcode
+    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +70,7 @@ class TutorialPageViewController: UIPageViewController {
             tutorialViewController.descriptionText = pageDescriptions[index]
             tutorialViewController.headerText = pageHeaders[index]
             tutorialViewController.index = index
+            tutorialViewController.view.backgroundColor = colors[index]
             return tutorialViewController
         }
         return nil
@@ -78,4 +92,17 @@ extension TutorialPageViewController : UIPageViewControllerDataSource{
         return self.viewControllerAtIndex(index: index)
     }
 }
+
+
+extension UIColor {
+    convenience init(rgb: Int, alpha: CGFloat = 1.0) {
+        let r = CGFloat((rgb & 0xff0000) >> 16) / 255
+        let g = CGFloat((rgb & 0x00ff00) >>  8) / 255
+        let b = CGFloat((rgb & 0x0000ff)      ) / 255
+        
+        self.init(red: r, green: g, blue: b, alpha: alpha)
+    }
+    
+}
+
 
