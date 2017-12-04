@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     
@@ -57,7 +57,10 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
             //locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
-        var misterXTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
+        //TODO: Timer läuft nicht immer. Bsp: Wenn App im Hintergrund ist
+        //Alle x Sekunden wird updateMisterXPosition aufgerufen
+        let xSekunden: Double = 10.0
+        var misterXTimer = Timer.scheduledTimer(timeInterval: xSekunden, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
@@ -72,16 +75,24 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     
     @objc func updateMisterXPosition()
     {
-        
+        //Variablen damit Name und Ort überall gleich ist
         let newLoc = locationManager.location?.coordinate
         let newLocName = getTodayString()
         let newPosition: [String:Any] = ["title": newLocName, "latitude":Double((newLoc?.latitude)!), "longitude":Double((newLoc?.longitude)!)]
         misterXPositions.append(newPosition)
         
-        print(misterXPositions)
+        //Firebase sync
+        let defaults = UserDefaults.standard
+        let currentGame = defaults.string(forKey: "currentGame")
+        let uid = defaults.string(forKey: "uid")
+        var ref: DatabaseReference
+        ref = Database.database().reference()
+        ref.child("game/\(currentGame!)/player/\(uid!)/Location/\(newLocName)").setValue(newPosition)
         
+        //Alle Annotations löschen
         mapView.removeAnnotations(mapView.annotations)
         
+        //Neuste Annotation setzen
         let annotation = MKPointAnnotation()
         annotation.coordinate = (newLoc)!
         annotation.title = "Mister X"
@@ -102,7 +113,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
         let minute = components.minute
         let second = components.second
         
-        let today_string = String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
+        let today_string = String(format: "%02d", hour!)  + ":" + String(format: "%02d", minute!) + ":" +  String(format: "%02d", second!)
         
         return today_string
     }
