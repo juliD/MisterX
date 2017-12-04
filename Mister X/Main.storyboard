@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -243,13 +243,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evU-uA-eaR">
-                                                    <rect key="frame" x="31" y="14" width="52" height="16"/>
+                                                    <rect key="frame" x="23" y="11" width="52" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name von Mister X" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="66f-DL-bVQ">
-                                                    <rect key="frame" x="115" y="10" width="234" height="24"/>
+                                                    <rect key="frame" x="107" y="7" width="250" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="nickname"/>
@@ -274,7 +274,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-ca-T7d">
-                                                    <rect key="frame" x="16" y="10" width="343" height="24"/>
+                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Mister X gefunden"/>
                                                 </button>
@@ -299,10 +299,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TLz-h7-Wdx">
-                                                    <rect key="frame" x="293" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="301" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einstellung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9D-wx-GgO">
-                                                    <rect key="frame" x="31" y="14" width="254" height="15"/>
+                                                    <rect key="frame" x="23" y="11" width="270" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -326,7 +326,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlT-Vb-CkX">
-                                                    <rect key="frame" x="16" y="10" width="343" height="24"/>
+                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Neues Spiel">
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,35 +382,22 @@
                                     <action selector="button_ich:" destination="lQ9-38-U9l" eventType="touchUpInside" id="p2k-Jf-pTu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-TM-dTF">
-                                <rect key="frame" x="309" y="100" width="50" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="X"/>
-                                <connections>
-                                    <action selector="button_x:" destination="lQ9-38-U9l" eventType="touchUpInside" id="6a5-WP-2pa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UJH-KW-llW" firstAttribute="trailing" secondItem="WdJ-TM-dTF" secondAttribute="trailing" id="Hli-yk-tcE"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="leading" secondItem="iqZ-he-jy0" secondAttribute="leading" constant="309" id="QXN-km-ioh"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="bottom" secondItem="iqZ-he-jy0" secondAttribute="bottom" id="RHQ-Ou-rF8"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="trailing" secondItem="N0E-wI-bFp" secondAttribute="trailingMargin" id="ToM-ax-Ycc"/>
-                            <constraint firstItem="UJH-KW-llW" firstAttribute="leading" secondItem="WdJ-TM-dTF" secondAttribute="leading" id="UiU-IY-kmZ"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="top" secondItem="N0E-wI-bFp" secondAttribute="top" id="Wz5-Vh-bTV"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="top" secondItem="iqZ-he-jy0" secondAttribute="top" constant="22" id="Ygu-Bu-HLy"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="leading" secondItem="N0E-wI-bFp" secondAttribute="leading" id="gDL-bx-r9j"/>
                             <constraint firstAttribute="trailing" secondItem="jN9-xW-R1t" secondAttribute="trailing" id="owX-NY-DeU"/>
-                            <constraint firstItem="WdJ-TM-dTF" firstAttribute="top" secondItem="UJH-KW-llW" secondAttribute="bottom" constant="8" symbolic="YES" id="sQr-Do-sRt"/>
-                            <constraint firstItem="iqZ-he-jy0" firstAttribute="bottom" secondItem="WdJ-TM-dTF" secondAttribute="bottom" constant="468" id="yAM-9D-bPo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iqZ-he-jy0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Karte" image="map" selectedImage="map-filled" id="xlj-3l-lZQ"/>
                     <connections>
                         <outlet property="button_ich" destination="UJH-KW-llW" id="FZg-aZ-6fo"/>
-                        <outlet property="button_x" destination="WdJ-TM-dTF" id="dWs-Jm-jRz"/>
                         <outlet property="mapView" destination="jN9-xW-R1t" id="mN3-IO-ISk"/>
                     </connections>
                 </viewController>

@@ -9,25 +9,20 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Foundation
+import Firebase
 
 class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
-    @IBOutlet var button_x: UIButton!
-    @IBAction func button_x(_ sender: UIButton) {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = (locationManager.location?.coordinate)!
-        annotation.title = "Mister X"
-        annotation.subtitle = "Position von Mister X"
-        mapView.addAnnotation(annotation)
-    }
     @IBOutlet var button_ich: UIButton!
     @IBAction func button_ich(_ sender: UIButton) {
         locationManager.startUpdatingLocation()
     }
     
+    var misterXPositions = [Dictionary<String, Any>]()
     
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -53,7 +48,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
             blur.clipsToBounds = true
         }
         doblur(button_ich)
-        doblur(button_x)
         
         //mapView.setUserTrackingMode(.follow, animated: true)
         
@@ -63,6 +57,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
             //locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
+        var misterXTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
@@ -73,6 +68,43 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
             self.mapView.setRegion(region, animated: true)
         }
         manager.stopUpdatingLocation()
+    }
+    
+    @objc func updateMisterXPosition()
+    {
+        
+        let newLoc = locationManager.location?.coordinate
+        let newLocName = getTodayString()
+        let newPosition: [String:Any] = ["title": newLocName, "latitude":Double((newLoc?.latitude)!), "longitude":Double((newLoc?.longitude)!)]
+        misterXPositions.append(newPosition)
+        
+        print(misterXPositions)
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = (newLoc)!
+        annotation.title = "Mister X"
+        annotation.subtitle = "Position von Mister X um \(newLocName)"
+        mapView.addAnnotation(annotation)
+    }
+    
+    func getTodayString() -> String{
+        
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        
+        //let year = components.year
+        //let month = components.month
+        //let day = components.day
+        let hour = components.hour
+        let minute = components.minute
+        let second = components.second
+        
+        let today_string = String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
+        
+        return today_string
     }
     
     override func viewDidAppear(_ animated: Bool) {
