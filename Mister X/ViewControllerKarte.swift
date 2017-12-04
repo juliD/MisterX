@@ -23,6 +23,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     }
     
     var misterXPositions = [Dictionary<String, Any>]()
+    var isMisterX:Bool = false
     
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -37,6 +38,24 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        //Am I Mister X?
+        let defaults = UserDefaults.standard
+        let currentGame = defaults.string(forKey: "currentGame")
+        let uid = defaults.string(forKey: "uid")
+        var ref: DatabaseReference
+        ref = Database.database().reference()
+        /*ref.child("game").child(currentGame!).child("player").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) /in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let player = value!["MisterX"] as? Bool ?? false
+            self.isMisterX = player
+            print(self.isMisterX)
+            //let user = User(username: username)
+        }) { (error) in
+            print("Geht nicht")
+        }
+ */
         
         func doblur(_ button:UIButton) {
             button.layer.cornerRadius = 5
@@ -92,12 +111,15 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
         //Alle Annotations löschen
         mapView.removeAnnotations(mapView.annotations)
         
-        //Neuste Annotation setzen
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = (newLoc)!
-        annotation.title = "Mister X"
-        annotation.subtitle = "Position von Mister X um \(newLocName)"
-        mapView.addAnnotation(annotation)
+        //if isMisterX{
+            //Neuste Annotation setzen wenn man MisterX ist
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = (newLoc)!
+            annotation.title = "Mister X"
+            annotation.subtitle = "Position von Mister X um \(newLocName)"
+            mapView.addAnnotation(annotation)
+       // }
+        //else sich die Position von MisterX holen TODO!
     }
     
     func getTodayString() -> String{
