@@ -12,10 +12,11 @@ import CoreLocation
 import Foundation
 import FirebaseDatabase
 
-class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
+class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var isHistoryShown = false
     
     @IBOutlet var button_ich: UIButton!
     @IBAction func button_ich(_ sender: UIButton) {
@@ -24,6 +25,49 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     
     var misterXPositions = [Dictionary<String, Any>]()
     var isMisterX:Bool = false
+    
+    //var positions = [Dictionary<String, Any>]()
+    @IBOutlet weak var button_historie: UIButton!
+    @IBAction func toggleHistorie(_ sender: UIButton) {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        if isHistoryShown {
+            //historie ausschalten
+            isHistoryShown=false
+            button_historie.setTitle("Historie ist off", for: .normal)
+            
+        }
+        else {
+            //historie anschalten
+            isHistoryShown=true
+            button_historie.setTitle("Historie ist on", for: .normal)
+            showHistorie()
+        }
+    }
+    
+    func showHistorie(){
+        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+        for coord in misterXPositions{
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: coord["latitude"] as! CLLocationDegrees,longitude: coord["longitude"] as! CLLocationDegrees)
+            annotation.title = "Mister X"
+            annotation.subtitle = "Position von Mister X um \(coord["title"])"
+            mapView.addAnnotation(annotation)
+            points.append(annotation.coordinate)
+        }
+        // Connect all the mappoints using Poly line.
+        let polyline = MKPolyline(coordinates: points, count: points.count)
+        mapView.add(polyline)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        polylineRenderer.strokeColor = UIColor.red
+        polylineRenderer.lineWidth = 5
+        return polylineRenderer
+    }
+   
     
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -37,7 +81,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        mapView.delegate=self
         
         //Am I Mister X?
         let defaults = UserDefaults.standard
@@ -110,6 +154,11 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate {
         
         //Alle Annotations löschen
         mapView.removeAnnotations(mapView.annotations)
+        if isHistoryShown{
+            showHistorie()
+        }
+        
+        
         
         //if isMisterX{
             //Neuste Annotation setzen wenn man MisterX ist
