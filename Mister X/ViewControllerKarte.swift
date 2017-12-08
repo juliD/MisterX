@@ -17,6 +17,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var isHistoryShown = false
+    var lastPosition = MKPointAnnotation()
     
     @IBOutlet var button_ich: UIButton!
     @IBAction func button_ich(_ sender: UIButton) {
@@ -29,7 +30,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     //var positions = [Dictionary<String, Any>]()
     @IBOutlet weak var button_historie: UIButton!
     @IBAction func toggleHistorie(_ sender: UIButton) {
+        
         mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(lastPosition)
         mapView.removeOverlays(mapView.overlays)
         if isHistoryShown {
             //historie ausschalten
@@ -177,6 +180,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             annotation.title = "Mister X"
             annotation.subtitle = "Position von Mister X um \(newLocName)"
             mapView.addAnnotation(annotation)
+            lastPosition = annotation
        // }
         //else sich die Position von MisterX holen TODO!
     }
