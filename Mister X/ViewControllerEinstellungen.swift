@@ -15,6 +15,10 @@ class ViewControllerEinstellungenTable: UITableViewController {
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
+            let defaults = UserDefaults.standard
+            defaults.set("", forKey:"gameCode")
+            defaults.set("", forKey:"currentGame")
+            defaults.set("", forKey:"misterX")
             self.performSegue(withIdentifier: "newgame", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))

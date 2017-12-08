@@ -14,6 +14,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var findQR: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,15 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         if (gameCode?.isEmpty)! {
             print("gameCode is empty")
         }else{
-            textField.isUserInteractionEnabled = false;
+            textField.isUserInteractionEnabled = false
+            findQR.isEnabled=false
             self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
             
             var ref: DatabaseReference!
             ref = Database.database().reference().child("game").child(gameCode!)
             
             ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                
                 if snapshot.hasChild("startetAt"){
                     self.startGame()
                 }else{
@@ -42,6 +45,14 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         
     }
 
+    @IBAction func changeGame(_ sender: UIButton) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set("",forKey: "gameCode")
+        textField.isUserInteractionEnabled = true
+        findQR.isEnabled=true
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,6 +85,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
                 
                 defaults.set(textField.text, forKey:"gameCode")
+                defaults.set("", forKey:"misterX")
                 
                 ref = Database.database().reference().child("game").child(textField.text!)
                 ref.observe(.childAdded, with: {(snapshot) -> Void in

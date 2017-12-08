@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         //if userid does not exist yet sign into firebase
         //always use locally stored uid otherwise we get problems with firebase
         let defaults = UserDefaults.standard
+        
         if let uid = defaults.string(forKey: "uid"){
             print("already logged in: "+uid)
         }
@@ -79,6 +80,7 @@ class ViewController: UIViewController {
         
         //save gameid locally
         defaults.set(key, forKey: "currentGame")
+        defaults.set("y", forKey: "misterX")
     }
     
     func displayTutorial(){
