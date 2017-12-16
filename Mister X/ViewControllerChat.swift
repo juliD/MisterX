@@ -27,7 +27,11 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
         
         //getting information about the user
         let defaults = UserDefaults.standard
-        let currentGame = defaults.string(forKey: "currentGame")
+        var currentGame = defaults.string(forKey: "currentGame")
+        //gamecode is only available to users who joined.
+        if (currentGame?.isEmpty == true){
+            currentGame = defaults.string(forKey: "gameCode")
+        }
         senderId = defaults.string(forKey: "uid")
         senderDisplayName = defaults.string(forKey: "name")
         
@@ -43,26 +47,39 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
         
         
         
-
+        
         
         let query = messageRef.queryLimited(toLast: 10)
+        
         
         _ = query.observe(.childAdded, with: { [weak self] snapshot in
             
             if  let data        = snapshot.value as? [String: String],
-                let name        = data["name"],
                 let id          = data["sender_id"],
                 let text        = data["text"],
                 !text.isEmpty
             {
-                if let message = JSQMessage(senderId: id, displayName: name, text: text)
-                {
-                    self?.chatmessages.append(message)
+                self?.createMessage(senderID: id, text: text)
+            }
+        })
+    }
+    
+    func createMessage(senderID: String!, text: String!){
+        let usernameref = ref.child("user").child(senderID).child("username")
+        usernameref.observe(.value, with: { (snapshot) in
+            //get the single value
+            if let value = snapshot.value as? String{
+                
+                if let message = JSQMessage(senderId: senderID, displayName: value, text: text){
+                    self.chatmessages.append(message)
                     
-                    self?.finishReceivingMessage()
+                    self.finishReceivingMessage()
                 }
             }
         })
+       
+            
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,7 +92,7 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
         
         let singleMessageRef = messageRef.childByAutoId()
         
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+        let message = ["sender_id": senderId, "text": text]
         
         singleMessageRef.setValue(message)
         
@@ -143,4 +160,5 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
      */
     
 }
+
 

@@ -701,7 +701,7 @@
                         <outlet property="findQR" destination="Rj6-pQ-gA0" id="zrT-Td-NEu"/>
                         <outlet property="textField" destination="x3e-Oe-bgf" id="eKT-pe-HX0"/>
                         <outlet property="textLabel" destination="Vea-aV-hsU" id="JYx-QZ-Ify"/>
-                        <segue destination="ncE-C4-1Lf" kind="show" identifier="startGame" id="kHc-7g-be8"/>
+                        <segue destination="ncE-C4-1Lf" kind="presentation" identifier="startGame" id="BRE-TZ-KQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0W-DO-Ycq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,7 +743,7 @@
                     <connections>
                         <outlet property="messageLabel" destination="ntk-cw-Qy3" id="AX6-44-m8X"/>
                         <segue destination="r44-0d-5DV" kind="show" identifier="backToGroup" id="2CU-vn-WtE"/>
-                        <segue destination="ncE-C4-1Lf" kind="show" identifier="startGamefromQR" id="hAv-Nf-K3V"/>
+                        <segue destination="ncE-C4-1Lf" kind="presentation" identifier="startGamefromQR" id="qH0-A3-OvT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B36-bI-xBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,7 +762,8 @@
         <image name="speech-bubble-filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="U8q-Ph-af3"/>
         <segue reference="2CU-vn-WtE"/>
-        <segue reference="hAv-Nf-K3V"/>
+        <segue reference="BRE-TZ-KQl"/>
     </inferredMetricsTieBreakers>
 </document>
