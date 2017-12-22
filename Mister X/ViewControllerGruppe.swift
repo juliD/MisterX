@@ -29,8 +29,7 @@ class ViewControllerGruppe: UIViewController {
         var ref: DatabaseReference
         ref = Database.database().reference()
         ref.child("game/\(currentGame!)/startetAt").setValue(time)
-        performSegue(withIdentifier: "toNoNav", sender: self)
-        
+               
     }
     override func viewDidLoad() {
         super.viewDidLoad()
