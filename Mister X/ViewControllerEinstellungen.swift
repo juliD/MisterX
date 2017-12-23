@@ -10,20 +10,21 @@ import UIKit
 import Firebase
 
 
-class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var foundPicture: UIImageView!
     @IBOutlet weak var foundButton: UIButton!
     @IBOutlet weak var resetPictureButton: UIButton!
-
-
+    
+    
     var imagePicker: UIImagePickerController!
     
     var storageRef: StorageReference!
     var ref: DatabaseReference!
     var imageRef: DatabaseReference!
     
-    var foundMisterxImage: UIImage!
     var userid = ""
     
     var currentGame = ""
@@ -49,8 +50,7 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        resetPictureButton.isHidden = true
-        resetPictureButton.isEnabled = false
+
         
         let defaults = UserDefaults.standard
         currentGame = defaults.string(forKey: "currentGame")!
@@ -59,6 +59,10 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
             currentGame = defaults.string(forKey: "gameCode")!
         }
         let misterx = defaults.string(forKey:"misterX")!
+        
+        /*  needs to be uncommented later on
+         resetPictureButton.isHidden = true
+         resetPictureButton.isEnabled = false
         //change button depending if you are mister x or not
         if(misterx=="y"){
             foundButton.isHidden = true
@@ -67,18 +71,19 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
             resetPictureButton.isEnabled = true
             
         }
+ */
         
         storageRef = Storage.storage().reference(forURL: "gs://misterx-a31d5.appspot.com/")
         ref = Database.database().reference()
         imageRef = ref.child("game").child(currentGame).child("images")
         
         //register tap on imageview
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungenTable.imageTapped))
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.imageTapped))
         imageView.addGestureRecognizer(singleTap)
         
         //load the picture whenever it is ready to download
         ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
-            self.ref.child("game").child(self.currentGame).child("images").observeSingleEvent(of: .value, with: { (snapshot) in                
+            self.ref.child("game").child(self.currentGame).child("images").observeSingleEvent(of: .value, with: { (snapshot) in
                 // check if user has uploaded a photo
                 if snapshot.hasChild("startPhoto"){
                     // set image location
@@ -90,10 +95,40 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
                     })
                 }
             })
+            
+            
+        })
+        
+        //load the picture whenever it is ready to download
+        ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
+            self.ref.child("game").child(self.currentGame).child("images").child("foundPhoto").observeSingleEvent(of: .value, with: { (snapshot) in
+                print("ich war nach snapshot 1 \(snapshot)")
+                // check if user has uploaded a photo
+                if snapshot.hasChild("url"){
+                    print("ich war in url")
+                    // set image location
+                    let filePath = "\(self.currentGame)/\("foundPhoto")"
+                    // Assuming a < 15MB file, though you can change that
+                    print("<<<<<<<<<<<das ist der filepath \(filePath)")
+                    self.storageRef.child(filePath).getData(maxSize: 15*1024*1024, completion: { (data, error) in
+                        let foundPhoto = UIImage(data: data!)
+                        self.foundPicture.image = foundPhoto
+                    })
+                }
+                if snapshot.hasChild("finderID"){
+                    
+                    print("hey ich hatte ne finderID")
+                }
+            })
+            
+            
         })
         
         
-       
+        
+        
+        
+        
         
     }
     
@@ -118,6 +153,7 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
         sender.view?.removeFromSuperview()
     }
     
+    //present camera
     @IBAction func found_misterx(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self as UIImagePickerControllerDelegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -156,12 +192,12 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
     //take photo from image picker and upload it
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            foundMisterxImage = image
+            foundPicture.image = image
             dismiss(animated: true, completion: nil)
         }
         
         var data = NSData()
-        data = UIImageJPEGRepresentation(imageView.image!, 0.3)! as NSData
+        data = UIImageJPEGRepresentation(foundPicture.image!, 0.3)! as NSData
         // set upload path
         let filePath = "\(currentGame)/\("foundPhoto")"
         let metaData = StorageMetadata()
@@ -174,35 +210,11 @@ class ViewControllerEinstellungenTable: UITableViewController,  UIImagePickerCon
                 //store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
                 //store downloadURL at database
-                self.imageRef.child("foundPhoto").setValue(downloadURL)
+                self.imageRef.child("foundPhoto").child("url").setValue(downloadURL)
+                self.imageRef.child("foundPhoto").child("finderID").setValue(self.userid)
             }
         }
     }
-
-    
-    
-    
-    
-}
-
-class ViewControllerEinstellungen: UIViewController {
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     
 }
