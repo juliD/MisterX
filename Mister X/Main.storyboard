@@ -280,6 +280,18 @@
                                                     <rect key="frame" x="16" y="10" width="343" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Mister X gefunden"/>
+                                                    <connections>
+                                                        <action selector="found_misterx:" destination="WG2-Pt-bzc" eventType="touchUpInside" id="j74-H8-YVX"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwV-bH-bkW" userLabel="Bild zurücksetzen">
+                                                    <rect key="frame" x="16" y="3.5" width="343" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Finder Bild zurücksetzen"/>
+                                                    <connections>
+                                                        <action selector="reset_picture:" destination="WG2-Pt-bzc" eventType="touchUpInside" id="efA-wS-eZZ"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -356,7 +368,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="foundButton" destination="7Gu-ca-T7d" id="F5h-Rp-p0y"/>
                         <outlet property="imageView" destination="syM-R3-Kl5" id="dzm-3n-RMc"/>
+                        <outlet property="resetPictureButton" destination="uwV-bH-bkW" id="Ek9-qB-5Xz"/>
                         <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="Ot9-Si-QMt"/>
                     </connections>
                 </tableViewController>
