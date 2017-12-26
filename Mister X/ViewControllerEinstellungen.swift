@@ -17,6 +17,10 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var foundPicture: UIImageView!
     @IBOutlet weak var foundButton: UIButton!
     @IBOutlet weak var resetPictureButton: UIButton!
+    @IBOutlet weak var finderName: UILabel!
+    @IBOutlet weak var misterXName: UILabel!
+
+
     
     
     var imagePicker: UIImagePickerController!
@@ -29,26 +33,15 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     
     var currentGame = ""
     
-    @IBAction func button_newgame(_ sender: UIButton) {
-        // create the alert
-        let alert = UIAlertController(title: "Achtung", message: "Sicher ein neues Spiel anfangen?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
-            let defaults = UserDefaults.standard
-            defaults.set("", forKey:"gameCode")
-            defaults.set("", forKey:"currentGame")
-            defaults.set("", forKey:"misterX")
-            self.performSegue(withIdentifier: "newgame", sender: self)
-        }))
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-    }
+
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        
+        misterXName.text = "Lädt..."
+        finderName.text = "Offen"
+
         
 
         
@@ -78,8 +71,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         imageRef = ref.child("game").child(currentGame).child("images")
         
         //register tap on imageview
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.imageTapped))
-        imageView.addGestureRecognizer(singleTap)
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.misterxImageTapped(_:))))
+        foundPicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.foundPictureTapped(_:))))
         
         //load the picture whenever it is ready to download
         ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
@@ -95,45 +88,43 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                     })
                 }
             })
-            
-            
         })
         
-        //load the picture whenever it is ready to download
+        //load username of misterX
+        getMisterxName()
+        
+        //load the foundPicture whenever it is ready to download
         ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
             self.ref.child("game").child(self.currentGame).child("images").child("foundPhoto").observeSingleEvent(of: .value, with: { (snapshot) in
-                print("ich war nach snapshot 1 \(snapshot)")
                 // check if user has uploaded a photo
                 if snapshot.hasChild("url"){
-                    print("ich war in url")
                     // set image location
                     let filePath = "\(self.currentGame)/\("foundPhoto")"
                     // Assuming a < 15MB file, though you can change that
-                    print("<<<<<<<<<<<das ist der filepath \(filePath)")
                     self.storageRef.child(filePath).getData(maxSize: 15*1024*1024, completion: { (data, error) in
                         let foundPhoto = UIImage(data: data!)
                         self.foundPicture.image = foundPhoto
+                        self.foundPicture.isHidden = false
                     })
                 }
                 if snapshot.hasChild("finderID"){
-                    
-                    print("hey ich hatte ne finderID")
+                    //finderID exist we make a call for get username and refresh the label when the result is there
+                    let finderID = snapshot.childSnapshot(forPath: "finderID").value!
+                    self.getUsername(userid: finderID as! String){
+                        (result : String) in
+                        self.finderName.text = result
+                    }
+
                 }
             })
             
             
         })
         
-        
-        
-        
-        
-        
-        
     }
     
     //when image is tapped make it fullscreen and disable fullscreen by tapping again
-    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func misterxImageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
         newImageView.frame = UIScreen.main.bounds
@@ -170,6 +161,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             self.imageRef.child("foundPhoto").setValue("")
             // Create a reference to the file to delete
             let filePath = "\(self.currentGame)/\("foundPhoto")"
+            self.foundPicture.isHidden = true
+            self.finderName.text = "Offen"
             
             let deleteref = self.storageRef.child(filePath)
             
@@ -215,6 +208,64 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             }
         }
     }
+    
+    //querries for the misterx in the current game, looks up his name in the database and displays his name in the textfield
+    func getMisterxName(){
+        _ = ref.child("game").child(currentGame).child("player").queryOrdered(byChild: "MisterX").queryEqual(toValue: true).observe(.value, with: { (snapshot) in
+            
+            for snap in snapshot.children {
+                let userid = (snap as! DataSnapshot).key
+                self.getUsername(userid: userid ){
+                    (result : String) in
+                    self.misterXName.text = result
+                }
+            }
+        })
+    }
+    
+    //function with completion handler. When the data is fetched the result will be given without blocking the rest
+    func getUsername(userid: String, completion: @escaping (_ result: String) -> Void){
+        let usernameref = ref.child("user").child(userid).child("username")
+        usernameref.observe(.value, with: { (snapshot) in
+            //get the single value
+            if let value = snapshot.value as? String{
+                completion(value)
+            }
+        })
+    }
+    
+    @IBAction func button_newgame(_ sender: UIButton) {
+        // create the alert
+        let alert = UIAlertController(title: "Achtung", message: "Sicher ein neues Spiel anfangen?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
+            let defaults = UserDefaults.standard
+            defaults.set("", forKey:"gameCode")
+            defaults.set("", forKey:"currentGame")
+            defaults.set("", forKey:"misterX")
+            self.performSegue(withIdentifier: "newgame", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //has to be defined a second time because apple only wants one gesture for one thing
+    @IBAction func foundPictureTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
 
     
 }

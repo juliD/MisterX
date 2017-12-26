@@ -239,7 +239,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="actual_name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnY-mV-yrI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="misterx_name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnY-mV-yrI">
                                 <rect key="frame" x="117" y="252" width="236" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -247,7 +247,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-YP-elA">
-                                <rect key="frame" x="16" y="297" width="343" height="188"/>
+                                <rect key="frame" x="16" y="297" width="343" height="142"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76A-F8-V2c" userLabel="Bild zurücksetzen">
@@ -259,15 +259,31 @@
                                     <action selector="reset_picture:" destination="fCy-FF-ppv" eventType="touchUpInside" id="kXX-on-Crd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-vK-UMZ">
+                                <rect key="frame" x="16" y="447" width="55" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="finder_name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bur-2x-snj">
+                                <rect key="frame" x="117" y="447" width="236" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="FZU-KQ-Iw0"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mister X" id="SXg-lK-zqS"/>
                     <connections>
+                        <outlet property="finderName" destination="bur-2x-snj" id="VoG-9B-bnU"/>
                         <outlet property="foundButton" destination="pHO-4K-Bvh" id="7UW-Nv-PmG"/>
                         <outlet property="foundPicture" destination="NLN-YP-elA" id="q4T-uo-ZRg"/>
                         <outlet property="imageView" destination="AsE-uG-OkR" id="ZpS-Sx-WX5"/>
+                        <outlet property="misterXName" destination="JnY-mV-yrI" id="3fa-q6-YsX"/>
                         <outlet property="resetPictureButton" destination="76A-F8-V2c" id="BsX-uf-Ugo"/>
                         <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="iTR-LL-vYF"/>
                     </connections>
