@@ -19,6 +19,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     var isHistoryShown = false
     var lastPosition = MKPointAnnotation()
     
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var menuConstraint: NSLayoutConstraint!
     @IBOutlet var button_ich: UIButton!
     @IBAction func button_ich(_ sender: UIButton) {
         locationManager.startUpdatingLocation()
@@ -28,25 +31,8 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     var isMisterX:Bool = false
     
     //var positions = [Dictionary<String, Any>]()
-    @IBOutlet weak var button_historie: UIButton!
-    @IBAction func toggleHistorie(_ sender: UIButton) {
-        
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotation(lastPosition)
-        mapView.removeOverlays(mapView.overlays)
-        if isHistoryShown {
-            //historie ausschalten
-            isHistoryShown=false
-            button_historie.setTitle("Historie ist off", for: .normal)
-            
-        }
-        else {
-            //historie anschalten
-            isHistoryShown=true
-            button_historie.setTitle("Historie ist on", for: .normal)
-            showHistorie()
-        }
-    }
+   
+
     
     func showHistorie(){
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
@@ -85,6 +71,11 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         super.viewDidLoad()
         
         mapView.delegate=self
+        //bottom menu
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.shadowOpacity = 0.8
+        bottomView.layer.shadowOffset = CGSize(width: 5, height: 0)
+        menuConstraint.constant = 128
         
         //Am I Mister X?
         let defaults = UserDefaults.standard
@@ -132,6 +123,43 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         //Alle x Sekunden wird updateMisterXPosition aufgerufen
         let xSekunden: Double = 10.0
         var misterXTimer = Timer.scheduledTimer(timeInterval: xSekunden, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
+    }
+    
+    @IBAction func toggleMenu(_ sender: UIButton) {
+        if menuConstraint.constant > 0 {
+            //hide menu
+            UIView.animate(withDuration: 0.2, animations: {
+                self.menuConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            })
+            
+        }else{
+            //show menu
+            UIView.animate(withDuration: 0.2, animations: {
+                self.menuConstraint.constant = 128
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+    }
+    
+    @IBOutlet weak var historySwitch: UISwitch!
+
+    @IBAction func toggleHistorie(_ sender: UISwitch) {
+        
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(lastPosition)
+        mapView.removeOverlays(mapView.overlays)
+        if isHistoryShown {
+            //historie ausschalten
+            isHistoryShown=false
+            
+        }
+        else {
+            //historie anschalten
+            isHistoryShown=true
+            showHistorie()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
