@@ -27,11 +27,8 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
         
         //getting information about the user
         let defaults = UserDefaults.standard
-        var currentGame = defaults.string(forKey: "currentGame")
-        //gamecode is only available to users who joined.
-        if (currentGame?.isEmpty == true){
-            currentGame = defaults.string(forKey: "gameCode")
-        }
+        var currentGame = defaults.string(forKey: "gameCode")
+        
         senderId = defaults.string(forKey: "uid")
         senderDisplayName = defaults.string(forKey: "name")
         

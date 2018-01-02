@@ -76,9 +76,46 @@ class ViewController: UIViewController {
         self.ref.child("game").child(key).child("player").child(uid!).setValue(["MisterX" : true])
         
         //save gameid locally
-        defaults.set(key, forKey: "currentGame")
+        defaults.set(key, forKey: "gameCode")
         defaults.set("y", forKey: "misterX")
     }
+    
+    @IBAction func joinGame(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        let currentGame = defaults.string(forKey: "gameCode")
+        if (currentGame?.isEmpty)!{
+            let alert = UIAlertController(title: "Achtung", message: "Du hast kein laufendes Spiel...", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            
+            var ref: DatabaseReference!
+            ref = Database.database().reference().child("game")
+            
+            ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                if snapshot.hasChild(currentGame!){
+                    
+                    ref = Database.database().reference().child("game").child(currentGame!)
+                    ref.observe(.childAdded, with: {(snapshot) -> Void in
+                        if snapshot.key == "startetAt"{
+                            self.performSegue(withIdentifier: "runningGame", sender: self)
+                        }
+                    })
+                    
+                }else{
+                    print("game code doesn't exist")
+                    let alert = UIAlertController(title: "Achtung", message: "Dein Spiel wurde gelöscht...", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                }
+            
+            })
+        }
+    }
+    
     
     func displayTutorial(){
         //if the storyboard for the Page View Controller exist show it to the user

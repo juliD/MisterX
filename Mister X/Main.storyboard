@@ -70,18 +70,39 @@
                                     <constraint firstAttribute="width" secondItem="EGu-fE-bTF" secondAttribute="height" multiplier="15:8" id="3fT-Kl-21V"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-uU-I3U">
+                                <rect key="frame" x="87" y="598.66666666666663" width="201" height="36"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oca-uU-I3U" secondAttribute="height" multiplier="67:12" id="tfd-mc-rh7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Laufendes Spiel"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="joinGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fB-bi-mnQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1YY-Ol-lem" firstAttribute="top" secondItem="vGy-0v-gfH" secondAttribute="bottom" constant="56" id="6qo-S7-wXa"/>
                             <constraint firstItem="EGu-fE-bTF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="7fI-5X-l0q"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="top" secondItem="3wQ-FZ-TeR" secondAttribute="bottom" constant="55" id="9g0-XE-Rjo"/>
                             <constraint firstItem="vGy-0v-gfH" firstAttribute="top" secondItem="EGu-fE-bTF" secondAttribute="bottom" constant="33" id="CU7-Hs-t7m"/>
                             <constraint firstItem="vGy-0v-gfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="H3k-Db-OS8"/>
                             <constraint firstItem="1YY-Ol-lem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Nk0-Bg-7Fz"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="RhG-UD-cSZ"/>
                             <constraint firstItem="3wQ-FZ-TeR" firstAttribute="top" secondItem="1YY-Ol-lem" secondAttribute="bottom" constant="55" id="TIu-lh-Dsa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3wQ-FZ-TeR" secondAttribute="trailing" constant="87" id="bTy-Vq-oJf"/>
                             <constraint firstItem="3wQ-FZ-TeR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="boJ-za-hxt"/>
                             <constraint firstItem="EGu-fE-bTF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="hso-et-B5W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oca-uU-I3U" secondAttribute="trailing" constant="87" id="jg7-62-m40"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="width" secondItem="oca-uU-I3U" secondAttribute="height" multiplier="67:12" id="q5g-8F-QDL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EGu-fE-bTF" secondAttribute="trailing" constant="68" id="qA3-RD-8K4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1YY-Ol-lem" secondAttribute="trailing" constant="87" id="vr0-zR-g24"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vGy-0v-gfH" secondAttribute="trailing" constant="55" id="xaG-ad-kbG"/>
@@ -89,10 +110,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Start" id="sDB-4q-psa"/>
+                    <connections>
+                        <segue destination="ncE-C4-1Lf" kind="show" identifier="runningGame" id="pVX-zO-oNb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="11"/>
+            <point key="canvasLocation" x="-1057" y="32"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -129,7 +153,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="button_start:" destination="4Xz-Mb-Q7U" eventType="touchUpInside" id="ZEJ-aw-n0n"/>
-                                    <segue destination="GYT-yJ-c13" kind="show" id="P9M-At-K8m"/>
+                                    <segue destination="ncE-C4-1Lf" kind="show" id="Xz8-oa-k14"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-uy-QAQ">
@@ -173,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIu-hL-O4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="-11"/>
+            <point key="canvasLocation" x="-89" y="10"/>
         </scene>
         <!--Chat-->
         <scene sceneID="Skt-bR-1jE">
@@ -305,7 +329,7 @@
                                 <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
-                                <rect key="frame" x="309" y="66" width="50" height="50"/>
+                                <rect key="frame" x="309" y="110" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1wr-xr-sTd"/>
                                 </constraints>
@@ -441,7 +465,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="64" y="152" width="247" height="233"/>
+                                <rect key="frame" x="64" y="108" width="247" height="277"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -803,6 +827,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
-        <segue reference="ghV-Oz-snD"/>
+        <segue reference="pVX-zO-oNb"/>
     </inferredMetricsTieBreakers>
 </document>

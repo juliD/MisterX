@@ -19,30 +19,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
-        
-        let defaults = UserDefaults.standard
-        let gameCode = defaults.string(forKey: "gameCode")
-        if (gameCode?.isEmpty)! {
-            print("gameCode is empty")
-        }else{
-            textField.isUserInteractionEnabled = false
-            findQR.isEnabled=false
-            self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
-            
-            var ref: DatabaseReference!
-            ref = Database.database().reference().child("game").child(gameCode!)
-            
-            ref.observeSingleEvent(of: .value, with: {(snapshot) in
-                
-                if snapshot.hasChild("startetAt"){
-                    self.startGame()
-                }else{
-                    print("game code doesn't exist")
-                }
-            })
-            
-        }
-        
+      
     }
 
     @IBAction func changeGame(_ sender: UIButton) {

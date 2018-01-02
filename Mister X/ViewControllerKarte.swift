@@ -80,10 +80,8 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         //Am I Mister X?
         let defaults = UserDefaults.standard
         let misterX = defaults.string(forKey: "misterX")
-        var currentGame = defaults.string(forKey: "currentGame")
-        if (misterX?.isEmpty)! {
-            currentGame = defaults.string(forKey: "gameCode")
-        }
+        var currentGame = defaults.string(forKey: "gameCode")
+        
         
         let uid = defaults.string(forKey: "uid")
         var ref: DatabaseReference
@@ -183,11 +181,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         //Firebase sync
         let defaults = UserDefaults.standard
         
-        var currentGame = defaults.string(forKey: "currentGame")
+        let currentGame = defaults.string(forKey: "gameCode")
         let misterX = defaults.string(forKey: "misterX")
-        if (misterX?.isEmpty)! {
-            currentGame = defaults.string(forKey: "gameCode")
-        }
+        
         let uid = defaults.string(forKey: "uid")
         var ref: DatabaseReference
         ref = Database.database().reference()

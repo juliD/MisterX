@@ -46,11 +46,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
 
         
         let defaults = UserDefaults.standard
-        currentGame = defaults.string(forKey: "currentGame")!
+        currentGame = defaults.string(forKey: "gameCode")!
         userid = defaults.string(forKey: "uid")!
-        if (currentGame.isEmpty == true){
-            currentGame = defaults.string(forKey: "gameCode")!
-        }
         let misterx = defaults.string(forKey:"misterX")!
         
         /*  needs to be uncommented later on
@@ -242,7 +239,6 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
             let defaults = UserDefaults.standard
             defaults.set("", forKey:"gameCode")
-            defaults.set("", forKey:"currentGame")
             defaults.set("", forKey:"misterX")
             self.performSegue(withIdentifier: "newgame", sender: self)
         }))

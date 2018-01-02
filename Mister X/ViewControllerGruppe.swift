@@ -19,7 +19,7 @@ class ViewControllerGruppe: UIViewController {
     
     @IBAction func button_start(_ sender: UIButton) {
         let defaults = UserDefaults.standard
-        let currentGame = defaults.string(forKey: "currentGame")
+        let currentGame = defaults.string(forKey: "gameCode")
         
         let date = Date()
         let calendar = Calendar.current
@@ -37,7 +37,7 @@ class ViewControllerGruppe: UIViewController {
         startButton.isEnabled = false
         
         let defaults = UserDefaults.standard
-        let currentGame = defaults.string(forKey: "currentGame")
+        let currentGame = defaults.string(forKey: "gameCode")
         
         //show currentGame code
         gameCode.text = currentGame

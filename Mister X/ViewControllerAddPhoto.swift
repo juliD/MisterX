@@ -27,7 +27,7 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
         //getting information about the user
         let defaults = UserDefaults.standard
-        currentGame = defaults.string(forKey: "currentGame")!
+        currentGame = defaults.string(forKey: "gameCode")!
 
         storageRef = Storage.storage().reference(forURL: "gs://misterx-a31d5.appspot.com/")
         ref = Database.database().reference()
