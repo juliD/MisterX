@@ -187,7 +187,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         let uid = defaults.string(forKey: "uid")
         var ref: DatabaseReference
         ref = Database.database().reference()
-        ref.child("game/\(currentGame!)/player/\(uid!)/Location/\(newLocName)").setValue(newPosition)
         
         //Alle Annotations löschen
         mapView.removeAnnotations(mapView.annotations)
@@ -195,18 +194,59 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             showHistorie()
         }
         
-        
-        
-        //if isMisterX{
+        if misterX! == "y" {
+            
+            //Firebase sync je nach Spieler
+            ref.child("game/\(currentGame!)/Location/\(newLocName)").setValue(newPosition)
+            
             //Neuste Annotation setzen wenn man MisterX ist
+            print(misterX!)
+            
             let annotation = MKPointAnnotation()
             annotation.coordinate = (newLoc)!
             annotation.title = "Mister X"
             annotation.subtitle = "Position von Mister X um \(newLocName)"
             mapView.addAnnotation(annotation)
             lastPosition = annotation
-       // }
-        //else sich die Position von MisterX holen TODO!
+        }else{
+            
+            //Wenn Jäger dann Position in den player Zweig
+            ref.child("game/\(currentGame!)/player/\(uid!)/Location/\(newLocName)").setValue(newPosition)
+            
+            print(misterX!)
+        //ansonsten sich die Position von MisterX holen
+            ref.child("game/\(currentGame!)/Location").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                    //for child in result {
+                        //do your logic and validation here
+                    
+                    let locations = snapshot.value as? NSDictionary
+                    print (locations)
+                    if locations != nil{
+                        let firstkey = locations!.allKeys.first
+                        let firstvalues = locations!.value(forKey: firstkey as! String)!as! NSDictionary
+                        var newcoords = CLLocationCoordinate2D()
+                        newcoords.latitude = firstvalues["latitude"]! as! CLLocationDegrees
+                        newcoords.longitude = firstvalues["longitude"]! as! CLLocationDegrees
+                    
+                        print(firstvalues)
+                        print("coords: \(newcoords) name: \(firstvalues["title"]!)")
+                        
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = newcoords
+                        annotation.title = "Mister X"
+                        annotation.subtitle = "Neue um \(firstvalues["title"]!)"
+                        self.mapView.addAnnotation(annotation)
+                    }else{
+                        print("No values in Firebase")
+                    }
+                } else {
+                    print("no results")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func getTodayString() -> String{
