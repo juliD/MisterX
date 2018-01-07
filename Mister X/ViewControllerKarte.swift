@@ -16,6 +16,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var mfc = MapFirebaseCom(updateTime: 30.0)
+    var myLocation = UserLocationStruct()
+    var lookAtMap : Bool = true
     var isHistoryShown = false
     var lastPosition = MKPointAnnotation()
     
@@ -24,16 +27,18 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var menuConstraint: NSLayoutConstraint!
     @IBOutlet var button_ich: UIButton!
     @IBAction func button_ich(_ sender: UIButton) {
-        locationManager.startUpdatingLocation()
+        if myLocation.coordinate != nil {
+            let region = MKCoordinateRegion(center: (myLocation.coordinate)!, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            self.mapView.setRegion(region, animated: true)
+        }
     }
     
     var misterXPositions = [Dictionary<String, Any>]()
-    var isMisterX:Bool = false
     
     //var positions = [Dictionary<String, Any>]()
    
 
-    
+    //Muss noch komplett überarbeitet werden. Daten müssen später aus Firebase kommen
     func showHistorie(){
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for coord in misterXPositions{
@@ -77,6 +82,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         bottomView.layer.shadowOffset = CGSize(width: 5, height: 0)
         menuConstraint.constant = 128
         
+        //Start MisterX Loc Observer
+        mfc.getMisterX(map: mapView)
+        
         //Am I Mister X?
         let defaults = UserDefaults.standard
         let misterX = defaults.string(forKey: "misterX")
@@ -86,17 +94,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         let uid = defaults.string(forKey: "uid")
         var ref: DatabaseReference
         ref = Database.database().reference()
-        /*ref.child("game").child(currentGame!).child("player").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) /in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let player = value!["MisterX"] as? Bool ?? false
-            self.isMisterX = player
-            print(self.isMisterX)
-            //let user = User(username: username)
-        }) { (error) in
-            print("Geht nicht")
-        }
- */
         
         func doblur(_ button:UIButton) {
             button.layer.cornerRadius = 5
@@ -113,14 +110,14 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest//kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters //kCLLocationAccuracyBest
             //locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
         //TODO: Timer läuft nicht immer. Bsp: Wenn App im Hintergrund ist
         //Alle x Sekunden wird updateMisterXPosition aufgerufen
-        let xSekunden: Double = 10.0
-        var misterXTimer = Timer.scheduledTimer(timeInterval: xSekunden, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
+        //let xSekunden: Double = 10.0
+        //var misterXTimer = Timer.scheduledTimer(timeInterval: xSekunden, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
     }
     
     @IBAction func toggleMenu(_ sender: UIButton) {
@@ -160,116 +157,47 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        //let location = locations.last! as CLLocation
-        if let location = locations.last {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            self.mapView.setRegion(region, animated: true)
-        }
-        manager.stopUpdatingLocation()
+    //TODO: Der Code wird auch im observer benutzt müsste noch refactored werden
+    func setAnnotation(loc : UserLocationStruct, title : String) {
+        //Remove Annotations
+        mapView.removeAnnotations(mapView.annotations)
+        
+        //Set new Annotation
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = loc.coordinate!
+        annotation.title = title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let newdate = dateFormatter.string(from: loc.timestamp!)
+        annotation.subtitle = "\(title) um \(newdate)"
+        mapView.addAnnotation(annotation)
     }
     
-    @objc func updateMisterXPosition()
-    {
-        //Variablen damit Name und Ort überall gleich ist
-        let newLoc = locationManager.location?.coordinate
-        let newLocName = getTodayString()
-        let newPosition: [String:Any] = ["title": newLocName, "latitude":Double((newLoc?.latitude)!), "longitude":Double((newLoc?.longitude)!)]
-        misterXPositions.append(newPosition)
-        
-        //Firebase sync
-        let defaults = UserDefaults.standard
-        
-        let currentGame = defaults.string(forKey: "gameCode")
-        let misterX = defaults.string(forKey: "misterX")
-        
-        let uid = defaults.string(forKey: "uid")
-        var ref: DatabaseReference
-        ref = Database.database().reference()
-        
-        //Alle Annotations löschen
-        mapView.removeAnnotations(mapView.annotations)
-        if isHistoryShown{
-            showHistorie()
-        }
-        
-        if misterX! == "y" {
-            
-            //Firebase sync je nach Spieler
-            ref.child("game/\(currentGame!)/Location/\(newLocName)").setValue(newPosition)
-            
-            //Neuste Annotation setzen wenn man MisterX ist
-            print(misterX!)
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = (newLoc)!
-            annotation.title = "Mister X"
-            annotation.subtitle = "Position von Mister X um \(newLocName)"
-            mapView.addAnnotation(annotation)
-            lastPosition = annotation
-        }else{
-            
-            //Wenn Jäger dann Position in den player Zweig
-            ref.child("game/\(currentGame!)/player/\(uid!)/Location/\(newLocName)").setValue(newPosition)
-            
-            print(misterX!)
-        //ansonsten sich die Position von MisterX holen
-            ref.child("game/\(currentGame!)/Location").observeSingleEvent(of: .value, with: { (snapshot) in
-                if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                    //for child in result {
-                        //do your logic and validation here
-                    
-                    let locations = snapshot.value as? NSDictionary
-                    print (locations)
-                    if locations != nil{
-                        let firstkey = locations!.allKeys.first
-                        let firstvalues = locations!.value(forKey: firstkey as! String)!as! NSDictionary
-                        var newcoords = CLLocationCoordinate2D()
-                        newcoords.latitude = firstvalues["latitude"]! as! CLLocationDegrees
-                        newcoords.longitude = firstvalues["longitude"]! as! CLLocationDegrees
-                    
-                        print(firstvalues)
-                        print("coords: \(newcoords) name: \(firstvalues["title"]!)")
-                        
-                        let annotation = MKPointAnnotation()
-                        annotation.coordinate = newcoords
-                        annotation.title = "Mister X"
-                        annotation.subtitle = "Neue um \(firstvalues["title"]!)"
-                        self.mapView.addAnnotation(annotation)
-                    }else{
-                        print("No values in Firebase")
-                    }
-                } else {
-                    print("no results")
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        //let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        if let location = locations.last {
+            myLocation.coordinate = location.coordinate
+            myLocation.timestamp = location.timestamp
+            if lookAtMap{
+                let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                self.mapView.setRegion(region, animated: true)
+                lookAtMap = false
+            }
+            let defaults = UserDefaults.standard
+            let misterX = defaults.string(forKey: "misterX")
+            if misterX! == "y" {
+                if mfc.updateLocation(location: myLocation){
+                    setAnnotation(loc: mfc.getMisterXLocation(), title: "Me MisterX")
                 }
-            }) { (error) in
-                print(error.localizedDescription)
             }
         }
-    }
-    
-    func getTodayString() -> String{
-        
-        let date = Date()
-        let calender = Calendar.current
-        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
-        
-        //let year = components.year
-        //let month = components.month
-        //let day = components.day
-        let hour = components.hour
-        let minute = components.minute
-        let second = components.second
-        
-        let today_string = String(format: "%02d", hour!)  + ":" + String(format: "%02d", minute!) + ":" +  String(format: "%02d", second!)
-        
-        return today_string
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
+        lookAtMap = true
     }
     
     override func didReceiveMemoryWarning() {
