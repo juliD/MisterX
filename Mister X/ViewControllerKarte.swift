@@ -38,8 +38,26 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     //var positions = [Dictionary<String, Any>]()
    
 
-    //Muss noch komplett überarbeitet werden. Daten müssen später aus Firebase kommen
+    //Muss noch verbessert werden. Daten kommen schon aus Firebase
     func showHistorie(){
+        mfc.getHistory { (allLocations) in
+            if let allLoc = allLocations {
+                var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+                for locs in allLoc{
+                    self.mfc.setAnnotation(loc: locs, title: "History Mister X")
+                    points.append(locs.coordinate!)
+                    self.lastPosition.title = "Mister X"
+                    self.lastPosition.subtitle = "Letzte aktuelle Position"
+                    self.lastPosition.coordinate = locs.coordinate!
+                }
+                // Connect all the mappoints using Poly line.
+                let polyline = MKPolyline(coordinates: points, count: points.count)
+                self.mapView.add(polyline)
+            }
+        }
+    }
+        
+        /*
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for coord in misterXPositions{
             
@@ -54,6 +72,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         let polyline = MKPolyline(coordinates: points, count: points.count)
         mapView.add(polyline)
     }
+ */
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
@@ -68,6 +87,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             mapView.showsUserLocation = true
         } else {
             locationManager.requestWhenInUseAuthorization()
+            //locationManager.requestAlwaysAuthorization()
         }
     }
     
@@ -83,7 +103,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         menuConstraint.constant = 128
         
         //Start MisterX Loc Observer
+        //mfc.setMap(map: mapView)
         mfc.getMisterX(map: mapView)
+        
         
         //Am I Mister X?
         let defaults = UserDefaults.standard
@@ -141,37 +163,18 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var historySwitch: UISwitch!
 
     @IBAction func toggleHistorie(_ sender: UISwitch) {
-        
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotation(lastPosition)
-        mapView.removeOverlays(mapView.overlays)
         if isHistoryShown {
             //historie ausschalten
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.removeOverlays(mapView.overlays)
+            mapView.addAnnotation(lastPosition)
             isHistoryShown=false
-            
         }
         else {
             //historie anschalten
             isHistoryShown=true
             showHistorie()
         }
-    }
-    
-    //TODO: Der Code wird auch im observer benutzt müsste noch refactored werden
-    func setAnnotation(loc : UserLocationStruct, title : String) {
-        //Remove Annotations
-        mapView.removeAnnotations(mapView.annotations)
-        
-        //Set new Annotation
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = loc.coordinate!
-        annotation.title = title
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let newdate = dateFormatter.string(from: loc.timestamp!)
-        annotation.subtitle = "\(title) um \(newdate)"
-        mapView.addAnnotation(annotation)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
@@ -187,9 +190,9 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             let defaults = UserDefaults.standard
             let misterX = defaults.string(forKey: "misterX")
             if misterX! == "y" {
-                if mfc.updateLocation(location: myLocation){
-                    setAnnotation(loc: mfc.getMisterXLocation(), title: "Me MisterX")
-                }
+                mfc.updateLocation(location: myLocation)
+//                    mfc.setAnnotation(loc: mfc.getMisterXLocation(), title: "Me MisterX")
+//                }
             }
         }
     }

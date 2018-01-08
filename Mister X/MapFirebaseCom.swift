@@ -22,6 +22,7 @@ class MapFirebaseCom{
     var firstTime : Bool = true
     var newMisterXLocation = UserLocationStruct()
     var ref : DatabaseReference
+    private var map : MKMapView?
     
     init(updateTime: Double) {
         uTime = updateTime
@@ -55,7 +56,46 @@ class MapFirebaseCom{
         return rc
     }
     
+    func getHistory(completion: @escaping ([UserLocationStruct]?) -> Void) {
+        ref.child("game/\(getGameCode()!)/MisterX").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get all Locations
+            //var allLocations: [Date:[String:Any]] = [:]
+            var allLocations : [UserLocationStruct]? = []
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                if let cvalue = child.value as? NSDictionary{
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                    guard let newdate = dateFormatter.date(from: child.key) else {
+                        fatalError("ERROR: Date conversion failed due to mismatched format.")
+                    }
+                    var newloc = UserLocationStruct()
+                    var newcoord = CLLocationCoordinate2D()
+                    newcoord.latitude = cvalue["latitude"]! as! CLLocationDegrees
+                    newcoord.longitude = cvalue["longitude"]! as! CLLocationDegrees
+                    newloc.coordinate = newcoord
+                    newloc.timestamp = newdate
+                    
+                    print("newcoords \(newloc)")
+                    
+                    allLocations?.append(newloc)
+                    
+                    //let coords : [String:CLLocationDegrees] = ["latitude" : cvalue["latitude"]! as! CLLocationDegrees, "longitude": cvalue["longitude"]! as! CLLocationDegrees]
+                    //allLocations[newdate] = coords
+                    
+                    print(allLocations!)
+                    completion(allLocations)
+                }else{
+                    print("No values in Firebase")
+                }
+            }
+
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func getMisterX(map: MKMapView) {
+        self.map = map
         ref.child("game/\(getGameCode()!)/MisterX").queryLimited(toLast: 1).observe(.childAdded , with: { (snapshot) in
             var newcoords = CLLocationCoordinate2D()
             let newvalue = snapshot.value as! NSDictionary
@@ -64,13 +104,15 @@ class MapFirebaseCom{
             let newkey = snapshot.key
             //print("Val: \(newvalue) Key: \(newkey)")
         
+            /*
             //Remove Annotations
-            map.removeAnnotations(map.annotations)
+            //self.map.removeAnnotations(map.annotations)
             
             //Set new Annotation
             let annotation = MKPointAnnotation()
             annotation.coordinate = newcoords
             annotation.title = "Mister X"
+             */
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
@@ -78,13 +120,19 @@ class MapFirebaseCom{
                 fatalError("ERROR: Date conversion failed due to mismatched format.")
             }
             
+            var newloc = UserLocationStruct()
+            newloc.coordinate = newcoords
+            newloc.timestamp = newdate
+            self.setAnnotation(loc: newloc, title: "MisterX")
+            
+            /*
             dateFormatter.dateFormat = "HH:mm:ss"
             let newdate2 = dateFormatter.string(from: newdate)
             annotation.subtitle = "Mister X um \(newdate2)"
-            map.addAnnotation(annotation)
+            self.map.addAnnotation(annotation)
             
             
-            /* Hilfe
+            Hilfe
              //for child in snapshot.children.allObjects as! [DataSnapshot]{
              //let newvalues = child.value
              //let newkeys = child.key
@@ -97,6 +145,22 @@ class MapFirebaseCom{
     func setMisterX(loc: UserLocationStruct){
         let newPosition: [String:Any] = ["latitude":Double((loc.coordinate?.latitude)!), "longitude":Double((loc.coordinate?.longitude)!)]
         ref.child("game/\(getGameCode()!)/MisterX/\(loc.timestamp!)").setValue(newPosition)
+    }
+    
+    func setAnnotation(loc : UserLocationStruct, title : String) {
+        //Remove Annotations
+        map?.removeAnnotations((map?.annotations)!)
+        
+        //Set new Annotation
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = loc.coordinate!
+        annotation.title = title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let newdate = dateFormatter.string(from: loc.timestamp!)
+        annotation.subtitle = "\(title) um \(newdate)"
+        map?.addAnnotation(annotation)
     }
     
     func getTodayString() -> String{

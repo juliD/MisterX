@@ -24,6 +24,8 @@
 	<string>Take photo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Get your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Get your Location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
