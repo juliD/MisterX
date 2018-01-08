@@ -16,7 +16,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var mfc = MapFirebaseCom(updateTime: 30.0)
+    var mfc = MapFirebaseCom(updateTime: 30.0, updateTimePlayer: 10.0)
     var myLocation = UserLocationStruct()
     var lookAtMap : Bool = true
     var isHistoryShown = false
@@ -187,13 +187,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
                 self.mapView.setRegion(region, animated: true)
                 lookAtMap = false
             }
-            let defaults = UserDefaults.standard
-            let misterX = defaults.string(forKey: "misterX")
-            if misterX! == "y" {
-                mfc.updateLocation(location: myLocation)
-//                    mfc.setAnnotation(loc: mfc.getMisterXLocation(), title: "Me MisterX")
-//                }
-            }
+            mfc.updateLocation(location: myLocation)
         }
     }
     

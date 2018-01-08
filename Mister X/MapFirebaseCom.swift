@@ -19,13 +19,16 @@ struct UserLocationStruct {
 class MapFirebaseCom{
     
     let uTime : Double
+    let uTimePlayer: Double
     var firstTime : Bool = true
     var newMisterXLocation = UserLocationStruct()
+    var newPlayerLocation = UserLocationStruct()
     var ref : DatabaseReference
     private var map : MKMapView?
     
-    init(updateTime: Double) {
+    init(updateTime: Double, updateTimePlayer: Double) {
         uTime = updateTime
+        uTimePlayer = updateTimePlayer
         ref = Database.database().reference()
     }
     
@@ -34,26 +37,44 @@ class MapFirebaseCom{
         return defaults.string(forKey: "gameCode")
     }
     
+    func getUserID() -> String? {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: "uid")
+    }
+    
     func getMisterXLocation() -> UserLocationStruct {
         return newMisterXLocation
     }
     
-    func updateLocation(location: UserLocationStruct) -> Bool {
-        var rc = false
-        if firstTime {
-            newMisterXLocation = location
-            setMisterX(loc: newMisterXLocation)
-            rc = true
-            firstTime = false
-        }else{
-            //print("actual: \(location.timestamp!) new: \(newMisterXLocation.timestamp!) new+: \(newMisterXLocation.timestamp! + uTime)")
-            if (location.timestamp!) > (newMisterXLocation.timestamp! + uTime){
+    func updateLocation(location: UserLocationStruct) {
+        let defaults = UserDefaults.standard
+        let misterX = defaults.string(forKey: "misterX")
+        if misterX! == "y" {
+            if firstTime {
                 newMisterXLocation = location
                 setMisterX(loc: newMisterXLocation)
-                rc = true
+                setPlayer(coords: newMisterXLocation.coordinate!)
+                firstTime = false
+            }else{
+                //print("actual: \(location.timestamp!) new: \(newMisterXLocation.timestamp!) new+: \(newMisterXLocation.timestamp! + uTime)")
+                if (location.timestamp!) > (newMisterXLocation.timestamp! + uTime){
+                    newMisterXLocation = location
+                    setMisterX(loc: newMisterXLocation)
+                    setPlayer(coords: newMisterXLocation.coordinate!)
+                }
+            }
+        }else{
+            if firstTime {
+                newPlayerLocation = location
+                setPlayer(coords: newPlayerLocation.coordinate!)
+                firstTime = false
+            }else{
+                if (location.timestamp!) > (newPlayerLocation.timestamp! + uTimePlayer){
+                    newPlayerLocation = location
+                    setPlayer(coords: newPlayerLocation.coordinate!)
+                }
             }
         }
-        return rc
     }
     
     func getHistory(completion: @escaping ([UserLocationStruct]?) -> Void) {
@@ -145,6 +166,11 @@ class MapFirebaseCom{
     func setMisterX(loc: UserLocationStruct){
         let newPosition: [String:Any] = ["latitude":Double((loc.coordinate?.latitude)!), "longitude":Double((loc.coordinate?.longitude)!)]
         ref.child("game/\(getGameCode()!)/MisterX/\(loc.timestamp!)").setValue(newPosition)
+    }
+    
+    func setPlayer(coords: CLLocationCoordinate2D) {
+        let newCoordinate: [String:Any] = ["latitude": coords.latitude, "longitude": coords.longitude]
+        ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newCoordinate)
     }
     
     func setAnnotation(loc : UserLocationStruct, title : String) {
