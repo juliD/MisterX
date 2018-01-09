@@ -139,7 +139,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4Z-8z-Rck">
-                                <rect key="frame" x="87.666666666666671" y="649" width="200.33333333333331" height="48"/>
+                                <rect key="frame" x="87.666666666666671" y="698" width="200.33333333333331" height="48"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Start!"/>
@@ -149,7 +149,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="button_start:" destination="4Xz-Mb-Q7U" eventType="touchUpInside" id="Zyu-eA-0eJ"/>
                                     <segue destination="GYT-yJ-c13" kind="show" id="EnD-kQ-a9S"/>
                                 </connections>
                             </button>
@@ -541,7 +540,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="button_start:" destination="GYT-yJ-c13" eventType="touchUpInside" id="bDI-7u-Kdr"/>
+                                    <action selector="startButton:" destination="GYT-yJ-c13" eventType="touchUpInside" id="4Zs-iX-k6b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -567,7 +566,7 @@
                         <outlet property="imageView" destination="awZ-R6-eOt" id="2FQ-hN-ggM"/>
                         <outlet property="photoButton" destination="bDO-wm-xc6" id="pov-o2-vV6"/>
                         <outlet property="startButton" destination="BdE-j4-Q98" id="ReM-ew-622"/>
-                        <segue destination="iun-hC-G3n" kind="presentation" identifier="ShowTimerFromPhoto" id="Qtv-dW-pne"/>
+                        <segue destination="iun-hC-G3n" kind="presentation" identifier="showTimerFromPhoto" id="Qtv-dW-pne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Cq-z1-nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>

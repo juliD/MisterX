@@ -66,7 +66,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 
                 ref = Database.database().reference().child("game").child(textField.text!)
                 ref.observe(.childAdded, with: {(snapshot) -> Void in
-                    if snapshot.key == "images"{
+                    if snapshot.key == "startetAt"{
                         self.startGame()
                     }
                 })

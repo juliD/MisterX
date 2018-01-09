@@ -89,8 +89,8 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
     
 
     
-    //go to main navigation screen
-    @IBAction func button_start(_ sender: UIButton) {
+    //go to timer navigation screen
+    @IBAction func startButton(_ sender: UIButton) {
         var data = NSData()
         data = UIImageJPEGRepresentation(imageView.image!, 0.3)! as NSData
         // set upload path
@@ -110,10 +110,24 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
             
         }
         
+        startGame()
         performSegue(withIdentifier: "showTimerFromPhoto", sender: self)
     }
         
 
-    
+    fileprivate func startGame() {
+        let date = Date()
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        let time = "\(day):\(month):\(year):\(hour):\(minutes):\(seconds)"
+        var ref: DatabaseReference
+        ref = Database.database().reference()
+        ref.child("game/\(currentGame)/startetAt").setValue(time)
+    }
 
 }
