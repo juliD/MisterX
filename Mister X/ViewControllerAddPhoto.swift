@@ -110,7 +110,7 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
             
         }
         
-        performSegue(withIdentifier: "toNoNav", sender: self)
+        performSegue(withIdentifier: "showTimerFromPhoto", sender: self)
     }
         
 

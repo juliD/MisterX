@@ -42,7 +42,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         return true
     }
     func startGame(){
-        performSegue(withIdentifier: "startGame", sender: self)
+        performSegue(withIdentifier: "showTimerFromGroup", sender: self)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -66,7 +66,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 
                 ref = Database.database().reference().child("game").child(textField.text!)
                 ref.observe(.childAdded, with: {(snapshot) -> Void in
-                    if snapshot.key == "startetAt"{
+                    if snapshot.key == "images"{
                         self.startGame()
                     }
                 })

@@ -30,6 +30,7 @@
 		84FF6D741FC6325000A7EAC7 /* ViewControllerAddPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */; };
 		919E8B4918CDB447E03D0399 /* Pods_Mister_XTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506B9182F292C8EE40ABCFD8 /* Pods_Mister_XTests.framework */; };
 		B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F053DA1FBC6063003A102E /* PersonController.swift */; };
+		B8F102DD20042271005F6E2D /* ViewControllerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F102DC20042271005F6E2D /* ViewControllerTimer.swift */; };
 		E945A01C92C6B5FDD154621C /* Pods_Mister_X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C7BB341281427D20E8E975 /* Pods_Mister_X.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAddPhoto.swift; sourceTree = "<group>"; };
 		AC8F726F846C8AE3BBC277D7 /* Pods-Mister XUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister XUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mister XUITests/Pods-Mister XUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B8F053DA1FBC6063003A102E /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		B8F102DC20042271005F6E2D /* ViewControllerTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTimer.swift; sourceTree = "<group>"; };
 		D0C7DC71D20270D562C9096E /* Pods_Mister_XUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mister_XUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C7BB341281427D20E8E975 /* Pods_Mister_X.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mister_X.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7F065841B36AD7D30A2061 /* Pods-Mister XUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister XUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mister XUITests/Pods-Mister XUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				8405E2EB1FBE07FF0098AA3C /* ViewControllerBeitreten.swift */,
 				8469842F1FBE3CCF0020B7B3 /* ScannerViewController.swift */,
 				84BF47A71FC22CAF0016592F /* TutorialViewController.swift */,
+				B8F102DC20042271005F6E2D /* ViewControllerTimer.swift */,
 				84BF47A91FC233190016592F /* TutorialPageViewController.swift */,
 				8485FE242002719800981914 /* MapFirebaseCom.swift */,
 			);
@@ -518,6 +521,7 @@
 				8405E2EC1FBE07FF0098AA3C /* ViewControllerBeitreten.swift in Sources */,
 				84BF47A81FC22CAF0016592F /* TutorialViewController.swift in Sources */,
 				847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */,
+				B8F102DD20042271005F6E2D /* ViewControllerTimer.swift in Sources */,
 				847D59C61FB5DA7600B4040B /* ViewControllerEinstellungen.swift in Sources */,
 				846984301FBE3CCF0020B7B3 /* ScannerViewController.swift in Sources */,
 				847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */,
@@ -676,7 +680,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VNDJ7MGND;
+				DEVELOPMENT_TEAM = 7F4D3666Y3;
 				INFOPLIST_FILE = "Mister X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -695,7 +699,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VNDJ7MGND;
+				DEVELOPMENT_TEAM = 7F4D3666Y3;
 				INFOPLIST_FILE = "Mister X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

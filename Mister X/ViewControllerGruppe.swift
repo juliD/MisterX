@@ -15,22 +15,6 @@ class ViewControllerGruppe: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var qrcode: UIImageView!
     
-    
-    
-    @IBAction func button_start(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        let currentGame = defaults.string(forKey: "gameCode")
-        
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let time = "\(hour):\(minutes)"
-        var ref: DatabaseReference
-        ref = Database.database().reference()
-        ref.child("game/\(currentGame!)/startetAt").setValue(time)
-               
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         personController.persons = 0
@@ -60,6 +44,23 @@ class ViewControllerGruppe: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func button_start(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        let currentGame = defaults.string(forKey: "gameCode")
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let time = "\(hour):\(minutes)"
+        var ref: DatabaseReference
+        ref = Database.database().reference()
+        ref.child("game/\(currentGame!)/startetAt").setValue(time)
+        
+    }
+    
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         
