@@ -70,10 +70,11 @@ class ViewController: UIViewController {
         //get userid
         let defaults = UserDefaults.standard
         let uid = defaults.string(forKey: "uid")
+        let pushToken = defaults.string(forKey: "pushToken")
         
         //create new game in firebase
         let key = self.ref.child("games").childByAutoId().key
-        self.ref.child("game").child(key).child("player").child(uid!).setValue(["MisterX" : true])
+        self.ref.child("game").child(key).child("player").child(uid!).setValue(["MisterX" : true, "pushToken" : pushToken!])
         
         //save gameid locally
         defaults.set(key, forKey: "gameCode")

@@ -22,11 +22,11 @@ class ViewControllerTimer : UIViewController {
     let HOUR = 4
     let SECONDS = 5
     
-    let TEN_MINUTES = 10
-    let FULL_MINUTE = 60
+    let TEN_MINUTES = 1
+    let FULL_MINUTE = 1
     
-    var minutes = 10
-    var seconds = 60
+    var minutes = 1
+    var seconds = 1
     
     var text = "10:00"
     
