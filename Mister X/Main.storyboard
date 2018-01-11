@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -123,15 +123,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="H3Bj6Zc4" borderStyle="roundedRect" placeholder="Code hier!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AK-g5-Gsj">
-                                <rect key="frame" x="92.666666666666686" y="178.66666666666666" width="190" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="WtJ-gI-gxh"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jäger müssen diesen Code eingeben. Ihr braucht mindestens 4 Personen!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLT-FQ-xTg">
                                 <rect key="frame" x="64.666666666666686" y="120.00000000000001" width="246" height="20.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -149,7 +140,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="GYT-yJ-c13" kind="show" id="EnD-kQ-a9S"/>
+                                    <segue destination="iun-hC-G3n" kind="show" id="QEM-Ft-OMS"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-uy-QAQ">
@@ -159,25 +150,33 @@
                                     <constraint firstAttribute="width" constant="128" id="Qg7-rI-MId"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="37" y="398.66666666666669" width="300" height="75"/>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-vN-b9i" customClass="CopyableLabel" customModule="Mister_X" customModuleProvider="target">
+                                <rect key="frame" x="166" y="180" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="pRl-Ow-LBM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="top" secondItem="BjW-Ll-bz9" secondAttribute="top" constant="32" id="4Lo-Th-Yhx"/>
                             <constraint firstItem="aQc-3n-Cvg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="37" id="6Ed-Q3-OdO"/>
-                            <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="4AK-g5-Gsj" secondAttribute="centerX" id="775-NU-Stk"/>
+                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="top" secondItem="TBQ-vN-b9i" secondAttribute="bottom" constant="42.670000000000002" id="Ai6-F1-ah1"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="GUb-uy-QAQ" secondAttribute="trailing" constant="124" id="CKR-2X-i6K"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="BiT-sH-8HI" secondAttribute="centerX" id="E5y-dH-0sU"/>
                             <constraint firstItem="GUb-uy-QAQ" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="123" id="EfT-Ff-U56"/>
-                            <constraint firstItem="4AK-g5-Gsj" firstAttribute="top" secondItem="ZLT-FQ-xTg" secondAttribute="bottom" constant="38" id="FJC-oM-ofp"/>
-                            <constraint firstItem="4AK-g5-Gsj" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="92" id="JC4-0n-NLD"/>
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="87" id="P9P-XF-cNc"/>
+                            <constraint firstItem="TBQ-vN-b9i" firstAttribute="top" secondItem="ZLT-FQ-xTg" secondAttribute="bottom" constant="39.329999999999998" id="W4j-ur-uUI"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="bottom" secondItem="d4Z-8z-Rck" secondAttribute="bottom" constant="32" id="XSV-zA-Yx4"/>
-                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="top" secondItem="4AK-g5-Gsj" secondAttribute="bottom" constant="35" id="iHJ-KZ-yAX"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="64" id="iUR-hx-fK4"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="aQc-3n-Cvg" secondAttribute="trailing" constant="38" id="kBF-YJ-Am4"/>
+                            <constraint firstItem="TBQ-vN-b9i" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="166" id="kBu-81-cdF"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="d4Z-8z-Rck" secondAttribute="trailing" constant="87" id="kuj-GR-xyO"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="centerX" secondItem="BiT-sH-8HI" secondAttribute="centerX" id="rnm-7i-US0"/>
                             <constraint firstItem="aQc-3n-Cvg" firstAttribute="top" secondItem="GUb-uy-QAQ" secondAttribute="bottom" constant="27" id="swJ-zo-KpT"/>
@@ -185,7 +184,7 @@
                         <viewLayoutGuide key="safeArea" id="BjW-Ll-bz9"/>
                     </view>
                     <connections>
-                        <outlet property="gameCode" destination="4AK-g5-Gsj" id="FBu-JK-n1o"/>
+                        <outlet property="gameCodeLabel" destination="TBQ-vN-b9i" id="E8T-GL-cQr"/>
                         <outlet property="personController" destination="aQc-3n-Cvg" id="YC9-uG-AXB"/>
                         <outlet property="qrcode" destination="GUb-uy-QAQ" id="AoU-X4-6tw"/>
                         <outlet property="startButton" destination="d4Z-8z-Rck" id="F71-Oh-cEA"/>
@@ -494,7 +493,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="64" y="152" width="247" height="184"/>
+                                <rect key="frame" x="64" y="108" width="247" height="228"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -729,7 +728,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neo-j6-apc">
-                                <rect key="frame" x="55" y="250" width="264" height="161"/>
+                                <rect key="frame" x="55" y="294" width="264" height="161"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" id="KfY-sb-Y8E"/>
                                     <constraint firstAttribute="height" constant="161" id="fpL-Ia-EsR"/>
@@ -739,7 +738,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LI4-nx-FUC">
-                                <rect key="frame" x="16" y="506" width="343" height="230"/>
+                                <rect key="frame" x="16" y="550" width="343" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -914,7 +913,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2CU-vn-WtE"/>
-        <segue reference="Qtv-dW-pne"/>
+        <segue reference="QEM-Ft-OMS"/>
         <segue reference="2nZ-fz-1KC"/>
     </inferredMetricsTieBreakers>
 </document>

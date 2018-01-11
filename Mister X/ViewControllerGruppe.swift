@@ -14,6 +14,7 @@ class ViewControllerGruppe: UIViewController {
     @IBOutlet weak var gameCode: UITextField!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var qrcode: UIImageView!
+    @IBOutlet weak var gameCodeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class ViewControllerGruppe: UIViewController {
         print(currentGame)
         
         //show currentGame code
-        gameCode.text = currentGame
+        gameCodeLabel.text = currentGame
         qrcode.image = generateQRCode(from: currentGame!)
         
         //add listener for new players
