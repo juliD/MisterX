@@ -56,8 +56,9 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 //get userid
                 let defaults = UserDefaults.standard
                 let uid = defaults.string(forKey: "uid")
+                let pushToken = defaults.string(forKey: "pushToken")
                 
-                ref.child(textField.text!).child("player").child(uid!).setValue(["MisterX" : false])
+                ref.child(textField.text!).child("player").child(uid!).setValue(["MisterX" : false, "pushToken" : pushToken!])
                 textField.isUserInteractionEnabled = false;
                 self.textLabel.text = "Warte bis Mister X das Spiel beginnt..."
                 
