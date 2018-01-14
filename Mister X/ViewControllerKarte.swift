@@ -19,7 +19,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     var mfc = MapFirebaseCom(updateTime: 30.0, updateTimePlayer: 10.0)
     var myLocation = UserLocationStruct()
     var lookAtMap : Bool = true
-    var isHistoryShown = false
     var lastPosition = MKPointAnnotation()
     
     @IBOutlet weak var bottomView: UIView!
@@ -33,54 +32,12 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
     }
     
-    var misterXPositions = [Dictionary<String, Any>]()
-    
-    //var positions = [Dictionary<String, Any>]()
-   
-
-    //Muss noch verbessert werden. Daten kommen schon aus Firebase
-    func showHistorie(){
-        mfc.getHistory { (allLocations) in
-            if let allLoc = allLocations {
-                var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-                for locs in allLoc{
-                    self.mfc.setAnnotation(loc: locs, title: "History Mister X")
-                    points.append(locs.coordinate!)
-                    self.lastPosition.title = "Mister X"
-                    self.lastPosition.subtitle = "Letzte aktuelle Position"
-                    self.lastPosition.coordinate = locs.coordinate!
-                }
-                // Connect all the mappoints using Poly line.
-                let polyline = MKPolyline(coordinates: points, count: points.count)
-                self.mapView.add(polyline)
-            }
-        }
-    }
-        
-        /*
-        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        for coord in misterXPositions{
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: coord["latitude"] as! CLLocationDegrees,longitude: coord["longitude"] as! CLLocationDegrees)
-            annotation.title = "Mister X"
-            annotation.subtitle = "Position von Mister X um \(coord["title"])"
-            mapView.addAnnotation(annotation)
-            points.append(annotation.coordinate)
-        }
-        // Connect all the mappoints using Poly line.
-        let polyline = MKPolyline(coordinates: points, count: points.count)
-        mapView.add(polyline)
-    }
- */
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
         polylineRenderer.strokeColor = UIColor.red
         polylineRenderer.lineWidth = 5
         return polylineRenderer
     }
-   
     
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -90,7 +47,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             //locationManager.requestAlwaysAuthorization()
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,9 +59,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         menuConstraint.constant = 128
         
         //Start MisterX Loc Observer
-        //mfc.setMap(map: mapView)
-        mfc.getMisterX(map: mapView)
-        
+        mfc.observeMisterX()
         
         //Am I Mister X?
         let defaults = UserDefaults.standard
@@ -136,10 +90,6 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             //locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
-        //TODO: Timer läuft nicht immer. Bsp: Wenn App im Hintergrund ist
-        //Alle x Sekunden wird updateMisterXPosition aufgerufen
-        //let xSekunden: Double = 10.0
-        //var misterXTimer = Timer.scheduledTimer(timeInterval: xSekunden, target: self, selector: #selector(ViewControllerKarte.updateMisterXPosition), userInfo: nil, repeats: true)
     }
     
     @IBAction func toggleMenu(_ sender: UIButton) {
@@ -163,32 +113,72 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var historySwitch: UISwitch!
 
     @IBAction func toggleHistorie(_ sender: UISwitch) {
-        if isHistoryShown {
-            //historie ausschalten
-            mapView.removeAnnotations(mapView.annotations)
-            mapView.removeOverlays(mapView.overlays)
-            mapView.addAnnotation(lastPosition)
-            isHistoryShown=false
-        }
-        else {
-            //historie anschalten
-            isHistoryShown=true
-            showHistorie()
+        showMisterX()
+    }
+    
+    func showMisterX() {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+        if historySwitch.isOn{
+            var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+            if (mfc.allMisterXLocations != nil){
+                for loc in mfc.allMisterXLocations!{
+                    self.setAnnotation(loc: loc, title: "Mister X")
+                    points.append(loc.coordinate!)
+                }
+            }
+            let polyline = MKPolyline(coordinates: points, count: points.count)
+            self.mapView.add(polyline)
+        }else{
+            if mfc.allMisterXLocations != nil {
+                setAnnotation(loc: (mfc.allMisterXLocations?.last)!, title: "MisterX")
+            }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         //let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         if let location = locations.last {
-            myLocation.coordinate = location.coordinate
-            myLocation.timestamp = location.timestamp
+            
+            //lookAtMap wird am Anfang und wenn die View wieder aufgerufen wird gesetzt und dann wird auf die aktuelle Position gezoomt
             if lookAtMap{
                 let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 self.mapView.setRegion(region, animated: true)
                 lookAtMap = false
             }
-            mfc.updateLocation(location: myLocation)
+            
+            //updateLocation schreiben der Location von MisterX und Jäger in die Firebase
+            myLocation.coordinate = location.coordinate
+            myLocation.timestamp = location.timestamp
+            let defaults = UserDefaults.standard
+            let misterX = defaults.string(forKey: "misterX")
+            if misterX! == "y" {
+                mfc.updateMisterXLocation(location: myLocation)
+            }else{
+                mfc.updateJaegerLocation(location: myLocation)
+            }
+            
+            //Wenn sich die Position von MisterX geändert hat dann Historie oder Annotation updaten
+            //Firebase meldet die Veränderung durch einen Observer
+            if mfc.misterXChangedLocation{
+                showMisterX()
+                mfc.misterXChangedLocation = false
+            }
         }
+    }
+    
+    func setAnnotation(loc : UserLocationStruct, title : String) {
+        
+        //Set new Annotation
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = loc.coordinate!
+        annotation.title = title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let newdate = dateFormatter.string(from: loc.timestamp!)
+        annotation.subtitle = "\(title) um \(newdate)"
+        mapView.addAnnotation(annotation)
     }
     
     override func viewDidAppear(_ animated: Bool) {

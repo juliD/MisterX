@@ -18,17 +18,19 @@ struct UserLocationStruct {
 
 class MapFirebaseCom{
     
-    let uTime : Double
-    let uTimePlayer: Double
-    var firstTime : Bool = true
-    var newMisterXLocation = UserLocationStruct()
-    var newPlayerLocation = UserLocationStruct()
+    let uTimeMisterX : Double
+    let uTimeJaeger: Double
+    //var firstTime : Bool = true
+    var misterXChangedLocation = false
+    var allMisterXLocations : [UserLocationStruct]? = []
+    var allJaegerLocations : [UserLocationStruct]? = []
+    var newLocation = UserLocationStruct()
+    //var newJaegerLocation = UserLocationStruct()
     var ref : DatabaseReference
-    private var map : MKMapView?
     
     init(updateTime: Double, updateTimePlayer: Double) {
-        uTime = updateTime
-        uTimePlayer = updateTimePlayer
+        uTimeMisterX = updateTime
+        uTimeJaeger = updateTimePlayer
         ref = Database.database().reference()
     }
     
@@ -42,99 +44,34 @@ class MapFirebaseCom{
         return defaults.string(forKey: "uid")
     }
     
-    func getMisterXLocation() -> UserLocationStruct {
-        return newMisterXLocation
-    }
-    
-    func updateLocation(location: UserLocationStruct) {
-        let defaults = UserDefaults.standard
-        let misterX = defaults.string(forKey: "misterX")
-        if misterX! == "y" {
-            if firstTime {
-                newMisterXLocation = location
-                setMisterX(loc: newMisterXLocation)
-                setPlayer(coords: newMisterXLocation.coordinate!)
-                firstTime = false
-            }else{
-                //print("actual: \(location.timestamp!) new: \(newMisterXLocation.timestamp!) new+: \(newMisterXLocation.timestamp! + uTime)")
-                if (location.timestamp!) > (newMisterXLocation.timestamp! + uTime){
-                    newMisterXLocation = location
-                    setMisterX(loc: newMisterXLocation)
-                    setPlayer(coords: newMisterXLocation.coordinate!)
-                }
-            }
-        }else{
-            if firstTime {
-                newPlayerLocation = location
-                setPlayer(coords: newPlayerLocation.coordinate!)
-                firstTime = false
-            }else{
-                if (location.timestamp!) > (newPlayerLocation.timestamp! + uTimePlayer){
-                    newPlayerLocation = location
-                    setPlayer(coords: newPlayerLocation.coordinate!)
-                }
-            }
-        }
-    }
-    
-    func getHistory(completion: @escaping ([UserLocationStruct]?) -> Void) {
-        ref.child("game/\(getGameCode()!)/MisterX").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get all Locations
-            //var allLocations: [Date:[String:Any]] = [:]
-            var allLocations : [UserLocationStruct]? = []
-            for child in snapshot.children.allObjects as! [DataSnapshot]{
-                if let cvalue = child.value as? NSDictionary{
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-                    guard let newdate = dateFormatter.date(from: child.key) else {
-                        fatalError("ERROR: Date conversion failed due to mismatched format.")
-                    }
-                    var newloc = UserLocationStruct()
-                    var newcoord = CLLocationCoordinate2D()
-                    newcoord.latitude = cvalue["latitude"]! as! CLLocationDegrees
-                    newcoord.longitude = cvalue["longitude"]! as! CLLocationDegrees
-                    newloc.coordinate = newcoord
-                    newloc.timestamp = newdate
-                    
-                    print("newcoords \(newloc)")
-                    
-                    allLocations?.append(newloc)
-                    
-                    //let coords : [String:CLLocationDegrees] = ["latitude" : cvalue["latitude"]! as! CLLocationDegrees, "longitude": cvalue["longitude"]! as! CLLocationDegrees]
-                    //allLocations[newdate] = coords
-                    
-                    print(allLocations!)
-                    completion(allLocations)
-                }else{
-                    print("No values in Firebase")
-                }
-            }
-
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    func getMisterX(map: MKMapView) {
-        self.map = map
+    func observeMisterX() {
         ref.child("game/\(getGameCode()!)/MisterX").queryLimited(toLast: 1).observe(.childAdded , with: { (snapshot) in
             var newcoords = CLLocationCoordinate2D()
             let newvalue = snapshot.value as! NSDictionary
             newcoords.latitude = newvalue.value(forKey: "latitude") as! CLLocationDegrees
             newcoords.longitude = newvalue.value(forKey: "longitude") as! CLLocationDegrees
             let newkey = snapshot.key
-            //print("Val: \(newvalue) Key: \(newkey)")
-        
-            /*
-            //Remove Annotations
-            //self.map.removeAnnotations(map.annotations)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            guard let newdate = dateFormatter.date(from: newkey) else {
+                fatalError("ERROR: Date conversion failed due to mismatched format.")
+            }
+            var newloc = UserLocationStruct()
+            newloc.coordinate = newcoords
+            newloc.timestamp = newdate
             
-            //Set new Annotation
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = newcoords
-            annotation.title = "Mister X"
-             */
-            
+            self.allMisterXLocations?.append(newloc)
+            self.misterXChangedLocation = true
+        })
+    }
+    
+    func observeJaeger() {
+        ref.child("game/\(getGameCode()!)/player").queryLimited(toLast: 1).observe(.childAdded , with: { (snapshot) in
+            var newcoords = CLLocationCoordinate2D()
+            let newvalue = snapshot.value as! NSDictionary
+            newcoords.latitude = newvalue.value(forKey: "latitude") as! CLLocationDegrees
+            newcoords.longitude = newvalue.value(forKey: "longitude") as! CLLocationDegrees
+            let newkey = snapshot.key
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
             guard let newdate = dateFormatter.date(from: newkey) else {
@@ -144,51 +81,39 @@ class MapFirebaseCom{
             var newloc = UserLocationStruct()
             newloc.coordinate = newcoords
             newloc.timestamp = newdate
-            self.setAnnotation(loc: newloc, title: "MisterX")
             
-            /*
-            dateFormatter.dateFormat = "HH:mm:ss"
-            let newdate2 = dateFormatter.string(from: newdate)
-            annotation.subtitle = "Mister X um \(newdate2)"
-            self.map.addAnnotation(annotation)
-            
-            
-            Hilfe
-             //for child in snapshot.children.allObjects as! [DataSnapshot]{
-             //let newvalues = child.value
-             //let newkeys = child.key
-             
-            if let locations = snapshot.value as? NSDictionary{
-             */
+            self.allMisterXLocations?.append(newloc)
+            //self.misterXChangedLocation = true
         })
     }
     
-    func setMisterX(loc: UserLocationStruct){
-        let newPosition: [String:Any] = ["latitude":Double((loc.coordinate?.latitude)!), "longitude":Double((loc.coordinate?.longitude)!)]
-        ref.child("game/\(getGameCode()!)/MisterX/\(loc.timestamp!)").setValue(newPosition)
+    func updateMisterXLocation(location: UserLocationStruct) {
+        let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
+        if newLocation.timestamp == nil {
+            newLocation = location
+            ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
+        }else{
+            if (location.timestamp!) > (newLocation.timestamp! + uTimeMisterX){
+                newLocation = location
+                ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
+            }
+        }
     }
     
-    func setPlayer(coords: CLLocationCoordinate2D) {
-        let newCoordinate: [String:Any] = ["latitude": coords.latitude, "longitude": coords.longitude]
-        ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newCoordinate)
+    func updateJaegerLocation(location: UserLocationStruct) {
+        let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
+        if newLocation.timestamp == nil {
+            newLocation = location
+            ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newPosition)
+        }else{
+            if (location.timestamp!) > (newLocation.timestamp! + uTimeJaeger){
+                newLocation = location
+                ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newPosition)
+            }
+        }
     }
     
-    func setAnnotation(loc : UserLocationStruct, title : String) {
-        //Remove Annotations
-        map?.removeAnnotations((map?.annotations)!)
-        
-        //Set new Annotation
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = loc.coordinate!
-        annotation.title = title
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let newdate = dateFormatter.string(from: loc.timestamp!)
-        annotation.subtitle = "\(title) um \(newdate)"
-        map?.addAnnotation(annotation)
-    }
-    
+    /*
     func getTodayString() -> String{
         
         let date = Date()
@@ -206,4 +131,22 @@ class MapFirebaseCom{
         
         return today_string
     }
+     */
+    
+    /*
+     Hilfe für Observerkram
+     
+     func getHistory(completion: @escaping ([UserLocationStruct]?) -> Void) {
+     ref.child("game/\(getGameCode()!)/MisterX").observeSingleEvent(of: .value, with: { (snapshot) in
+     completion(allLocations)
+     
+     //for child in snapshot.children.allObjects as! [DataSnapshot]{
+     //let newvalues = child.value
+     //let newkeys = child.key
+     
+     if let locations = snapshot.value as? NSDictionary{
+     
+     //let coords : [String:CLLocationDegrees] = ["latitude" : cvalue["latitude"]! as! CLLocationDegrees, "longitude": cvalue["longitude"]! as! CLLocationDegrees]
+     //allLocations[newdate] = coords
+     */
 }
