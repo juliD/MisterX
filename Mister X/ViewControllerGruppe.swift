@@ -23,7 +23,6 @@ class ViewControllerGruppe: UIViewController {
         
         let defaults = UserDefaults.standard
         let currentGame = defaults.string(forKey: "gameCode")
-        print(currentGame)
         
         //show currentGame code
         gameCodeLabel.text = currentGame

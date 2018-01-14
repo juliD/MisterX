@@ -18,15 +18,15 @@ class ViewControllerTimer : UIViewController {
     let DAY = 0
     let MONTH = 1
     let YEAR = 2
-    let MINUTE = 3
-    let HOUR = 4
+    let HOUR = 3
+    let MINUTE = 4
     let SECONDS = 5
     
-    let TEN_MINUTES = 1
-    let FULL_MINUTE = 1
+    let TEN_MINUTES = 3
+    let FULL_MINUTE = 60
     
-    var minutes = 1
-    var seconds = 1
+    var minutes = 3
+    var seconds = 60
     
     var text = "10:00"
     
@@ -46,41 +46,13 @@ class ViewControllerTimer : UIViewController {
         }
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewControllerTimer.updateCounter), userInfo: nil, repeats: true)
         setText()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    fileprivate func setTime() {
-        let startTime = getStartTime().toArray(separator: ":")
-        let currentTime = getCurrentTime().toArray(separator: ":")
-        var startTimeInt = [Int]()
-        var currentTimeInt = [Int]()
-        
-        for i in (0 ..< startTime.count) {
-            print("i \(startTime[i])")
-            print("i \(currentTime[i])")
-            startTimeInt[i] = Int(truncating: startTime[i].toNumber())
-            currentTimeInt[i] = Int(truncating: currentTime[i].toNumber())
-        }
-        
-        if startTimeInt[DAY] == currentTimeInt[DAY]
-            && startTimeInt[MONTH] == currentTimeInt[MONTH]
-            && startTimeInt[YEAR] == currentTimeInt[YEAR] {
-            
-            if (startTimeInt[HOUR] == currentTimeInt[HOUR] && startTimeInt[MINUTE] < currentTimeInt[MINUTE]) {
-                let diffenceMinute = currentTimeInt[MINUTE] - startTimeInt[MINUTE]
-                if diffenceMinute <= TEN_MINUTES {
-                    let differenceSeconds = currentTimeInt[SECONDS] - startTimeInt[SECONDS]
-                    minutes -= diffenceMinute
-                    seconds -= differenceSeconds
-                }
-            }
-            
-        }
-        
     }
     
     @objc private func updateCounter() {
@@ -100,7 +72,7 @@ class ViewControllerTimer : UIViewController {
         }
         text = "\(minutes):" + sec
         timerLabel.text = text
-        if minutes == 0 && seconds == 0 {
+        if minutes <= 0 && seconds <= 0 {
             performSegue(withIdentifier: "startGame", sender: self)
         } else if seconds == 0 {
             minutes -= 1
@@ -120,20 +92,77 @@ class ViewControllerTimer : UIViewController {
         }
     }
     
-    fileprivate func getStartTime() -> String{
+    fileprivate func isDayEqual(_ startTimeInt: inout [Int], _ currentTimeInt: inout [Int]) -> Bool {
+        return startTimeInt[self.DAY] == currentTimeInt[self.DAY]
+            && startTimeInt[self.MONTH] == currentTimeInt[self.MONTH]
+            && startTimeInt[self.YEAR] == currentTimeInt[self.YEAR]
+    }
+    
+    fileprivate func isTimeEqual(_ startTimeInt: inout [Int], _ currentTimeInt: inout [Int]) -> Bool {
+        return (startTimeInt[self.HOUR] == currentTimeInt[self.HOUR] && startTimeInt[self.MINUTE] < currentTimeInt[self.MINUTE]) || (currentTimeInt[self.HOUR] - startTimeInt[self.HOUR] == 1 && startTimeInt[self.MINUTE] >= 50 && currentTimeInt[self.MINUTE] <= 10)
+    }
+    
+    fileprivate func setTime(){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        var startetAt = ""
         let startetAtRef = ref.child("game").child(currentGame).child("startetAt")
         startetAtRef.observe(.value, with: { (snapshot) in
             //get the single value
             if let value = snapshot.value as? String{
+                let startTime = value.toArray(separator: ":")
+                let currentTime = self.getCurrentTime().toArray(separator: ":")
+                var startTimeInt = [Int]()
+                var currentTimeInt = [Int]()
                 
-                startetAt = value
+                for i in (0 ..< startTime.count) {
+                    startTimeInt.append(Int(truncating: startTime[i].toNumber()))
+                    currentTimeInt.append(Int(truncating: currentTime[i].toNumber()))
+                }
                 
+                if self.isDayEqual(&startTimeInt, &currentTimeInt) {
+                    
+                    if self.isTimeEqual(&startTimeInt, &currentTimeInt) {
+                        let differenceMinute = self.getDifferenceMinute(currentTimeInt, startTimeInt)
+                        
+                        if differenceMinute >= self.TEN_MINUTES {
+                            self.performSegue(withIdentifier: "startGame", sender: self)
+                        }
+                        if differenceMinute < self.TEN_MINUTES {
+                            let differenceSeconds = self.getDifferenceSeconds(currentTimeInt, startTimeInt)
+                            self.minutes = self.TEN_MINUTES - differenceMinute
+                            self.seconds = self.FULL_MINUTE - differenceSeconds
+                            print("\(self.minutes):\(self.seconds)")
+                            if (self.seconds >= self.FULL_MINUTE) {
+                                self.minutes += self.seconds/self.FULL_MINUTE
+                                self.seconds -= self.FULL_MINUTE
+                            }
+                        }
+                    }
+                    
+                }
             }
         })
-        return startetAt
+    }
+    
+    fileprivate func getDifferenceMinute(_ currentTimeInt: [Int], _ startTimeInt: [Int]) -> Int {
+        var minutes = 0
+        if currentTimeInt[self.SECONDS] > startTimeInt[self.SECONDS] {
+            minutes += 1
+        }
+        if currentTimeInt[self.MINUTE] < startTimeInt[self.MINUTE] {
+            minutes += currentTimeInt[self.MINUTE] + (self.TEN_MINUTES - startTimeInt[self.MINUTE])
+        } else {
+            minutes += currentTimeInt[self.MINUTE] - startTimeInt[self.MINUTE]
+        }
+        return minutes
+    }
+    
+    fileprivate func getDifferenceSeconds(_ currentTimeInt: [Int], _ startTimeInt: [Int]) -> Int {
+        if currentTimeInt[self.SECONDS] < startTimeInt[self.SECONDS] {
+            return currentTimeInt[self.SECONDS] + (self.FULL_MINUTE - startTimeInt[self.SECONDS])
+        } else {
+            return currentTimeInt[self.SECONDS] - startTimeInt[self.SECONDS]
+        }
     }
     
     fileprivate func getCurrentTime() -> String {
@@ -146,6 +175,10 @@ class ViewControllerTimer : UIViewController {
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         return "\(day):\(month):\(year):\(hour):\(minutes):\(seconds)"
+    }
+    
+    @objc func applicationDidBecomeActive() {
+        setTime()
     }
 
 }
