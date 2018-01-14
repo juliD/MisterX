@@ -25,6 +25,8 @@
 		84BF47A81FC22CAF0016592F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF47A71FC22CAF0016592F /* TutorialViewController.swift */; };
 		84BF47AA1FC233190016592F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF47A91FC233190016592F /* TutorialPageViewController.swift */; };
 		84C9C1C62007F75B00F9E463 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9C1C52007F75B00F9E463 /* CopyableLabel.swift */; };
+		84C9C1CC20082B7600F9E463 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9C1CB20082B7600F9E463 /* OverviewController.swift */; };
+		84C9C1CE200B5EC500F9E463 /* MisterXAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9C1CD200B5EC500F9E463 /* MisterXAnnotation.swift */; };
 		84D5E46B1FB33FA700A3D703 /* Mister_XTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E46A1FB33FA700A3D703 /* Mister_XTests.swift */; };
 		84D5E4761FB33FA700A3D703 /* Mister_XUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */; };
 		84FF6D721FC6126C00A7EAC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */; };
@@ -75,6 +77,8 @@
 		84BF47A71FC22CAF0016592F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		84BF47A91FC233190016592F /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		84C9C1C52007F75B00F9E463 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		84C9C1CB20082B7600F9E463 /* OverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewController.swift; sourceTree = "<group>"; };
+		84C9C1CD200B5EC500F9E463 /* MisterXAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisterXAnnotation.swift; sourceTree = "<group>"; };
 		84D5E4521FB33FA700A3D703 /* Mister X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mister X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4661FB33FA700A3D703 /* Mister XTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mister XTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E46A1FB33FA700A3D703 /* Mister_XTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mister_XTests.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				84BF47A91FC233190016592F /* TutorialPageViewController.swift */,
 				8485FE242002719800981914 /* MapFirebaseCom.swift */,
 				84C9C1C52007F75B00F9E463 /* CopyableLabel.swift */,
+				84C9C1CB20082B7600F9E463 /* OverviewController.swift */,
+				84C9C1CD200B5EC500F9E463 /* MisterXAnnotation.swift */,
 			);
 			path = "Mister X";
 			sourceTree = "<group>";
@@ -532,6 +538,8 @@
 			files = (
 				847D59CB1FB5DA7600B4040B /* AppDelegate.swift in Sources */,
 				8405E2EC1FBE07FF0098AA3C /* ViewControllerBeitreten.swift in Sources */,
+				84C9C1CC20082B7600F9E463 /* OverviewController.swift in Sources */,
+				84C9C1CE200B5EC500F9E463 /* MisterXAnnotation.swift in Sources */,
 				84BF47A81FC22CAF0016592F /* TutorialViewController.swift in Sources */,
 				847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */,
 				B8F102DD20042271005F6E2D /* ViewControllerTimer.swift in Sources */,
