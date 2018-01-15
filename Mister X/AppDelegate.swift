@@ -77,12 +77,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register:", error)
     }
     
-    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        let defaults = UserDefaults.standard
-        let misterx = defaults.string(forKey:"misterX")!
-        if(misterx=="y"){
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        //let defaults = UserDefaults.standard
+        //let misterx = defaults.string(forKey:"misterX")!
+        //if(misterx=="y"){
             //update location
-        }
+        //}
+        print("1: \(userInfo)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        // Print full message.
+        print("Background \(userInfo)")
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
     
     
@@ -113,8 +123,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
+                                withCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let userInfo = response.notification.request.content.userInfo
+        print("Background")
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -123,7 +134,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print(userInfo)
         
-        completionHandler()
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
 

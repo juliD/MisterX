@@ -22,11 +22,11 @@ class ViewControllerTimer : UIViewController {
     let MINUTE = 4
     let SECONDS = 5
     
-    let TEN_MINUTES = 3
-    let FULL_MINUTE = 60
+    let TEN_MINUTES = 1
+    let FULL_MINUTE = 1
     
-    var minutes = 3
-    var seconds = 60
+    var minutes = 1
+    var seconds = 1
     
     var text = "10:00"
     
@@ -74,6 +74,7 @@ class ViewControllerTimer : UIViewController {
         timerLabel.text = text
         if minutes <= 0 && seconds <= 0 {
             performSegue(withIdentifier: "startGame", sender: self)
+            timer.invalidate()
         } else if seconds == 0 {
             minutes -= 1
             setSeconds()
@@ -126,6 +127,7 @@ class ViewControllerTimer : UIViewController {
                         
                         if differenceMinute >= self.TEN_MINUTES {
                             self.performSegue(withIdentifier: "startGame", sender: self)
+                            self.timer.invalidate()
                         }
                         if differenceMinute < self.TEN_MINUTES {
                             let differenceSeconds = self.getDifferenceSeconds(currentTimeInt, startTimeInt)
