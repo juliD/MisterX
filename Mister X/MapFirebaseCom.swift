@@ -14,6 +14,7 @@ import FirebaseDatabase
 struct UserLocationStruct {
     var coordinate:CLLocationCoordinate2D?
     var timestamp:Date?
+    var name:String = ""
 }
 
 class MapFirebaseCom{
@@ -22,10 +23,10 @@ class MapFirebaseCom{
     let uTimeJaeger: Double
     //var firstTime : Bool = true
     var misterXChangedLocation = false
+    var jaegerChangedLocation = false
     var allMisterXLocations : [UserLocationStruct]? = []
-    var allJaegerLocations : [UserLocationStruct]? = []
+    var allJaegerLocations : [String:UserLocationStruct]? = [:]
     var newLocation = UserLocationStruct()
-    //var newJaegerLocation = UserLocationStruct()
     var ref : DatabaseReference
     
     init(updateTime: Double, updateTimePlayer: Double) {
@@ -66,24 +67,35 @@ class MapFirebaseCom{
     }
     
     func observeJaeger() {
-        ref.child("game/\(getGameCode()!)/player").queryLimited(toLast: 1).observe(.childAdded , with: { (snapshot) in
-            var newcoords = CLLocationCoordinate2D()
-            let newvalue = snapshot.value as! NSDictionary
-            newcoords.latitude = newvalue.value(forKey: "latitude") as! CLLocationDegrees
-            newcoords.longitude = newvalue.value(forKey: "longitude") as! CLLocationDegrees
-            let newkey = snapshot.key
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-            guard let newdate = dateFormatter.date(from: newkey) else {
-                fatalError("ERROR: Date conversion failed due to mismatched format.")
+        ref.child("game/\(getGameCode()!)/Jaeger").observe(.value , with: { (snapshot) in
+            if let newvalues = snapshot.value as? NSDictionary{
+                for (key,value) in newvalues {
+                    
+                    let newkey = key as! String
+                    let newvalue = value as! NSDictionary
+                    //print("jaeger key/newvalue: \(newkey) / \(newvalue)")
+                    
+                    var newcoords = CLLocationCoordinate2D()
+                    newcoords.latitude = newvalue.value(forKey: "latitude") as! CLLocationDegrees
+                    newcoords.longitude = newvalue.value(forKey: "longitude") as! CLLocationDegrees
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                    guard let newdate = dateFormatter.date(from: newvalue.value(forKey: "timestamp") as! String) else {
+                        fatalError("ERROR: Date conversion failed due to mismatched format.")
+                    }
+                    
+                    var newloc = UserLocationStruct()
+                    newloc.coordinate = newcoords
+                    newloc.timestamp = newdate
+                    newloc.name = newvalue.value(forKey: "username") as! String
+                    
+                    self.allJaegerLocations![newkey] = newloc
+                    self.jaegerChangedLocation = true
+                }
+            }else{
+                print("Keine Jäger Locations in Firebase")
             }
-            
-            var newloc = UserLocationStruct()
-            newloc.coordinate = newcoords
-            newloc.timestamp = newdate
-            
-            self.allMisterXLocations?.append(newloc)
-            //self.misterXChangedLocation = true
         })
     }
     
@@ -100,15 +112,20 @@ class MapFirebaseCom{
         }
     }
     
-    func updateJaegerLocation(location: UserLocationStruct) {
-        let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
+    func updateJaegerLocation(location: UserLocationStruct, name : String) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let newdate = dateFormatter.string(from: location.timestamp!)
+        
+        let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!), "timestamp":newdate, "username":name]
         if newLocation.timestamp == nil {
             newLocation = location
-            ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newPosition)
+            ref.child("game/\(getGameCode()!)/Jaeger/\(getUserID()!)").setValue(newPosition)
         }else{
             if (location.timestamp!) > (newLocation.timestamp! + uTimeJaeger){
                 newLocation = location
-                ref.child("game/\(getGameCode()!)/player/\(getUserID()!)/coord").setValue(newPosition)
+                ref.child("game/\(getGameCode()!)/Jaeger/\(getUserID()!)").setValue(newPosition)
             }
         }
     }

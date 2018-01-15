@@ -60,16 +60,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         //Start MisterX Loc Observer
         mfc.observeMisterX()
-        
-        //Am I Mister X?
-        let defaults = UserDefaults.standard
-        let misterX = defaults.string(forKey: "misterX")
-        var currentGame = defaults.string(forKey: "gameCode")
-        
-        
-        let uid = defaults.string(forKey: "uid")
-        var ref: DatabaseReference
-        ref = Database.database().reference()
+        mfc.observeJaeger()
         
         func doblur(_ button:UIButton) {
             button.layer.cornerRadius = 5
@@ -113,28 +104,37 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var historySwitch: UISwitch!
 
     @IBAction func toggleHistorie(_ sender: UISwitch) {
-        showMisterX()
+        showMapObjects()
     }
     
-    func showMisterX() {
+    func showMapObjects() {
         mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
+        
         if historySwitch.isOn{
             var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
             if (mfc.allMisterXLocations != nil){
                 for loc in mfc.allMisterXLocations!{
-                    self.setAnnotation(loc: loc, title: "Mister X")
+                    self.setAnnotation(loc: loc, isMisterX: true)
                     points.append(loc.coordinate!)
                 }
             }
             let polyline = MKPolyline(coordinates: points, count: points.count)
             self.mapView.add(polyline)
         }else{
-            if mfc.allMisterXLocations != nil {
-                setAnnotation(loc: (mfc.allMisterXLocations?.last)!, title: "MisterX")
+            if mfc.allMisterXLocations?.last != nil {
+                setAnnotation(loc: (mfc.allMisterXLocations?.last)!, isMisterX: true)
+            }
+        }
+        let defaults = UserDefaults.standard
+        let misterX = defaults.string(forKey: "misterX")
+        if misterX! != "y" {
+            for (_ , userlocation) in mfc.allJaegerLocations!{
+                setAnnotation(loc: userlocation, isMisterX: false)
             }
         }
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         //let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
@@ -155,29 +155,40 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             if misterX! == "y" {
                 mfc.updateMisterXLocation(location: myLocation)
             }else{
-                mfc.updateJaegerLocation(location: myLocation)
+                let name = defaults.string(forKey: "name")
+                mfc.updateJaegerLocation(location: myLocation, name: name!)
             }
             
             //Wenn sich die Position von MisterX geändert hat dann Historie oder Annotation updaten
             //Firebase meldet die Veränderung durch einen Observer
             if mfc.misterXChangedLocation{
-                showMisterX()
+                showMapObjects()
                 mfc.misterXChangedLocation = false
+            }
+            if mfc.jaegerChangedLocation{
+                showMapObjects()
+                mfc.jaegerChangedLocation = false
             }
         }
     }
     
-    func setAnnotation(loc : UserLocationStruct, title : String) {
-        
-        //Set new Annotation
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = loc.coordinate!
-        annotation.title = title
+    func setAnnotation(loc : UserLocationStruct, isMisterX: Bool) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let newdate = dateFormatter.string(from: loc.timestamp!)
-        annotation.subtitle = "\(title) um \(newdate)"
+        
+        //Set new Annotation
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = loc.coordinate!
+        
+        if isMisterX{
+            annotation.title = "Mister X"
+            annotation.subtitle = "Mister X um \(newdate)"
+        }else{
+            annotation.title = loc.name
+            annotation.subtitle = "\(loc.name) um \(newdate)"
+        }
         mapView.addAnnotation(annotation)
     }
     
@@ -202,5 +213,4 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
