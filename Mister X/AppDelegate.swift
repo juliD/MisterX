@@ -85,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let defaults = UserDefaults.standard
         let misterx = defaults.string(forKey:"misterX")!
-        //update location if user is MisterX
         if(misterx=="y"){
         }
         
