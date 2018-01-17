@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.068982"
+            timestampString = "537875168.4649071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -152,7 +152,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.069718"
+            timestampString = "537875168.464992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -168,13 +168,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/AppDelegate.swift"
-            timestampString = "537635935.676185"
+            timestampString = "537875168.465039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -244,11 +244,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.070096"
+            timestampString = "537875168.465481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
@@ -262,7 +262,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.0704269"
+            timestampString = "537875168.465534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -278,7 +278,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.070817"
+            timestampString = "537875168.4655761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -290,11 +290,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.07112"
+            timestampString = "537875168.465615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -306,11 +306,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.071334"
+            timestampString = "537875168.465654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -322,11 +322,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.071538"
+            timestampString = "537875168.465692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -338,15 +338,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mister X/ViewControllerTimer.swift"
-            timestampString = "537727592.071749"
+            timestampString = "537875168.465729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mister X/ViewControllerTimer.swift"
+            timestampString = "537875168.465767"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

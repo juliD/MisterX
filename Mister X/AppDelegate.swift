@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
+            UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
             
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -78,19 +78,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        //let defaults = UserDefaults.standard
-        //let misterx = defaults.string(forKey:"misterX")!
-        //if(misterx=="y"){
-            //update location
-        //}
-        print("1: \(userInfo)")
+        print(userInfo)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-        // Print full message.
-        print("Background \(userInfo)")
+        let defaults = UserDefaults.standard
+        let misterx = defaults.string(forKey:"misterX")!
+        //update location if user is MisterX
+        if(misterx=="y"){
+        }
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -107,9 +104,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
         
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
@@ -120,22 +114,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Change this to your preferred presentation option
         completionHandler([])
     }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        print("Background")
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        
-        // Print full message.
-        print(userInfo)
-        
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
+
 }
 
 extension AppDelegate : MessagingDelegate {

@@ -37,9 +37,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
                                 <rect key="frame" x="87" y="416" width="201" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="1YY-Ol-lem" secondAttribute="height" multiplier="67:12" id="fRx-T4-PTC"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Mister X"/>
                                 <userDefinedRuntimeAttributes>
@@ -53,11 +50,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
-                                <rect key="frame" x="87" y="507" width="201" height="36"/>
+                                <rect key="frame" x="87" y="479" width="201" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="3wQ-FZ-TeR" secondAttribute="height" multiplier="67:12" id="lvu-TX-pW9"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Jäger"/>
                                 <userDefinedRuntimeAttributes>
@@ -75,12 +69,23 @@
                                     <constraint firstAttribute="width" secondItem="EGu-fE-bTF" secondAttribute="height" multiplier="15:8" id="3fT-Kl-21V"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-uU-I3U">
-                                <rect key="frame" x="87" y="598" width="201" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-HU-EaV">
+                                <rect key="frame" x="87" y="600" width="201" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oca-uU-I3U" secondAttribute="height" multiplier="67:12" id="tfd-mc-rh7"/>
-                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Öffentliche Spiele"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="GOA-3b-62X" kind="show" id="G8q-NZ-0ff"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-uU-I3U">
+                                <rect key="frame" x="87" y="541" width="201" height="36"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Laufendes Spiel"/>
                                 <userDefinedRuntimeAttributes>
@@ -92,41 +97,32 @@
                                     <action selector="joinGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fB-bi-mnQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-HU-EaV">
-                                <rect key="frame" x="87" y="670" width="201" height="36"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Öffentliche Spiel"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="GOA-3b-62X" kind="show" id="G8q-NZ-0ff"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="NbX-HU-EaV" firstAttribute="width" secondItem="1YY-Ol-lem" secondAttribute="width" id="1bM-ik-MFs"/>
+                            <constraint firstItem="NbX-HU-EaV" firstAttribute="top" secondItem="oca-uU-I3U" secondAttribute="bottom" constant="23" id="5nm-5O-COA"/>
                             <constraint firstItem="1YY-Ol-lem" firstAttribute="top" secondItem="vGy-0v-gfH" secondAttribute="bottom" constant="56" id="6qo-S7-wXa"/>
                             <constraint firstItem="EGu-fE-bTF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="7fI-5X-l0q"/>
-                            <constraint firstItem="oca-uU-I3U" firstAttribute="top" secondItem="3wQ-FZ-TeR" secondAttribute="bottom" constant="55" id="9g0-XE-Rjo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NbX-HU-EaV" secondAttribute="trailing" constant="87" id="8yW-qd-QjA"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="width" secondItem="1YY-Ol-lem" secondAttribute="width" id="9SL-CP-DLW"/>
+                            <constraint firstItem="NbX-HU-EaV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="9ji-56-YkS"/>
                             <constraint firstItem="vGy-0v-gfH" firstAttribute="top" secondItem="EGu-fE-bTF" secondAttribute="bottom" constant="33" id="CU7-Hs-t7m"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="top" secondItem="1YY-Ol-lem" secondAttribute="bottom" constant="27" id="EIm-hR-Qlo"/>
                             <constraint firstItem="vGy-0v-gfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="H3k-Db-OS8"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="height" secondItem="1YY-Ol-lem" secondAttribute="height" id="NED-Qm-Vac"/>
                             <constraint firstItem="1YY-Ol-lem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Nk0-Bg-7Fz"/>
                             <constraint firstItem="oca-uU-I3U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="RhG-UD-cSZ"/>
-                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="top" secondItem="1YY-Ol-lem" secondAttribute="bottom" constant="55" id="TIu-lh-Dsa"/>
-                            <constraint firstItem="NbX-HU-EaV" firstAttribute="top" secondItem="oca-uU-I3U" secondAttribute="bottom" constant="36" id="XCI-5x-BTS"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="width" secondItem="1YY-Ol-lem" secondAttribute="width" id="aD4-gE-MZ5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3wQ-FZ-TeR" secondAttribute="trailing" constant="87" id="bTy-Vq-oJf"/>
                             <constraint firstItem="3wQ-FZ-TeR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="boJ-za-hxt"/>
                             <constraint firstItem="EGu-fE-bTF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="hso-et-B5W"/>
-                            <constraint firstItem="NbX-HU-EaV" firstAttribute="leading" secondItem="oca-uU-I3U" secondAttribute="leading" id="j8V-tr-uLn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oca-uU-I3U" secondAttribute="trailing" constant="87" id="jg7-62-m40"/>
-                            <constraint firstItem="NbX-HU-EaV" firstAttribute="trailing" secondItem="oca-uU-I3U" secondAttribute="trailing" id="pVd-5L-0qF"/>
-                            <constraint firstItem="oca-uU-I3U" firstAttribute="width" secondItem="oca-uU-I3U" secondAttribute="height" multiplier="67:12" id="q5g-8F-QDL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EGu-fE-bTF" secondAttribute="trailing" constant="68" id="qA3-RD-8K4"/>
+                            <constraint firstItem="oca-uU-I3U" firstAttribute="top" secondItem="3wQ-FZ-TeR" secondAttribute="bottom" constant="26" id="vNt-65-Rg8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1YY-Ol-lem" secondAttribute="trailing" constant="87" id="vr0-zR-g24"/>
+                            <constraint firstItem="3wQ-FZ-TeR" firstAttribute="height" secondItem="1YY-Ol-lem" secondAttribute="height" id="wQr-6g-Uye"/>
+                            <constraint firstItem="NbX-HU-EaV" firstAttribute="height" secondItem="1YY-Ol-lem" secondAttribute="height" id="xOF-yN-h4f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vGy-0v-gfH" secondAttribute="trailing" constant="55" id="xaG-ad-kbG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -135,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1057" y="32"/>
+            <point key="canvasLocation" x="-1058.4000000000001" y="31.773399014778327"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -185,7 +181,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="GYT-yJ-c13" kind="show" id="LtO-ok-xeY"/>
+                                    <segue destination="iun-hC-G3n" kind="presentation" id="dvk-DR-j6k"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -371,7 +367,7 @@
                                 <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
-                                <rect key="frame" x="309" y="110" width="50" height="50"/>
+                                <rect key="frame" x="309" y="66" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1wr-xr-sTd"/>
                                 </constraints>
@@ -507,9 +503,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="32" y="88" width="311" height="166"/>
+                                <rect key="frame" x="32" y="44" width="311" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="166" id="K6p-Cn-69G"/>
+                                    <constraint firstAttribute="height" constant="140" id="K6p-Cn-69G"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -533,14 +529,8 @@
                                     <action selector="startButton:" destination="GYT-yJ-c13" eventType="touchUpInside" id="4Zs-iX-k6b"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
-                                <rect key="frame" x="32" y="266" width="311" height="171"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="171" id="5Wh-N9-AdK"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDO-wm-xc6">
-                                <rect key="frame" x="32" y="614" width="311" height="48"/>
+                                <rect key="frame" x="32" y="687" width="311" height="48"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="3wN-Gm-jxR"/>
@@ -557,11 +547,16 @@
                                     <action selector="takePhotoWithSender:" destination="GYT-yJ-c13" eventType="touchUpInside" id="AAT-5A-wbl"/>
                                 </connections>
                             </button>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
+                                <rect key="frame" x="32" y="192" width="311" height="227"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="227" id="7AZ-F9-hFt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="awZ-R6-eOt" firstAttribute="leading" secondItem="hQc-KN-Ae6" secondAttribute="leading" id="02d-hv-uuY"/>
-                            <constraint firstItem="BdE-j4-Q98" firstAttribute="top" secondItem="bDO-wm-xc6" secondAttribute="bottom" constant="25" id="2dG-3j-07S"/>
                             <constraint firstItem="BdE-j4-Q98" firstAttribute="centerX" secondItem="ItT-cA-qaT" secondAttribute="centerX" id="6bC-dj-blA"/>
                             <constraint firstItem="hQc-KN-Ae6" firstAttribute="top" secondItem="ItT-cA-qaT" secondAttribute="top" id="9uO-FA-0RB"/>
                             <constraint firstItem="bDO-wm-xc6" firstAttribute="centerX" secondItem="ItT-cA-qaT" secondAttribute="centerX" id="cJz-b9-BDP"/>
@@ -569,7 +564,8 @@
                             <constraint firstItem="awZ-R6-eOt" firstAttribute="centerX" secondItem="ItT-cA-qaT" secondAttribute="centerX" id="loa-kf-5b9"/>
                             <constraint firstItem="ItT-cA-qaT" firstAttribute="bottom" secondItem="BdE-j4-Q98" secondAttribute="bottom" constant="43" id="vlq-qA-g5p"/>
                             <constraint firstItem="ItT-cA-qaT" firstAttribute="trailing" secondItem="hQc-KN-Ae6" secondAttribute="trailing" constant="32" id="wke-pE-wMG"/>
-                            <constraint firstItem="awZ-R6-eOt" firstAttribute="top" secondItem="hQc-KN-Ae6" secondAttribute="bottom" constant="12" id="zyh-S9-mq7"/>
+                            <constraint firstItem="ItT-cA-qaT" firstAttribute="bottom" secondItem="bDO-wm-xc6" secondAttribute="bottom" constant="43" id="z9a-g5-Nej"/>
+                            <constraint firstItem="awZ-R6-eOt" firstAttribute="top" secondItem="hQc-KN-Ae6" secondAttribute="bottom" constant="8" id="zyh-S9-mq7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ItT-cA-qaT"/>
                     </view>
@@ -582,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Cq-z1-nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759.375" y="-10.56338028169014"/>
+            <point key="canvasLocation" x="757.5" y="-11.619718309859156"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qXf-sV-Qgk">
@@ -942,7 +938,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
-        <segue reference="Smm-n6-GKt"/>
+        <segue reference="dvk-DR-j6k"/>
         <segue reference="ssL-mY-8r4"/>
     </inferredMetricsTieBreakers>
 </document>
