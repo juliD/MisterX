@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         let misterx = defaults.string(forKey:"misterX")!
         if(misterx=="y"){
+            //update position of misterX
         }
         
         completionHandler(UIBackgroundFetchResult.newData)
