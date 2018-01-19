@@ -12,9 +12,9 @@ class TutorialPageViewController: UIPageViewController {
     
     
     let pageHeaders =  ["Entkomme Scotland Yard!", "Ziel", "Standort mitteilen", "Bleib auf dem Laufenden"]
-    let pageDescriptions = ["Versuche deinen Gegenspielern zu entkommen indem du öffentliche Verkehrsmittel benutzt", "Wenn du 2 Stunden lang unentdeckt fliehen konntest, hast du gewonnen!", "Alle 10 Minuten wird dein Standort mit den Mitspielern geteilt, damit diese wissen, an welher Station du gerade warst", "Sieh was im Chat los ist. Gib hierfür deinen Namen an."]
-    let colors = [UIColor(rgb: 0xACD8AA),UIColor(rgb: 0xAFC6471),UIColor(rgb: 0xC5D9E2),UIColor(rgb: 0xFFCAB1)]
-    
+    let pageDescriptions = ["Versuche deinen Gegenspielern zu entkommen indem du öffentliche Verkehrsmittel benutzt", "Wenn du 2 Stunden lang unentdeckt fliehen konntest, hast du gewonnen!", "Alle 10 Minuten wird dein Standort mit den Mitspielern geteilt, damit diese wissen an welcher Station du gerade warst", "Sieh was im Chat los ist. Gib hierfür deinen Namen an."]
+    let colors = [UIColor(rgb: 0x20d2bb),UIColor(rgb: 0x3395ff),UIColor(rgb: 0xf64c73),UIColor(rgb: 0xc873f4)]
+    let pageImage = ["tram", "anonymous-mask", "navigation_map", "nopicture"]
 
 
     //can generate a UIColor from a hexcode
@@ -70,6 +70,7 @@ class TutorialPageViewController: UIPageViewController {
             tutorialViewController.descriptionText = pageDescriptions[index]
             tutorialViewController.headerText = pageHeaders[index]
             tutorialViewController.index = index
+            tutorialViewController.imageName = pageImage[index]
             tutorialViewController.view.backgroundColor = colors[index]
             return tutorialViewController
         }

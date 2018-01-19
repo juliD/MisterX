@@ -92,6 +92,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         //load the foundPicture whenever it is ready to download
         ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
+
             self.ref.child("game").child(self.currentGame).child("images").child("foundPhoto").observeSingleEvent(of: .value, with: { (snapshot) in
                 // check if user has uploaded a photo
                 if snapshot.hasChild("url"){
@@ -127,6 +128,10 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
         newImageView.isUserInteractionEnabled = true
+        //show the image properly and do not let it be streched
+        if(newImageView.image?.size.height.isLess(than: (newImageView.image?.size.width)!))!{
+            newImageView.contentMode = .scaleAspectFit
+        }
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)
         self.view.addSubview(newImageView)
@@ -155,7 +160,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
-            self.imageRef.child("foundPhoto").setValue("")
+            self.imageRef.child("foundPhoto").removeValue()
             // Create a reference to the file to delete
             let filePath = "\(self.currentGame)/\("foundPhoto")"
             self.foundPicture.isHidden = true
@@ -254,6 +259,9 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         let newImageView = UIImageView(image: imageView.image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
+        if(newImageView.image?.size.height.isLess(than: (newImageView.image?.size.width)!))!{
+            newImageView.contentMode = .scaleAspectFit
+        }
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)

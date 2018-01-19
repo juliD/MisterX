@@ -9,18 +9,20 @@
 import UIKit
 import Firebase
 
-class TutorialViewController: UIViewController {
+class TutorialViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var imageview: UIImageView!
 
     
     var index = 0           //for keeping track where you are inside the tutorial
     var headerText = ""
     var descriptionText = ""
+    var imageName = ""
     var inputNameField: UITextField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
     
     var ref: DatabaseReference!
@@ -39,6 +41,7 @@ class TutorialViewController: UIViewController {
         headerLabel.text = headerText
         descriptionLabel.text = descriptionText
         pageControl.currentPage = index
+        imageview.image = UIImage(named: imageName)
 
         //hides or shows the next and start button depending on which page is displayed
         if(index == 3){
@@ -52,6 +55,8 @@ class TutorialViewController: UIViewController {
             inputNameField.clearButtonMode = UITextFieldViewMode.whileEditing;
             inputNameField.placeholder = "Name"
             inputNameField.translatesAutoresizingMaskIntoConstraints = false
+            inputNameField.delegate = self;
+
             self.view.addSubview(inputNameField)
             
             let constraintTop = NSLayoutConstraint(item: inputNameField,
@@ -117,8 +122,9 @@ class TutorialViewController: UIViewController {
         
     }
     
-    func enterText(){
-        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
     
 

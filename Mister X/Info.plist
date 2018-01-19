@@ -27,10 +27,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Get your location</string>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-		<string>remote-notification</string>
-	</array>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
