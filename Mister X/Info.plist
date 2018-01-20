@@ -26,8 +26,12 @@
 	<string>Get your Location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Get your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Get your location</string>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

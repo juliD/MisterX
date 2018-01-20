@@ -40,12 +40,21 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     }
     
     func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways{
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.allowsBackgroundLocationUpdates = true
+        }
+        /*
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             mapView.showsUserLocation = true
         } else {
             locationManager.requestWhenInUseAuthorization()
-            //locationManager.requestAlwaysAuthorization()
+            locationManager.requestAlwaysAuthorization()
+            locationManager.allowsBackgroundLocationUpdates = true
         }
+ */
     }
     
     override func viewDidLoad() {
@@ -150,6 +159,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             //updateLocation schreiben der Location von MisterX und Jäger in die Firebase
             myLocation.coordinate = location.coordinate
             myLocation.timestamp = location.timestamp
+            //print("Location Service running")
             let defaults = UserDefaults.standard
             let misterX = defaults.string(forKey: "misterX")
             if misterX! == "y" {
