@@ -111,7 +111,14 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                     self.getUsername(userid: finderID as! String){
                         (result : String) in
                         self.finderName.text = result
+                        
+                        //post
+                        let singleMessageRef = self.ref.child("game").child(self.currentGame).child("messages").childByAutoId()
+                        let foundMessage = "Ich habe Mister-X gefunden! Mister-X schau dir mein Bild an und lösche es, falls du es nicht bist!"
+                        let message = ["sender_id": finderID, "text": foundMessage]
+                        singleMessageRef.setValue(message)
                     }
+                    
 
                 }
             })
