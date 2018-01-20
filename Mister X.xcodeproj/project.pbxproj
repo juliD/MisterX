@@ -29,6 +29,7 @@
 		84C9C1CE200B5EC500F9E463 /* MisterXAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9C1CD200B5EC500F9E463 /* MisterXAnnotation.swift */; };
 		84D5E46B1FB33FA700A3D703 /* Mister_XTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E46A1FB33FA700A3D703 /* Mister_XTests.swift */; };
 		84D5E4761FB33FA700A3D703 /* Mister_XUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */; };
+		84ED76732013EB09000685A6 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED76722013EB09000685A6 /* PickerViewController.swift */; };
 		84FF6D721FC6126C00A7EAC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */; };
 		84FF6D741FC6325000A7EAC7 /* ViewControllerAddPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */; };
 		919E8B4918CDB447E03D0399 /* Pods_Mister_XTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506B9182F292C8EE40ABCFD8 /* Pods_Mister_XTests.framework */; };
@@ -86,6 +87,7 @@
 		84D5E4711FB33FA700A3D703 /* Mister XUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mister XUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5E4751FB33FA700A3D703 /* Mister_XUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mister_XUITests.swift; sourceTree = "<group>"; };
 		84D5E4771FB33FA700A3D703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84ED76722013EB09000685A6 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		84FF6D711FC6126C00A7EAC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84FF6D731FC6325000A7EAC7 /* ViewControllerAddPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAddPhoto.swift; sourceTree = "<group>"; };
 		AC8F726F846C8AE3BBC277D7 /* Pods-Mister XUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mister XUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mister XUITests/Pods-Mister XUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				847D59BA1FB5DA7500B4040B /* Assets.xcassets */,
 				847D59BE1FB5DA7500B4040B /* Info.plist */,
 				844CF3741FB5F451006AAFF9 /* LaunchScreen.storyboard */,
+				84ED76722013EB09000685A6 /* PickerViewController.swift */,
 				B8F053DA1FBC6063003A102E /* PersonController.swift */,
 				847D59BF1FB5DA7500B4040B /* ViewController.swift */,
 				847D59BC1FB5DA7500B4040B /* ViewControllerChat.swift */,
@@ -544,6 +547,7 @@
 				84C9C1CC20082B7600F9E463 /* OverviewController.swift in Sources */,
 				84C9C1CE200B5EC500F9E463 /* MisterXAnnotation.swift in Sources */,
 				84BF47A81FC22CAF0016592F /* TutorialViewController.swift in Sources */,
+				84ED76732013EB09000685A6 /* PickerViewController.swift in Sources */,
 				847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */,
 				B8F102DD20042271005F6E2D /* ViewControllerTimer.swift in Sources */,
 				847D59C61FB5DA7600B4040B /* ViewControllerEinstellungen.swift in Sources */,

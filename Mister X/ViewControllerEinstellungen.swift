@@ -32,7 +32,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     var userid = ""
     
     var currentGame = ""
-    
+    var foundPhotoPosted = false
+    var participants = [String]()
 
     
     override func viewDidLoad(){
@@ -41,7 +42,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         misterXName.text = "Lädt..."
         finderName.text = "Offen"
-
+        
         
 
         
@@ -89,6 +90,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         //load username of misterX
         getMisterxName()
+        getParticipantsNames()
         
         //load the foundPicture whenever it is ready to download
         ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
@@ -103,6 +105,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                         let foundPhoto = UIImage(data: data!)
                         self.foundPicture.image = foundPhoto
                         self.foundPicture.isHidden = false
+                        
+                        self.foundPhotoPosted = true
                     })
                 }
                 if snapshot.hasChild("finderID"){
@@ -155,10 +159,21 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     
     //present camera
     @IBAction func found_misterx(_ sender: UIButton) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        if(!foundPhotoPosted){
+            imagePicker =  UIImagePickerController()
+            imagePicker.delegate = self as UIImagePickerControllerDelegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        }else{
+            // create the alert
+            let alert = UIAlertController(title: "Mister-X muss zurücksetzen", message: "Du kannst nicht ein neues Foto hochladen, solange Mister-X nicht das Foto zurückgesetzt hat.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func reset_picture(_ sender: UIButton) {
@@ -172,6 +187,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             let filePath = "\(self.currentGame)/\("foundPhoto")"
             self.foundPicture.isHidden = true
             self.finderName.text = "Offen"
+            self.foundPhotoPosted = false
             
             let deleteref = self.storageRef.child(filePath)
             
@@ -244,6 +260,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func button_newgame(_ sender: UIButton) {
+        /*
         // create the alert
         let alert = UIAlertController(title: "Achtung", message: "Sicher ein neues Spiel anfangen?", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -258,6 +275,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+ */
     }
     
     //has to be defined a second time because apple only wants one gesture for one thing
@@ -275,6 +293,20 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    func getParticipantsNames(){
+        ref.child("game").child(currentGame).child("player")
+        _ = ref.child("game").child(currentGame).child("player").observe(.value, with: { (snapshot) in
+            for snap in snapshot.children {
+                print("Das ist der snapshot von allen kindern \(snap)")
+                let userid = (snap as! DataSnapshot).key
+                self.participants.append(userid)
+                print("DAs ist das array participant\(self.participants)" )
+                print("Das ist die User ids von allen \(userid)")
+            }
+        })
     }
 
 

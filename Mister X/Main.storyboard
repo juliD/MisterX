@@ -250,12 +250,19 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHk-PN-kce">
                                 <rect key="frame" x="16" y="682" width="343" height="36"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Neues Spiel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="button_newgame:" destination="fCy-FF-ppv" eventType="touchUpInside" id="sGP-0B-AbQ"/>
+                                    <segue destination="QZX-8q-iax" kind="show" id="MK0-2b-Glf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paq-qZ-xMd">
@@ -347,12 +354,69 @@
                         <outlet property="imageView" destination="AsE-uG-OkR" id="ZpS-Sx-WX5"/>
                         <outlet property="misterXName" destination="JnY-mV-yrI" id="3fa-q6-YsX"/>
                         <outlet property="resetPictureButton" destination="76A-F8-V2c" id="BsX-uf-Ugo"/>
-                        <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="iTR-LL-vYF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3388.125" y="797.53521126760563"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="Od5-gp-p15">
+            <objects>
+                <viewController id="QZX-8q-iax" customClass="PickerViewController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rl7-It-G8N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle den nächsten Mister X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-3E-djT">
+                                <rect key="frame" x="16" y="127.99999999999999" width="343" height="26.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLJ-5l-RkA">
+                                <rect key="frame" x="0.0" y="325" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QZX-8q-iax" id="dag-0g-Spg"/>
+                                    <outlet property="delegate" destination="QZX-8q-iax" id="cWA-11-1Gb"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-lF-sZH">
+                                <rect key="frame" x="16" y="665" width="343" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetGame:" destination="QZX-8q-iax" eventType="touchUpInside" id="PjF-hl-2MI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e5k-Xk-PJE" firstAttribute="bottom" secondItem="dUe-lF-sZH" secondAttribute="bottom" constant="24" id="9py-DT-vjc"/>
+                            <constraint firstItem="dUe-lF-sZH" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="BDk-ie-cK1"/>
+                            <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="dUe-lF-sZH" secondAttribute="trailing" constant="16" id="CHd-gc-y0z"/>
+                            <constraint firstItem="AvW-3E-djT" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="TFb-C4-PWK"/>
+                            <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="AvW-3E-djT" secondAttribute="trailing" constant="16" id="j5G-rb-zZM"/>
+                            <constraint firstItem="AvW-3E-djT" firstAttribute="top" secondItem="e5k-Xk-PJE" secondAttribute="top" constant="40" id="shj-Nc-LHl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e5k-Xk-PJE"/>
+                    </view>
+                    <connections>
+                        <outlet property="nextPersonLabel" destination="AvW-3E-djT" id="Q5b-Vr-L12"/>
+                        <outlet property="pickerview" destination="QLJ-5l-RkA" id="f7y-Q8-qgu"/>
+                        <outlet property="resetButton" destination="dUe-lF-sZH" id="wTn-wA-WHh"/>
+                        <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="9zC-LP-mBE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w8d-hG-MTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4244" y="791.37931034482767"/>
         </scene>
         <!--Karte-->
         <scene sceneID="Yrv-mm-sGx">
@@ -367,7 +431,7 @@
                                 <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
-                                <rect key="frame" x="309" y="110" width="50" height="50"/>
+                                <rect key="frame" x="309" y="66" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1wr-xr-sTd"/>
                                 </constraints>
@@ -949,6 +1013,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
-        <segue reference="kay-6Z-ZYx"/>
+        <segue reference="ssL-mY-8r4"/>
     </inferredMetricsTieBreakers>
 </document>
