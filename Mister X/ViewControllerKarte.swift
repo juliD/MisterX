@@ -18,6 +18,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     let locationManager = CLLocationManager()
     var mfc = MapFirebaseCom(updateTime: 30.0, updateTimePlayer: 10.0)
     var myLocation = UserLocationStruct()
+    var boost1 : [UserLocationStruct] = []
     var lookAtMap : Bool = true
     var lastPosition = MKPointAnnotation()
     
@@ -90,6 +91,15 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             //locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
+        let defaults = UserDefaults.standard
+        let misterX = defaults.string(forKey: "misterX")
+        if misterX! == "y" {
+        
+        }else{
+            Boost1_button.isEnabled = false
+            Boost2_button.isEnabled = false
+            Boost3_button.isEnabled = false
+        }
     }
     
     @IBAction func toggleMenu(_ sender: UIButton) {
@@ -109,6 +119,24 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
         
     }
+    
+    @IBOutlet weak var Boost1_button: UIButton!
+    @IBAction func Boost1(_ sender: UIButton) {
+        for (_ , userlocation) in mfc.allJaegerLocations!{
+            boost1.append(userlocation)
+        }
+        Boost1_button.isEnabled = false
+        showMapObjects()
+    }
+    
+    @IBOutlet weak var Boost2_button: UIButton!
+    @IBAction func Boost2(_ sender: UIButton) {
+    }
+    
+    @IBOutlet weak var Boost3_button: UIButton!
+    @IBAction func Boost3(_ sender: UIButton) {
+    }
+    
     
     @IBOutlet weak var historySwitch: UISwitch!
 
@@ -140,6 +168,13 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         if misterX! != "y" {
             for (_ , userlocation) in mfc.allJaegerLocations!{
                 setAnnotation(loc: userlocation, isMisterX: false)
+            }
+        }
+        if boost1.isEmpty{
+            //print("No Jaeger in Game")
+        }else{
+            for jaeger in boost1{
+                setAnnotation(loc: jaeger, isMisterX: false)
             }
         }
     }
