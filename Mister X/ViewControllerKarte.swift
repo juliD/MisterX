@@ -40,6 +40,26 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         return polylineRenderer
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKPinAnnotationView
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotation")
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        if let annotation = annotation as? MyPointAnnotation {
+            annotationView?.pinTintColor = annotation.pinTintColor
+        }
+ 
+        return annotationView
+    }
+    
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedAlways{
             mapView.showsUserLocation = true
@@ -224,15 +244,17 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
         let newdate = dateFormatter.string(from: loc.timestamp!)
         
         //Set new Annotation
-        let annotation = MKPointAnnotation()
+        let annotation = MyPointAnnotation()
         annotation.coordinate = loc.coordinate!
         
         if isMisterX{
             annotation.title = "Mister X"
             annotation.subtitle = "Mister X um \(newdate)"
+            annotation.pinTintColor = .red
         }else{
             annotation.title = loc.name
             annotation.subtitle = "\(loc.name) um \(newdate)"
+            annotation.pinTintColor = .green
         }
         mapView.addAnnotation(annotation)
     }
@@ -258,4 +280,8 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
      // Pass the selected object to the new view controller.
      }
      */
+}
+
+class MyPointAnnotation : MKPointAnnotation {
+    var pinTintColor: UIColor?
 }
