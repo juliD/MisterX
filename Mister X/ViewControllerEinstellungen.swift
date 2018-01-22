@@ -17,6 +17,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var foundPicture: UIImageView!
     @IBOutlet weak var foundButton: UIButton!
     @IBOutlet weak var resetPictureButton: UIButton!
+    @IBOutlet weak var nextMisteXButton: UIButton!
+
     @IBOutlet weak var finderName: UILabel!
     @IBOutlet weak var misterXName: UILabel!
 
@@ -54,12 +56,16 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
          resetPictureButton.isHidden = true
          resetPictureButton.isEnabled = false
+         nextMisteXButton.isHidden = true
+         nextMisteXButton.isEnabled = false
         //change button depending if you are mister x or not
         if(misterx=="y"){
             foundButton.isHidden = true
             foundButton.isEnabled = false
             resetPictureButton.isHidden = false
             resetPictureButton.isEnabled = true
+            nextMisteXButton.isHidden = false
+            nextMisteXButton.isEnabled = true
             
         }
  

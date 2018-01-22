@@ -40,7 +40,7 @@ class TabBarController: UITabBarController {
                     defaults.set("y", forKey: "misterX")
                     let alert = UIAlertController(title: "Spiel beendet!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
-                        self.performSegue(withIdentifier: "newGameMisterX", sender: self)
+                        self.performSegue(withIdentifier: "newGameJaeger", sender: self)
                         }))
                     self.present(alert, animated: true, completion: nil)
                 }else{

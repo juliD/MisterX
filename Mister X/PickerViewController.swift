@@ -115,7 +115,6 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func getParticipantsNames(){
-        ref.child("game").child(currentGame).child("player")
         _ = ref.child("game").child(currentGame).child("player").observe(.value, with: { (snapshot) in
             for snap in snapshot.children {
                 let userid = (snap as! DataSnapshot).key                
