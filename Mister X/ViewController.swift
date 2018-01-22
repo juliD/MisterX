@@ -53,6 +53,7 @@ class ViewController: UIViewController {
             print("User logged in anonymously with uid: "+user!.uid)
             let defaults = UserDefaults.standard
             defaults.set(user!.uid, forKey:"uid")
+            defaults.set("", forKey: "activeGame")
             defaults.set(0, forKey:"boost1")
             defaults.set(0, forKey:"boost2")
             defaults.set("", forKey:"gameCode")

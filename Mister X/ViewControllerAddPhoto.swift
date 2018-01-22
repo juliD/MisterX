@@ -22,7 +22,6 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
     
     var currentGame: String = ""
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         //getting information about the user

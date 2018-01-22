@@ -162,13 +162,17 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
             //print("Location Service running")
             let defaults = UserDefaults.standard
             let misterX = defaults.string(forKey: "misterX")
-            if misterX! == "y" {
-                mfc.updateMisterXLocation(location: myLocation)
-            }else{
-                let name = defaults.string(forKey: "name")
-                mfc.updateJaegerLocation(location: myLocation, name: name!)
+            let activeGame = defaults.string(forKey: "activeGame")
+            if(activeGame == "y"){
+                if misterX! == "y" {
+                    mfc.updateMisterXLocation(location: myLocation)
+                }else{
+                    let name = defaults.string(forKey: "name")
+                    mfc.updateJaegerLocation(location: myLocation, name: name!)
+                }
+                
             }
-            
+   
             //Wenn sich die Position von MisterX geändert hat dann Historie oder Annotation updaten
             //Firebase meldet die Veränderung durch einen Observer
             if mfc.misterXChangedLocation{

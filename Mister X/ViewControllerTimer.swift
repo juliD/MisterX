@@ -40,6 +40,7 @@ class ViewControllerTimer : UIViewController {
         super.viewDidLoad()
         let misterx = defaults.string(forKey:"misterX")!
         currentGame = defaults.string(forKey: "gameCode")!
+        defaults.set("y", forKey: "activeGame")
         isMisterX = misterx=="y"
         if !isMisterX {
            setTime()

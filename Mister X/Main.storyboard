@@ -385,7 +385,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-lF-sZH">
                                 <rect key="frame" x="16" y="665" width="343" height="40"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Neues Spiel starten"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -398,12 +398,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e5k-Xk-PJE" firstAttribute="bottom" secondItem="dUe-lF-sZH" secondAttribute="bottom" constant="24" id="9py-DT-vjc"/>
                             <constraint firstItem="dUe-lF-sZH" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="BDk-ie-cK1"/>
                             <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="dUe-lF-sZH" secondAttribute="trailing" constant="16" id="CHd-gc-y0z"/>
                             <constraint firstItem="AvW-3E-djT" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="TFb-C4-PWK"/>
                             <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="AvW-3E-djT" secondAttribute="trailing" constant="16" id="j5G-rb-zZM"/>
                             <constraint firstItem="AvW-3E-djT" firstAttribute="top" secondItem="e5k-Xk-PJE" secondAttribute="top" constant="40" id="shj-Nc-LHl"/>
+                            <constraint firstItem="e5k-Xk-PJE" firstAttribute="bottom" secondItem="dUe-lF-sZH" secondAttribute="bottom" constant="24" id="y9J-To-rG4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e5k-Xk-PJE"/>
                     </view>
@@ -411,7 +411,7 @@
                         <outlet property="nextPersonLabel" destination="AvW-3E-djT" id="Q5b-Vr-L12"/>
                         <outlet property="pickerview" destination="QLJ-5l-RkA" id="f7y-Q8-qgu"/>
                         <outlet property="resetButton" destination="dUe-lF-sZH" id="wTn-wA-WHh"/>
-                        <segue destination="khd-0s-y1Z" kind="show" identifier="newgame" id="9zC-LP-mBE"/>
+                        <segue destination="iun-hC-G3n" kind="presentation" identifier="newgame" id="oZH-Bw-VDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8d-hG-MTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -567,7 +567,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="32" y="88" width="311" height="140"/>
+                                <rect key="frame" x="32" y="44" width="311" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="K6p-Cn-69G"/>
                                 </constraints>
@@ -612,7 +612,7 @@
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
-                                <rect key="frame" x="32" y="268" width="311" height="227"/>
+                                <rect key="frame" x="32" y="224" width="311" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="7AZ-F9-hFt"/>
                                 </constraints>
@@ -633,6 +633,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ItT-cA-qaT"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EdY-bf-JJ7"/>
                     <connections>
                         <outlet property="imageView" destination="awZ-R6-eOt" id="2FQ-hN-ggM"/>
                         <outlet property="photoButton" destination="bDO-wm-xc6" id="pov-o2-vV6"/>
@@ -647,7 +648,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qXf-sV-Qgk">
             <objects>
-                <tabBarController id="ncE-C4-1Lf" sceneMemberID="viewController">
+                <tabBarController id="ncE-C4-1Lf" customClass="TabBarController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mff-e2-xgF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -657,6 +658,8 @@
                         <segue destination="lQ9-38-U9l" kind="relationship" relationship="viewControllers" id="XDw-P0-Bpw"/>
                         <segue destination="sqW-UV-ABh" kind="relationship" relationship="viewControllers" id="vPm-2l-VVZ"/>
                         <segue destination="G6c-eD-5Jl" kind="relationship" relationship="viewControllers" id="Wc5-6h-cmi"/>
+                        <segue destination="iun-hC-G3n" kind="presentation" identifier="newGameJaeger" id="5CA-cv-X0p"/>
+                        <segue destination="GYT-yJ-c13" kind="presentation" identifier="newGameMisterX" id="sJz-RW-yr8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHB-3m-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1012,7 +1015,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
-        <segue reference="Qtv-dW-pne"/>
+        <segue reference="oZH-Bw-VDh"/>
         <segue reference="ssL-mY-8r4"/>
+        <segue reference="sJz-RW-yr8"/>
     </inferredMetricsTieBreakers>
 </document>

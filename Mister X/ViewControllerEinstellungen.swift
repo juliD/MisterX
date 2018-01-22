@@ -90,7 +90,6 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         
         //load username of misterX
         getMisterxName()
-        getParticipantsNames()
         
         //load the foundPicture whenever it is ready to download
         ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
@@ -294,21 +293,5 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
-    
-    
-    func getParticipantsNames(){
-        ref.child("game").child(currentGame).child("player")
-        _ = ref.child("game").child(currentGame).child("player").observe(.value, with: { (snapshot) in
-            for snap in snapshot.children {
-                print("Das ist der snapshot von allen kindern \(snap)")
-                let userid = (snap as! DataSnapshot).key
-                self.participants.append(userid)
-                print("DAs ist das array participant\(self.participants)" )
-                print("Das ist die User ids von allen \(userid)")
-            }
-        })
-    }
-
-
     
 }

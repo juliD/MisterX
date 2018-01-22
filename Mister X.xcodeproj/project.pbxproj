@@ -20,6 +20,7 @@
 		847D59C81FB5DA7600B4040B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59BF1FB5DA7500B4040B /* ViewController.swift */; };
 		847D59C91FB5DA7600B4040B /* ViewControllerGruppe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */; };
 		847D59CB1FB5DA7600B4040B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D59C21FB5DA7500B4040B /* AppDelegate.swift */; };
+		847EA21220166BA100BCBDE3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847EA21120166BA100BCBDE3 /* TabBarController.swift */; };
 		8485FE252002719800981914 /* MapFirebaseCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485FE242002719800981914 /* MapFirebaseCom.swift */; };
 		84A2E5D51FDAAB2D00ECE5E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A2E5D41FDAAB2D00ECE5E3 /* Main.storyboard */; };
 		84BF47A81FC22CAF0016592F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF47A71FC22CAF0016592F /* TutorialViewController.swift */; };
@@ -73,6 +74,7 @@
 		847D59BF1FB5DA7500B4040B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		847D59C01FB5DA7500B4040B /* ViewControllerGruppe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerGruppe.swift; sourceTree = "<group>"; };
 		847D59C21FB5DA7500B4040B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		847EA21120166BA100BCBDE3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8485FE242002719800981914 /* MapFirebaseCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFirebaseCom.swift; sourceTree = "<group>"; };
 		84A2E5D41FDAAB2D00ECE5E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84BF47A71FC22CAF0016592F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				84C9C1C52007F75B00F9E463 /* CopyableLabel.swift */,
 				84C9C1CB20082B7600F9E463 /* OverviewController.swift */,
 				84C9C1CD200B5EC500F9E463 /* MisterXAnnotation.swift */,
+				847EA21120166BA100BCBDE3 /* TabBarController.swift */,
 			);
 			path = "Mister X";
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				847D59C51FB5DA7600B4040B /* ViewControllerChat.swift in Sources */,
 				84BF47AA1FC233190016592F /* TutorialPageViewController.swift in Sources */,
 				B8F053DB1FBC6063003A102E /* PersonController.swift in Sources */,
+				847EA21220166BA100BCBDE3 /* TabBarController.swift in Sources */,
 				B89795AB20050039002F02A5 /* Extensions.swift in Sources */,
 				84FF6D741FC6325000A7EAC7 /* ViewControllerAddPhoto.swift in Sources */,
 				844CF3791FB621B5006AAFF9 /* ViewControllerKarte.swift in Sources */,
