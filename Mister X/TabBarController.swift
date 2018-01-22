@@ -26,13 +26,16 @@ class TabBarController: UITabBarController {
         currentGame = defaults.string(forKey: "gameCode")!
         userid = defaults.string(forKey: "uid")!
         
-        
+        //listen if game is deleted which means a new game is created
         ref.child("game").child(currentGame).child("MisterX").observeSingleEvent(of: .childRemoved, with: {(snapshot) in
-            
+            //listen if one self becomes mister X
             self.ref.child("game").child(self.currentGame).child("player").child(self.userid).observeSingleEvent(of: .value, with: { (snapshot) in
+                //needed to stop posting the location
                 defaults.set("", forKey: "activeGame")
 
                 self.nextMisterX = snapshot.childSnapshot(forPath: "MisterX").value! as! Bool
+                
+                //check if you are going to become a jaeger or mister-x
                 if(self.nextMisterX){
                     defaults.set("y", forKey: "misterX")
                     let alert = UIAlertController(title: "Spiel beendet!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
@@ -47,8 +50,6 @@ class TabBarController: UITabBarController {
                         self.performSegue(withIdentifier: "newGameJaeger", sender: self)
                         }))
                     self.present(alert, animated: true, completion: nil)
-                    //not nextMisterX
-                    self.performSegue(withIdentifier: "newGameJaeger", sender: self)
                 }
                 
 

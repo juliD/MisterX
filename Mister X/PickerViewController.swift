@@ -25,8 +25,6 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var nextMisterXid: String = ""
 
     
-    //later remove
-    var mfc = MapFirebaseCom(updateTime: 30.0, updateTimePlayer: 10.0)
 
     
     override func viewDidLoad() {
@@ -39,7 +37,6 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         ref = Database.database().reference()
         storageRef = Storage.storage().reference(forURL: "gs://misterx-a31d5.appspot.com/")
 
-        mfc.removeObserver()
         getParticipantsNames()
         // Do any additional setup after loading the view.
     }

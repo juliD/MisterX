@@ -112,7 +112,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         performSegue(withIdentifier: "backToGroup", sender: self)
     }
     func startGame(){
-        performSegue(withIdentifier: "startGamefromQR", sender: self)
+        performSegue(withIdentifier: "showTimerFromGroup", sender: self)
     }
     
     override func didReceiveMemoryWarning() {

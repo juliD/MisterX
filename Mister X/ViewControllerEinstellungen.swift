@@ -51,7 +51,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         userid = defaults.string(forKey: "uid")!
         let misterx = defaults.string(forKey:"misterX")!
         
-        /*  needs to be uncommented later on
+        
          resetPictureButton.isHidden = true
          resetPictureButton.isEnabled = false
         //change button depending if you are mister x or not
@@ -62,15 +62,14 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             resetPictureButton.isEnabled = true
             
         }
- */
+ 
         
         storageRef = Storage.storage().reference(forURL: "gs://misterx-a31d5.appspot.com/")
         ref = Database.database().reference()
         imageRef = ref.child("game").child(currentGame).child("images")
         
-        //register tap on imageview
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.misterxImageTapped(_:))))
-        foundPicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.foundPictureTapped(_:))))
+        
+        
         
         //load the picture whenever it is ready to download
         ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
@@ -83,6 +82,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                     self.storageRef.child(filePath).getData(maxSize: 15*1024*1024, completion: { (data, error) in
                         let startPhoto = UIImage(data: data!)
                         self.imageView.image = startPhoto
+                        //register tap on imageview
+                        self.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.misterxImageTapped(_:))))
                     })
                 }
             })
@@ -104,6 +105,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                         let foundPhoto = UIImage(data: data!)
                         self.foundPicture.image = foundPhoto
                         self.foundPicture.isHidden = false
+                        self.foundPicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewControllerEinstellungen.foundPictureTapped(_:))))
                         
                         self.foundPhotoPosted = true
                     })

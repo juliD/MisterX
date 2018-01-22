@@ -431,7 +431,7 @@
                                 <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJH-KW-llW">
-                                <rect key="frame" x="309" y="42" width="50" height="50"/>
+                                <rect key="frame" x="309" y="86" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1wr-xr-sTd"/>
                                 </constraints>
@@ -579,8 +579,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="32" y="44" width="311" height="140"/>
-
+                                <rect key="frame" x="32" y="20" width="311" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="K6p-Cn-69G"/>
                                 </constraints>
@@ -625,8 +624,7 @@
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
-                                <rect key="frame" x="32" y="224" width="311" height="227"/>
-
+                                <rect key="frame" x="32" y="200" width="311" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="7AZ-F9-hFt"/>
                                 </constraints>
@@ -862,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKO-X7-MtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759.375" y="727.81690140845069"/>
+            <point key="canvasLocation" x="756" y="871"/>
         </scene>
         <!--Mister X-->
         <scene sceneID="NCg-MN-7ls">
@@ -1014,7 +1012,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rS-pr-xMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1122" y="836"/>
+            <point key="canvasLocation" x="-1058" y="841"/>
         </scene>
     </scenes>
     <resources>
@@ -1029,8 +1027,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
-        <segue reference="oZH-Bw-VDh"/>
-        <segue reference="ssL-mY-8r4"/>
+        <segue reference="Smm-n6-GKt"/>
+        <segue reference="kay-6Z-ZYx"/>
         <segue reference="sJz-RW-yr8"/>
     </inferredMetricsTieBreakers>
 </document>

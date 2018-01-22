@@ -100,12 +100,6 @@ class MapFirebaseCom{
     }
     
     
-    //remove observer for all
-    func removeObserver(){
-        ref.child("game").child(getGameCode()!).child("Jaeger").removeAllObservers()
-        ref.child("game").child(getGameCode()!).child("MisterX").removeAllObservers()
-    }
-    
     func updateMisterXLocation(location: UserLocationStruct) {
         let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
         if newLocation.timestamp == nil {
