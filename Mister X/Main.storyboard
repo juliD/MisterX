@@ -672,9 +672,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-p3-QdP">
-                                <rect key="frame" x="166" y="144" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-p3-QdP">
+                                <rect key="frame" x="40" y="121" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -690,16 +689,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startButton:" destination="iI1-56-nn9" eventType="touchUpInside" id="NWH-qw-MzP"/>
+                                    <action selector="startButton:" destination="3tW-EX-tfF" eventType="touchUpInside" id="082-A8-4rl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfC-Tp-jdt">
-                                <rect key="frame" x="64" y="617" width="247" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfC-Tp-jdt">
+                                <rect key="frame" x="64" y="621" width="247" height="30"/>
                                 <state key="normal" title="Spiel verlassen">
                                     <color key="titleColor" red="1" green="0.032368540039999998" blue="0.066803091620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="leaveButton:" destination="iI1-56-nn9" eventType="touchUpInside" id="mj8-yR-aGc"/>
+                                    <action selector="leaveButton:" destination="3tW-EX-tfF" eventType="touchUpInside" id="BNU-Lz-gkU"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksk-2E-0jB" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
@@ -716,9 +715,14 @@
                             <constraint firstItem="BfC-Tp-jdt" firstAttribute="leading" secondItem="9NU-6l-a3m" secondAttribute="leading" constant="64" id="9HS-YQ-u2Z"/>
                             <constraint firstItem="WAY-Rj-G4Y" firstAttribute="top" secondItem="9NU-6l-a3m" secondAttribute="top" constant="32" id="Oky-7n-CAQ"/>
                             <constraint firstItem="Zn3-03-WLQ" firstAttribute="leading" secondItem="9NU-6l-a3m" secondAttribute="leading" constant="16" id="Q7r-Rf-eXC"/>
+                            <constraint firstItem="9NU-6l-a3m" firstAttribute="trailing" secondItem="UcN-p3-QdP" secondAttribute="trailing" constant="40" id="T0O-p9-ZSu"/>
                             <constraint firstItem="9NU-6l-a3m" firstAttribute="trailing" secondItem="BfC-Tp-jdt" secondAttribute="trailing" constant="64" id="Tfm-mF-U6T"/>
+                            <constraint firstItem="Zn3-03-WLQ" firstAttribute="top" secondItem="ksk-2E-0jB" secondAttribute="bottom" constant="134" id="Z6r-2r-HDJ"/>
                             <constraint firstItem="WAY-Rj-G4Y" firstAttribute="leading" secondItem="9NU-6l-a3m" secondAttribute="leading" constant="16" id="cve-6j-8oP"/>
+                            <constraint firstItem="9NU-6l-a3m" firstAttribute="bottom" secondItem="BfC-Tp-jdt" secondAttribute="bottom" constant="16" id="deI-fE-WHO"/>
                             <constraint firstItem="9NU-6l-a3m" firstAttribute="trailing" secondItem="WAY-Rj-G4Y" secondAttribute="trailing" constant="16" id="f5T-Mu-hS8"/>
+                            <constraint firstItem="UcN-p3-QdP" firstAttribute="top" secondItem="WAY-Rj-G4Y" secondAttribute="bottom" constant="40" id="i4b-cf-FSs"/>
+                            <constraint firstItem="UcN-p3-QdP" firstAttribute="leading" secondItem="9NU-6l-a3m" secondAttribute="leading" constant="40" id="r2n-c3-j7q"/>
                             <constraint firstItem="9NU-6l-a3m" firstAttribute="bottom" secondItem="Zn3-03-WLQ" secondAttribute="bottom" constant="64" id="ybY-sf-v3H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9NU-6l-a3m"/>
@@ -733,9 +737,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odc-rd-ca7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="iI1-56-nn9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="824"/>
+            <point key="canvasLocation" x="1577" y="1064"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qXf-sV-Qgk">
@@ -1107,8 +1110,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="ONZ-bM-yHo"/>
-        <segue reference="ssL-mY-8r4"/>
-        <segue reference="d5s-CD-rT5"/>
+        <segue reference="kay-6Z-ZYx"/>
+        <segue reference="SYV-CQ-5sg"/>
         <segue reference="wt4-he-gyz"/>
         <segue reference="rej-ZQ-fSy"/>
     </inferredMetricsTieBreakers>

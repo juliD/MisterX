@@ -100,7 +100,6 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             if(self.userid != self.nextMisterXid){
                 //set yourself to not be misterx anymore
                 defaults.set("", forKey:"misterX")
-                defaults.set("", forKey:"activeGame")
                 self.ref.child("game").child(self.currentGame).child("player").child(self.userid).child("MisterX").setValue(false)
                 //set other person as misterx
                 self.ref.child("game").child(self.currentGame).child("player").child(self.nextMisterXid).child("MisterX").setValue(true)
@@ -143,7 +142,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.ref.child("game").child(self.currentGame).child("messages").removeValue()
         self.ref.child("game").child(self.currentGame).child("MisterX").removeValue()
         self.ref.child("game").child(self.currentGame).child("Jaeger").removeValue()
-        
+        self.ref.child("game").child(self.currentGame).child("startetAt").removeValue()
         self.ref.child("game").child(self.currentGame).child("images").removeValue()
         // Create a reference to the file to delete
         let filePathFound = "\(self.currentGame)/\("foundPhoto")"
