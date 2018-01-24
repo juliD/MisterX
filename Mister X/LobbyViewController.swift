@@ -19,6 +19,10 @@ class LobbyViewController: UIViewController {
     var isMisterX: String = ""
     var ref: DatabaseReference!
     var currentGame: String = ""
+    var userid: String = ""
+    
+    var participants: [String] = [String]()
+
 
     
     override func viewDidLoad() {
@@ -28,7 +32,8 @@ class LobbyViewController: UIViewController {
         let defaults = UserDefaults.standard
         isMisterX = defaults.string(forKey: "misterX")!
         currentGame = defaults.string(forKey: "gameCode")!
-        
+        userid = defaults.string(forKey: "uid")!
+
     
 
         if(isMisterX == "y"){
@@ -50,6 +55,8 @@ class LobbyViewController: UIViewController {
         //listen if a player leaves the group
         ref.child("game").child(currentGame).child("player").observeSingleEvent(of: .childRemoved, with: {(snapshot) in
             
+            self.participants = self.participants.filter{$0 != snapshot.key}
+
             self.personController.persons = self.personController.persons-1
             if(self.personController.persons<2){
                 // create the alert
@@ -118,14 +125,41 @@ class LobbyViewController: UIViewController {
         defaults.set(0, forKey:"boost2")
         defaults.set("", forKey:"gameCode")
         defaults.set("", forKey:"misterX")
+        self.ref.child("game").child(currentGame).child("player").child(userid).removeValue()
+        print(self.participants)
+        self.participants = self.participants.filter{$0 != userid}
+        print(self.participants)
+        self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
 
     }
     
     func fillPersonController(){
         _ = ref.child("game").child(currentGame).child("player").observe(.value, with: { (snapshot) in
-            for _ in snapshot.children {
+            for user in snapshot.children {
+                //count up for each participant
                 self.personController.persons = self.personController.persons + 1
+                self.participants.append((user as! DataSnapshot).key)
             }
+        })
+    }
+    
+    func listenIfBecameMisterX(){
+        self.ref.child("game").child(self.currentGame).child("player").child(self.userid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let nextMisterX = snapshot.childSnapshot(forPath: "MisterX").value! as! Bool
+            
+            //check if you are going to become a jaeger or mister-x
+            if(nextMisterX){
+                let defaults = UserDefaults.standard
+                defaults.set("y", forKey: "misterX")
+                let alert = UIAlertController(title: "Spiel beendet!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
+                    self.misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            
         })
     }
 
