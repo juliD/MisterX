@@ -83,7 +83,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }
         }
         
-        let defaults = UserDefaults.standard
+        
         var ref: DatabaseReference!
         ref = Database.database().reference().child("game")
         
@@ -91,28 +91,23 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             if snapshot.hasChild(metadataObj.stringValue!){
                 
                 //get userid
-                
+                let defaults = UserDefaults.standard
                 let uid = defaults.string(forKey: "uid")
-                ref.child(metadataObj.stringValue!).child("player").child(uid!).setValue(["MisterX" : false])
-                ref = Database.database().reference().child("game").child(metadataObj.stringValue!)
-                ref.observe(.childAdded, with: {(snapshot) -> Void in
-                    if snapshot.key == "startetAt"{
-                        self.startGame()
-                        
-                    }
-                })
+                let pushToken = defaults.string(forKey: "pushToken")
+                ref.child(metadataObj.stringValue!).child("player").child(uid!).setValue(["MisterX" : false, "pushToken" : pushToken!])
+                
+                defaults.set(metadataObj.stringValue!, forKey:"gameCode")
+                defaults.set("", forKey:"misterX")
+                self.performSegue(withIdentifier: "startToLobby", sender: self)
                 
             }else{
                 print("Wrong QR Code")
+                self.performSegue(withIdentifier: "backToGroup", sender: self)
             }
         })
         
-        defaults.set(metadataObj.stringValue!, forKey:"gameCode")
-        defaults.set("", forKey:"misterX")
-        performSegue(withIdentifier: "backToGroup", sender: self)
-    }
-    func startGame(){
-        performSegue(withIdentifier: "showTimerFromGroup", sender: self)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

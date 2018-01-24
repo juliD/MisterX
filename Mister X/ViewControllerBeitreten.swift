@@ -41,9 +41,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
         textField.resignFirstResponder()
         return true
     }
-    func startGame(){
-        performSegue(withIdentifier: "showTimerFromGroup", sender: self)
-    }
+
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         //add this user to game if game code is correct
@@ -64,13 +62,7 @@ class ViewControllerBeitreten: UIViewController, UITextFieldDelegate, UINavigati
                 
                 defaults.set(textField.text, forKey:"gameCode")
                 defaults.set("", forKey:"misterX")
-                
-                ref = Database.database().reference().child("game").child(textField.text!)
-                ref.observe(.childAdded, with: {(snapshot) -> Void in
-                    if snapshot.key == "startetAt"{
-                        self.startGame()
-                    }
-                })
+                self.performSegue(withIdentifier: "startToLobby", sender: self)
                 
             }else{
                 print("game code doesn't exist")

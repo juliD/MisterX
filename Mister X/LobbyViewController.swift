@@ -34,13 +34,14 @@ class LobbyViewController: UIViewController {
         if(isMisterX == "y"){
             misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"
         }else{
-            misterxStatus.text = "Du bist das nächste mal ein Jäger. Schanpp dir Mister X!"
+            misterxStatus.text = "Du bist ab jetzt ein Jäger. Schanpp dir Mister X!"
         }
 
         //add listener for new players
         ref = Database.database().reference()
+        
         fillPersonController()
-        ref.observe(.childAdded, with: {(snapshot) -> Void in
+        ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
             if snapshot.key == "startetAt"{
                 self.performSegue(withIdentifier: "newGameFromLobbyJaeger", sender: self)
             }
