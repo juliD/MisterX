@@ -52,6 +52,8 @@ class LobbyViewController: UIViewController {
             }
         })
         
+        listenIfBecameMisterX()
+        
         //listen if a player leaves the group
         ref.child("game").child(currentGame).child("player").observeSingleEvent(of: .childRemoved, with: {(snapshot) in
             
@@ -135,6 +137,7 @@ class LobbyViewController: UIViewController {
     
     func fillPersonController(){
         _ = ref.child("game").child(currentGame).child("player").observe(.value, with: { (snapshot) in
+            self.personController.persons = 0
             for user in snapshot.children {
                 //count up for each participant
                 self.personController.persons = self.personController.persons + 1
