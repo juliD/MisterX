@@ -16,16 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
-    var locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     var myLocation = UserLocationStruct()
-
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //LocationManager for PushNachrichten
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestAlwaysAuthorization()
+        setupLocationManager()
         
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -59,11 +57,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func setupLocationManager(){
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             myLocation.coordinate = location.coordinate
             myLocation.timestamp = location.timestamp
+            print(myLocation)
         }
+        manager.stopUpdatingLocation()
     }
     
     func registerForPushNotifications(application: UIApplication) {
@@ -113,7 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 let newPosition: [String:Any] = ["latitude":Double((myLocation.coordinate?.latitude)!), "longitude":Double((myLocation.coordinate?.longitude)!)]
                 ref.child("game/\(gameCode!)/MisterX/\(myLocation.timestamp!)").setValue(newPosition)
             }
-            locationManager.stopUpdatingLocation()
         }
         
         completionHandler(UIBackgroundFetchResult.newData)
