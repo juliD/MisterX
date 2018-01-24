@@ -9,19 +9,29 @@
 import UIKit
 import Firebase
 import UserNotifications
-
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate{
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var locationManager = CLLocationManager()
+    var myLocation = UserLocationStruct()
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //LocationManager for PushNachrichten
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestAlwaysAuthorization()
+        
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         registerForPushNotifications(application: application)
+        
         return true
     }
     
@@ -47,6 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            myLocation.coordinate = location.coordinate
+            myLocation.timestamp = location.timestamp
+        }
     }
     
     func registerForPushNotifications(application: UIApplication) {
@@ -87,8 +104,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let defaults = UserDefaults.standard
         let misterx = defaults.string(forKey:"misterX")!
+        let gameCode = defaults.string(forKey: "gameCode")
+        var ref : DatabaseReference
+        ref = Database.database().reference()
         if(misterx=="y"){
-            
+            locationManager.startUpdatingLocation()
+            if myLocation.timestamp != nil{
+                let newPosition: [String:Any] = ["latitude":Double((myLocation.coordinate?.latitude)!), "longitude":Double((myLocation.coordinate?.longitude)!)]
+                ref.child("game/\(gameCode!)/MisterX/\(myLocation.timestamp!)").setValue(newPosition)
+            }
+            locationManager.stopUpdatingLocation()
         }
         
         completionHandler(UIBackgroundFetchResult.newData)
