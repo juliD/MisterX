@@ -98,6 +98,9 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         //load username of misterX
         getMisterxName()
         
+        //listen if picture gets removed
+        listenForPictureRemoved()
+        
         //load the foundPicture whenever it is ready to download
         ref.child("game").child(currentGame).child("images").observe(.childAdded, with: {(snapshot) -> Void in
 
@@ -122,12 +125,6 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                     self.getUsername(userid: finderID as! String){
                         (result : String) in
                         self.finderName.text = result
-                        
-                        //post
-                        let singleMessageRef = self.ref.child("game").child(self.currentGame).child("messages").childByAutoId()
-                        let foundMessage = "Ich habe Mister-X gefunden! Mister-X schau dir mein Bild an und lösche es, falls du es nicht bist!"
-                        let message = ["sender_id": finderID, "text": foundMessage]
-                        singleMessageRef.setValue(message)
                     }
                     
 
@@ -237,6 +234,12 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
                 //store downloadURL at database
                 self.imageRef.child("foundPhoto").child("url").setValue(downloadURL)
                 self.imageRef.child("foundPhoto").child("finderID").setValue(self.userid)
+                
+                //post
+                let singleMessageRef = self.ref.child("game").child(self.currentGame).child("messages").childByAutoId()
+                let foundMessage = "Ich habe Mister-X gefunden! Mister-X schau dir mein Bild an und lösche es, falls du es nicht bist!"
+                let message = ["sender_id": self.userid, "text": foundMessage]
+                singleMessageRef.setValue(message)
             }
         }
     }
@@ -300,6 +303,16 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    func listenForPictureRemoved(){
+        //listen if the pictures is removed
+        ref.child("game").child(currentGame).child("images").observeSingleEvent(of: .childRemoved, with: {(snapshot) in
+            self.foundPicture.isHidden = true
+            self.finderName.text = "Offen"
+            self.foundPhotoPosted = false            
+        })
     }
     
 }

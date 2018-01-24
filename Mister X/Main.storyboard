@@ -266,10 +266,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paq-qZ-xMd">
-                                <rect key="frame" x="16" y="195" width="52" height="37"/>
+                                <rect key="frame" x="16" y="195" width="76" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Z1x-BA-evd"/>
-                                    <constraint firstAttribute="width" constant="52" id="h5s-Nt-5M2"/>
+                                    <constraint firstAttribute="width" constant="76" id="h5s-Nt-5M2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -290,7 +290,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-vK-UMZ">
-                                <rect key="frame" x="16" y="368" width="55" height="24"/>
+                                <rect key="frame" x="16" y="368" width="84" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -331,12 +331,12 @@
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="bur-2x-snj" secondAttribute="trailing" constant="16" id="Ji5-QP-uBE"/>
                             <constraint firstItem="76A-F8-V2c" firstAttribute="leading" secondItem="FZU-KQ-Iw0" secondAttribute="leading" constant="16" id="ML6-8Y-6Cz"/>
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="ZHk-PN-kce" secondAttribute="trailing" constant="16" id="Pav-UG-eTp"/>
-                            <constraint firstItem="bur-2x-snj" firstAttribute="leading" secondItem="Khz-vK-UMZ" secondAttribute="trailing" constant="18" id="Vvx-PV-HNw"/>
+                            <constraint firstItem="bur-2x-snj" firstAttribute="leading" secondItem="Khz-vK-UMZ" secondAttribute="trailing" constant="-11" id="Vvx-PV-HNw"/>
                             <constraint firstItem="pHO-4K-Bvh" firstAttribute="top" secondItem="76A-F8-V2c" secondAttribute="bottom" id="W6Y-xz-vfo"/>
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="JnY-mV-yrI" secondAttribute="trailing" constant="16" id="WHw-he-N3R"/>
                             <constraint firstItem="ZHk-PN-kce" firstAttribute="leading" secondItem="FZU-KQ-Iw0" secondAttribute="leading" constant="16" id="WSn-fB-G3g"/>
                             <constraint firstItem="Khz-vK-UMZ" firstAttribute="top" secondItem="NLN-YP-elA" secondAttribute="bottom" constant="8" id="dS3-Kn-sER"/>
-                            <constraint firstItem="JnY-mV-yrI" firstAttribute="leading" secondItem="paq-qZ-xMd" secondAttribute="trailing" constant="21" id="j3o-U4-YnE"/>
+                            <constraint firstItem="JnY-mV-yrI" firstAttribute="leading" secondItem="paq-qZ-xMd" secondAttribute="trailing" constant="-3" id="j3o-U4-YnE"/>
                             <constraint firstItem="NLN-YP-elA" firstAttribute="top" secondItem="JnY-mV-yrI" secondAttribute="bottom" constant="8" id="j67-GG-IfR"/>
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="76A-F8-V2c" secondAttribute="trailing" constant="16" id="lfz-2k-rmg"/>
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="bottom" secondItem="ZHk-PN-kce" secondAttribute="bottom" constant="11" id="nli-hg-3cc"/>

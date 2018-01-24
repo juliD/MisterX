@@ -116,7 +116,7 @@ class ViewControllerChat: JSQMessagesViewController, UIImagePickerControllerDele
     
     //creates bubble for incoming texts
     lazy var incomingBubble: JSQMessagesBubbleImage = {
-        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
     }()
     
     //decides whether it is an incomming bubble or outgoing bubble
