@@ -26,17 +26,20 @@ class TabBarController: UITabBarController {
         userid = defaults.string(forKey: "uid")!
         
         
-        ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
-            if snapshot.key == "gameClosed"{
-                //needed to stop posting the location
-                defaults.set("", forKey: "activeGame")
-                defaults.set("", forKey: "gameCode")
-                defaults.set("y", forKey: "misterX")
-                let alert = UIAlertController(title: "Spiel beendet!", message: "Mister-X hat das Spiel beendet!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
-                    self.performSegue(withIdentifier: "endGameFromTab", sender: self)
-                }))
-                self.present(alert, animated: true, completion: nil)
+        ref.child("game").child(currentGame).observe(.value, with: {(snapshot) -> Void in
+            if let gameClosed =  snapshot.childSnapshot(forPath: "gameClosed").value as? Bool {
+                if(gameClosed){
+                    //needed to stop posting the location
+                    defaults.set("", forKey: "activeGame")
+                    defaults.set("", forKey: "gameCode")
+                    defaults.set("y", forKey: "misterX")
+                    let alert = UIAlertController(title: "Spiel beendet!", message: "Mister-X hat das Spiel beendet!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
+                        self.performSegue(withIdentifier: "endGameFromTab", sender: self)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+               
             }
         })
         
