@@ -286,7 +286,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             defaults.set("", forKey:"gameCode")
             defaults.set("", forKey:"misterX")
             defaults.set("", forKey:"activeGame")
-            self.ref.child("game").child(self.currentGame).removeValue()
+            self.ref.child("game").child(self.currentGame).child("gameClosed").setValue(true)
             self.performSegue(withIdentifier: "endGame", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
