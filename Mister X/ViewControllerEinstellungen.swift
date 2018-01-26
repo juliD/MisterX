@@ -277,17 +277,22 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Neue Runde", style: UIAlertActionStyle.default, handler: { action in
             let defaults = UserDefaults.standard
-            defaults.set("", forKey:"misterX")
-            self.performSegue(withIdentifier: "newgame", sender: self)
+            self.performSegue(withIdentifier: "toPicker", sender: self)
         }))
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Spiel beenden", style: UIAlertActionStyle.destructive, handler: { action in
-            let defaults = UserDefaults.standard
-            defaults.set("", forKey:"gameCode")
-            defaults.set("", forKey:"misterX")
-            defaults.set("", forKey:"activeGame")
-            self.ref.child("game").child(self.currentGame).child("gameClosed").setValue(true)
-            self.performSegue(withIdentifier: "endGame", sender: self)
+            
+            let alert = UIAlertController(title: "Achtung", message: "Wirklich das Spiel beenden und die Lobby auflösen?", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
+                let defaults = UserDefaults.standard
+                defaults.set("", forKey:"gameCode")
+                defaults.set("", forKey:"misterX")
+                defaults.set("", forKey:"activeGame")
+                self.ref.child("game").child(self.currentGame).child("gameClosed").setValue(true)
+                self.performSegue(withIdentifier: "endGame", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
         

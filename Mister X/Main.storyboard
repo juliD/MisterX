@@ -262,7 +262,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="button_newgame:" destination="fCy-FF-ppv" eventType="touchUpInside" id="sGP-0B-AbQ"/>
-                                    <segue destination="QZX-8q-iax" kind="show" id="MK0-2b-Glf"/>
+                                    <segue destination="QZX-8q-iax" kind="show" identifier="toPicker" id="MK0-2b-Glf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paq-qZ-xMd">
@@ -336,6 +336,7 @@
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="JnY-mV-yrI" secondAttribute="trailing" constant="16" id="WHw-he-N3R"/>
                             <constraint firstItem="ZHk-PN-kce" firstAttribute="leading" secondItem="FZU-KQ-Iw0" secondAttribute="leading" constant="16" id="WSn-fB-G3g"/>
                             <constraint firstItem="Khz-vK-UMZ" firstAttribute="top" secondItem="NLN-YP-elA" secondAttribute="bottom" constant="8" id="dS3-Kn-sER"/>
+                            <constraint firstItem="76A-F8-V2c" firstAttribute="top" secondItem="Khz-vK-UMZ" secondAttribute="bottom" constant="8" id="hEL-iI-ODg"/>
                             <constraint firstItem="JnY-mV-yrI" firstAttribute="leading" secondItem="paq-qZ-xMd" secondAttribute="trailing" constant="-3" id="j3o-U4-YnE"/>
                             <constraint firstItem="NLN-YP-elA" firstAttribute="top" secondItem="JnY-mV-yrI" secondAttribute="bottom" constant="8" id="j67-GG-IfR"/>
                             <constraint firstItem="FZU-KQ-Iw0" firstAttribute="trailing" secondItem="76A-F8-V2c" secondAttribute="trailing" constant="16" id="lfz-2k-rmg"/>
@@ -371,7 +372,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle den nächsten Mister X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-3E-djT">
-                                <rect key="frame" x="16" y="104" width="288" height="26.5"/>
+                                <rect key="frame" x="16" y="60" width="288" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1005,31 +1006,17 @@
                                     <segue destination="aRm-t8-CLs" kind="show" id="U8q-Ph-af3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-uo-JOf">
-                                <rect key="frame" x="16" y="478" width="288" height="48"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="DAa-2L-rlf"/>
-                                </constraints>
-                                <state key="normal" title="Spiel wechseln"/>
-                                <connections>
-                                    <action selector="changeGame:" destination="r44-0d-5DV" eventType="touchUpInside" id="F1c-Zh-Eep"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vea-aV-hsU" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="0hn-8x-gin"/>
                             <constraint firstItem="Rj6-pQ-gA0" firstAttribute="centerX" secondItem="vD9-1P-CMo" secondAttribute="centerX" id="2kS-Tq-QYo"/>
-                            <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="S4J-uo-JOf" secondAttribute="trailing" constant="16" id="91g-Bg-vaW"/>
                             <constraint firstItem="Rj6-pQ-gA0" firstAttribute="top" secondItem="x3e-Oe-bgf" secondAttribute="bottom" constant="40" id="CGx-nH-acL"/>
-                            <constraint firstItem="S4J-uo-JOf" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="16" id="D7e-ty-W0M"/>
                             <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="Vea-aV-hsU" secondAttribute="trailing" constant="64" id="HUv-Bv-MkW"/>
                             <constraint firstItem="Vea-aV-hsU" firstAttribute="top" secondItem="vD9-1P-CMo" secondAttribute="top" constant="18" id="KbR-c2-CZ4"/>
                             <constraint firstItem="x3e-Oe-bgf" firstAttribute="top" secondItem="Vea-aV-hsU" secondAttribute="bottom" constant="36.5" id="MeO-Dy-29x"/>
                             <constraint firstItem="x3e-Oe-bgf" firstAttribute="leading" secondItem="vD9-1P-CMo" secondAttribute="leading" constant="64" id="T0f-x3-jgC"/>
                             <constraint firstItem="vD9-1P-CMo" firstAttribute="trailing" secondItem="x3e-Oe-bgf" secondAttribute="trailing" constant="64" id="hb6-OW-Vcx"/>
-                            <constraint firstItem="vD9-1P-CMo" firstAttribute="bottom" secondItem="S4J-uo-JOf" secondAttribute="bottom" constant="42" id="yL1-Xf-Jbj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vD9-1P-CMo"/>
                     </view>
@@ -1122,8 +1109,8 @@
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
         <segue reference="q6G-Ov-NdA"/>
-        <segue reference="d5s-CD-rT5"/>
+        <segue reference="SYV-CQ-5sg"/>
         <segue reference="KA2-J9-0Nc"/>
-        <segue reference="BCm-OO-ti8"/>
+        <segue reference="sLa-bg-gzE"/>
     </inferredMetricsTieBreakers>
 </document>
