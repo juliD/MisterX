@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V2y-hp-svX"/>
-                                    <segue destination="4Xz-Mb-Q7U" kind="show" id="RqI-r3-P1j"/>
+                                    <segue destination="4Xz-Mb-Q7U" kind="show" id="Hig-vl-nMM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
@@ -451,22 +451,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwG-Rb-vMA">
-                                                    <rect key="frame" x="293" y="16" width="49" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwG-Rb-vMA">
+                                                    <rect key="frame" x="130" y="13" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="iwG-Rb-vMA" secondAttribute="height" multiplier="49:32" id="SZU-qR-hmL"/>
+                                                        <constraint firstAttribute="width" constant="60" id="06d-kb-D8I"/>
+                                                        <constraint firstAttribute="height" constant="60" id="3au-ma-Glr"/>
                                                     </constraints>
-                                                    <state key="normal" title="Boost3"/>
+                                                    <state key="normal" image="Boost2"/>
                                                     <connections>
                                                         <action selector="Boost3:" destination="lQ9-38-U9l" eventType="touchUpInside" id="90C-rk-saF"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-on-Zjh">
-                                                    <rect key="frame" x="33" y="16" width="45.5" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-on-Zjh">
+                                                    <rect key="frame" x="33" y="13" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="PFd-on-Zjh" secondAttribute="height" multiplier="47:31" id="jvX-A1-x8v"/>
+                                                        <constraint firstAttribute="height" constant="60" id="MsE-vy-pJP"/>
+                                                        <constraint firstAttribute="width" constant="60" id="eyz-Sd-EUr"/>
                                                     </constraints>
-                                                    <state key="normal" title="Boost1"/>
+                                                    <state key="normal" title="Boost1" image="Boost1"/>
                                                     <connections>
                                                         <action selector="Boost1:" destination="lQ9-38-U9l" eventType="touchUpInside" id="6eH-cb-eO4"/>
                                                     </connections>
@@ -489,29 +491,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-YD-lEf">
-                                                    <rect key="frame" x="162" y="16" width="49" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-YD-lEf">
+                                                    <rect key="frame" x="227" y="13" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="rgQ-YD-lEf" secondAttribute="height" multiplier="49:32" id="N2V-Qy-9FG"/>
+                                                        <constraint firstAttribute="height" constant="60" id="StE-4I-gM5"/>
+                                                        <constraint firstAttribute="width" constant="60" id="bgQ-9j-N1m"/>
                                                     </constraints>
-                                                    <state key="normal" title="Boost2"/>
+                                                    <state key="normal" image="Boost3"/>
                                                     <connections>
                                                         <action selector="Boost2:" destination="lQ9-38-U9l" eventType="touchUpInside" id="nlw-TA-Bhz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="PFd-on-Zjh" firstAttribute="top" secondItem="gzQ-2Q-i5g" secondAttribute="top" constant="16" id="26d-n8-aPe"/>
+                                                <constraint firstItem="PFd-on-Zjh" firstAttribute="top" secondItem="gzQ-2Q-i5g" secondAttribute="top" constant="13" id="26d-n8-aPe"/>
                                                 <constraint firstItem="PFd-on-Zjh" firstAttribute="leading" secondItem="gzQ-2Q-i5g" secondAttribute="leading" constant="33" id="53h-hq-f2H"/>
-                                                <constraint firstItem="rgQ-YD-lEf" firstAttribute="leading" secondItem="PFd-on-Zjh" secondAttribute="trailing" constant="82" id="5PC-ZT-pa2"/>
-                                                <constraint firstAttribute="trailing" secondItem="iwG-Rb-vMA" secondAttribute="trailing" constant="33" id="BDc-Xg-eW7"/>
-                                                <constraint firstItem="iwG-Rb-vMA" firstAttribute="leading" secondItem="rgQ-YD-lEf" secondAttribute="trailing" constant="82" id="BbV-Mt-Mid"/>
                                                 <constraint firstAttribute="bottom" secondItem="dsQ-QU-ppk" secondAttribute="bottom" constant="16" id="Dv5-Ux-6c8"/>
+                                                <constraint firstItem="PFd-on-Zjh" firstAttribute="leading" secondItem="gzQ-2Q-i5g" secondAttribute="leading" constant="33" id="MTH-Cr-Myn"/>
+                                                <constraint firstItem="iwG-Rb-vMA" firstAttribute="centerX" secondItem="gzQ-2Q-i5g" secondAttribute="centerX" id="brl-27-g0i"/>
                                                 <constraint firstItem="6zo-LE-H1Y" firstAttribute="leading" secondItem="dsQ-QU-ppk" secondAttribute="trailing" constant="12" id="e2Q-ER-uYW"/>
                                                 <constraint firstAttribute="bottom" secondItem="6zo-LE-H1Y" secondAttribute="bottom" constant="21" id="jTu-eX-wYF"/>
-                                                <constraint firstItem="iwG-Rb-vMA" firstAttribute="top" secondItem="gzQ-2Q-i5g" secondAttribute="top" constant="16" id="tUc-Ic-qGC"/>
+                                                <constraint firstItem="iwG-Rb-vMA" firstAttribute="top" secondItem="PFd-on-Zjh" secondAttribute="top" id="jXb-dd-OVP"/>
+                                                <constraint firstItem="iwG-Rb-vMA" firstAttribute="top" secondItem="rgQ-YD-lEf" secondAttribute="top" id="mVz-OX-SOa"/>
                                                 <constraint firstItem="dsQ-QU-ppk" firstAttribute="leading" secondItem="gzQ-2Q-i5g" secondAttribute="leading" constant="125" id="uAk-nc-t6K"/>
-                                                <constraint firstItem="rgQ-YD-lEf" firstAttribute="top" secondItem="gzQ-2Q-i5g" secondAttribute="top" constant="16" id="vgm-wE-ixz"/>
+                                                <constraint firstAttribute="trailing" secondItem="rgQ-YD-lEf" secondAttribute="trailing" constant="33" id="vTe-Xo-5A6"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="light"/>
@@ -526,12 +529,13 @@
                                     <constraint firstAttribute="height" constant="128" id="kNF-4c-aru"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-v7-t5i">
-                                <rect key="frame" x="258" y="353" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-v7-t5i">
+                                <rect key="frame" x="279" y="352" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4VN-v7-t5i" secondAttribute="height" multiplier="23:15" id="x0r-dl-lhf"/>
+                                    <constraint firstAttribute="width" constant="25" id="YDk-Dl-cXe"/>
+                                    <constraint firstAttribute="height" constant="25" id="bvg-jT-DQ2"/>
                                 </constraints>
-                                <state key="normal" title="menu"/>
+                                <state key="normal" image="Menu"/>
                                 <connections>
                                     <action selector="toggleMenu:" destination="lQ9-38-U9l" eventType="touchUpInside" id="4gF-sT-Vxc"/>
                                 </connections>
@@ -540,14 +544,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Oxj-H8-B17" firstAttribute="bottom" secondItem="iqZ-he-jy0" secondAttribute="bottom" id="0mh-aN-E4c"/>
+                            <constraint firstItem="iqZ-he-jy0" firstAttribute="trailing" secondItem="4VN-v7-t5i" secondAttribute="trailing" constant="16" id="8Pm-vV-ecS"/>
                             <constraint firstItem="Oxj-H8-B17" firstAttribute="leading" secondItem="iqZ-he-jy0" secondAttribute="leading" id="FLS-Dj-24W"/>
-                            <constraint firstItem="iqZ-he-jy0" firstAttribute="trailing" secondItem="4VN-v7-t5i" secondAttribute="trailing" constant="16" id="KPt-Ff-yYL"/>
-                            <constraint firstItem="Oxj-H8-B17" firstAttribute="top" secondItem="4VN-v7-t5i" secondAttribute="bottom" constant="8" id="OBp-o6-StO"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="leading" secondItem="iqZ-he-jy0" secondAttribute="leading" constant="309" id="QXN-km-ioh"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="bottom" secondItem="iqZ-he-jy0" secondAttribute="bottom" id="RHQ-Ou-rF8"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="trailing" secondItem="N0E-wI-bFp" secondAttribute="trailingMargin" id="ToM-ax-Ycc"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="top" secondItem="N0E-wI-bFp" secondAttribute="top" id="Wz5-Vh-bTV"/>
                             <constraint firstItem="UJH-KW-llW" firstAttribute="top" secondItem="iqZ-he-jy0" secondAttribute="top" constant="22" id="Ygu-Bu-HLy"/>
+                            <constraint firstItem="Oxj-H8-B17" firstAttribute="top" secondItem="4VN-v7-t5i" secondAttribute="bottom" constant="14" id="ZgK-vm-dNZ"/>
                             <constraint firstItem="jN9-xW-R1t" firstAttribute="leading" secondItem="N0E-wI-bFp" secondAttribute="leading" id="gDL-bx-r9j"/>
                             <constraint firstItem="iqZ-he-jy0" firstAttribute="trailing" secondItem="Oxj-H8-B17" secondAttribute="trailing" id="in3-tI-gdD"/>
                             <constraint firstAttribute="trailing" secondItem="jN9-xW-R1t" secondAttribute="trailing" id="owX-NY-DeU"/>
@@ -569,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QZ-gV-6aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2536.8000000000002" y="-648.76847290640399"/>
+            <point key="canvasLocation" x="2535" y="-663.38028169014081"/>
         </scene>
         <!--View Controller Add Photo-->
         <scene sceneID="ThN-bC-2Q7">
@@ -1099,6 +1103,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Boost1" width="951" height="952"/>
+        <image name="Boost2" width="951" height="952"/>
+        <image name="Boost3" width="951" height="952"/>
+        <image name="Menu" width="256" height="256"/>
         <image name="QR Scanner Image" width="150" height="150"/>
         <image name="anonymous-mask" width="33" height="33"/>
         <image name="anonymous-mask-filled" width="33" height="33"/>
@@ -1109,11 +1117,11 @@
         <image name="speech-bubble-filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2CU-vn-WtE"/>
+        <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
         <segue reference="q6G-Ov-NdA"/>
         <segue reference="d5s-CD-rT5"/>
-        <segue reference="wt4-he-gyz"/>
+        <segue reference="KA2-J9-0Nc"/>
         <segue reference="rej-ZQ-fSy"/>
     </inferredMetricsTieBreakers>
 </document>

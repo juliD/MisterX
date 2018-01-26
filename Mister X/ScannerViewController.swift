@@ -62,6 +62,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         view.bringSubview(toFront: messageLabel)
     }
     
+    //metadata object is found
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         if  metadataObjects.count == 0 {
@@ -75,37 +76,31 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            // If the found metadata is equal to the QR code metadata then check if gamecode exists
+
+            var ref: DatabaseReference!
+            ref = Database.database().reference().child("game")
             
-            
-            if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
-            }
+            ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                if snapshot.hasChild(metadataObj.stringValue!){
+                    //Game in QRCode exists
+                    //get userid
+                    let defaults = UserDefaults.standard
+                    let uid = defaults.string(forKey: "uid")
+                    let pushToken = defaults.string(forKey: "pushToken")
+                    //add player to game
+                    ref.child(metadataObj.stringValue!).child("player").child(uid!).setValue(["MisterX" : false, "pushToken" : pushToken!])
+                    defaults.set(metadataObj.stringValue!, forKey:"gameCode")
+                    defaults.set("", forKey:"misterX")
+                    self.performSegue(withIdentifier: "startToLobby", sender: self)
+                    
+                }else{
+                    //not one of our QR codes
+                    print("Wrong QR Code")
+                    self.performSegue(withIdentifier: "backToGroup", sender: self)
+                }
+            })
         }
-        
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference().child("game")
-        
-        ref.observeSingleEvent(of: .value, with: {(snapshot) in
-            if snapshot.hasChild(metadataObj.stringValue!){
-                
-                //get userid
-                let defaults = UserDefaults.standard
-                let uid = defaults.string(forKey: "uid")
-                let pushToken = defaults.string(forKey: "pushToken")
-                ref.child(metadataObj.stringValue!).child("player").child(uid!).setValue(["MisterX" : false, "pushToken" : pushToken!])
-                
-                defaults.set(metadataObj.stringValue!, forKey:"gameCode")
-                defaults.set("", forKey:"misterX")
-                self.performSegue(withIdentifier: "startToLobby", sender: self)
-                
-            }else{
-                print("Wrong QR Code")
-                self.performSegue(withIdentifier: "backToGroup", sender: self)
-            }
-        })
-        
         
         
     }
