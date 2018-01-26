@@ -26,6 +26,7 @@ class MapFirebaseCom{
     var jaegerChangedLocation = false
     var allMisterXLocations : [UserLocationStruct]? = []
     var allJaegerLocations : [String:UserLocationStruct]? = [:]
+    var boostTime : Double = 0
     var newLocation = UserLocationStruct()
     var ref : DatabaseReference
     
@@ -33,6 +34,10 @@ class MapFirebaseCom{
         uTimeMisterX = updateTime
         uTimeJaeger = updateTimePlayer
         ref = Database.database().reference()
+    }
+    
+    func timeBoostActivated() {
+        boostTime = 30
     }
     
     func getGameCode() -> String? {
@@ -106,7 +111,10 @@ class MapFirebaseCom{
             newLocation = location
             ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
         }else{
-            if (location.timestamp!) > (newLocation.timestamp! + uTimeMisterX){
+            if (location.timestamp!) > (newLocation.timestamp! + uTimeMisterX + boostTime){
+                if boostTime > 0{
+                    boostTime = 0
+                }
                 newLocation = location
                 ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
             }
