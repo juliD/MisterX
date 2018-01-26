@@ -132,7 +132,6 @@ class MapFirebaseCom{
                     newPosition = ["latitude": randDegree(locDegree: (location.coordinate?.latitude)!), "longitude" : randDegree(locDegree: (location.coordinate?.longitude)!)]
                     boostRandom = false
                 }
-                print("actual: \(location), new: \(newPosition)")
                 ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
             }
         }
