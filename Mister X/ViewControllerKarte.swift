@@ -230,6 +230,8 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
                     mfc.updateJaegerLocation(location: myLocation, name: name!)
                 }
                 
+            }else{
+                manager.stopUpdatingLocation()
             }
    
             //Wenn sich die Position von MisterX geändert hat dann Historie oder Annotation updaten
