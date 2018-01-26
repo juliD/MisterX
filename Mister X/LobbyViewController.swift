@@ -128,7 +128,6 @@ class LobbyViewController: UIViewController {
         defaults.set(0, forKey:"boost2")
         defaults.set("", forKey:"gameCode")
         defaults.set("", forKey:"misterX")
-        print("<<<<<<<<<<<<<<<<<<<<<<<<Test")
         self.ref.child("game").child(currentGame).child("player").child(userid).removeValue()
         print(self.participants)
         self.participants = self.participants.filter{$0 != userid}

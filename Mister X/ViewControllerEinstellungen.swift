@@ -275,7 +275,7 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
         let alert = UIAlertController(title: "Achtung", message: "Spiel beenden oder eine neue Runde mit den gleichen Mitspielern beginnen?", preferredStyle: UIAlertControllerStyle.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Neue Runde", style: UIAlertActionStyle.destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "Neue Runde", style: UIAlertActionStyle.default, handler: { action in
             let defaults = UserDefaults.standard
             defaults.set("", forKey:"misterX")
             self.performSegue(withIdentifier: "newgame", sender: self)
@@ -285,6 +285,8 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
             let defaults = UserDefaults.standard
             defaults.set("", forKey:"gameCode")
             defaults.set("", forKey:"misterX")
+            defaults.set("", forKey:"activeGame")
+            self.ref.child("game").child(self.currentGame).removeValue()
             self.performSegue(withIdentifier: "endGame", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))

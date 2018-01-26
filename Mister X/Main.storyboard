@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -355,6 +355,7 @@
                         <outlet property="misterXName" destination="JnY-mV-yrI" id="3fa-q6-YsX"/>
                         <outlet property="nextMisteXButton" destination="ZHk-PN-kce" id="IXv-Dk-2YB"/>
                         <outlet property="resetPictureButton" destination="76A-F8-V2c" id="BsX-uf-Ugo"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGame" id="sLa-bg-gzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -759,6 +760,7 @@
                         <segue destination="sqW-UV-ABh" kind="relationship" relationship="viewControllers" id="vPm-2l-VVZ"/>
                         <segue destination="G6c-eD-5Jl" kind="relationship" relationship="viewControllers" id="Wc5-6h-cmi"/>
                         <segue destination="3tW-EX-tfF" kind="presentation" identifier="newGameJaeger" id="d5s-CD-rT5"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGame" id="BCm-OO-ti8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHB-3m-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1122,6 +1124,6 @@
         <segue reference="q6G-Ov-NdA"/>
         <segue reference="Snc-hQ-apX"/>
         <segue reference="KA2-J9-0Nc"/>
-        <segue reference="rej-ZQ-fSy"/>
+        <segue reference="BCm-OO-ti8"/>
     </inferredMetricsTieBreakers>
 </document>
