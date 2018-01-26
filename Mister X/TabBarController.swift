@@ -30,7 +30,7 @@ class TabBarController: UITabBarController {
         
         
         //listen if game is deleted complety
-        ref.child("game").child(currentGame).observeSingleEvent(of: .childRemoved, with: {(snapshot) in
+        ref.child("game").child(currentGame).child("gameClosed").observeSingleEvent(of: .childChanged, with: {(snapshot) in
             
             //needed to stop posting the location
             defaults.set("", forKey: "activeGame")
