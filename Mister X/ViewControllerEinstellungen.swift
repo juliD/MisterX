@@ -270,22 +270,28 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func button_newgame(_ sender: UIButton) {
-        /*
+        
         // create the alert
-        let alert = UIAlertController(title: "Achtung", message: "Sicher ein neues Spiel anfangen?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Achtung", message: "Spiel beenden oder eine neue Runde mit den gleichen Mitspielern beginnen?", preferredStyle: UIAlertControllerStyle.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "Neue Runde", style: UIAlertActionStyle.destructive, handler: { action in
+            let defaults = UserDefaults.standard
+            defaults.set("", forKey:"misterX")
+            self.performSegue(withIdentifier: "newgame", sender: self)
+        }))
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Spiel beenden", style: UIAlertActionStyle.destructive, handler: { action in
             let defaults = UserDefaults.standard
             defaults.set("", forKey:"gameCode")
             defaults.set("", forKey:"misterX")
-            self.performSegue(withIdentifier: "newgame", sender: self)
+            self.performSegue(withIdentifier: "endGame", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
- */
+ 
     }
     
     //has to be defined a second time because apple only wants one gesture for one thing
