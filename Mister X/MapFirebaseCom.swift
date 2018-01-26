@@ -42,7 +42,7 @@ class MapFirebaseCom{
     }
     
     func timeBoostActivated() {
-        boostTime = 30
+        boostTime = uTimeMisterX
     }
     
     func randDegree(locDegree : CLLocationDegrees) -> Double {
