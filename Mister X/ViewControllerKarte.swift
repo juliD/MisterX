@@ -151,10 +151,14 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     @IBOutlet weak var Boost2_button: UIButton!
     @IBAction func Boost2(_ sender: UIButton) {
+        mfc.timeBoostActivated()
+        Boost2_button.isEnabled = false
     }
     
     @IBOutlet weak var Boost3_button: UIButton!
     @IBAction func Boost3(_ sender: UIButton) {
+        mfc.setBoostRandom()
+        Boost3_button.isEnabled = false
     }
     
     

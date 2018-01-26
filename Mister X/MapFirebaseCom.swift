@@ -26,6 +26,8 @@ class MapFirebaseCom{
     var jaegerChangedLocation = false
     var allMisterXLocations : [UserLocationStruct]? = []
     var allJaegerLocations : [String:UserLocationStruct]? = [:]
+    var boostTime : Double = 0
+    var boostRandom : Bool = false
     var newLocation = UserLocationStruct()
     var ref : DatabaseReference
     
@@ -33,6 +35,20 @@ class MapFirebaseCom{
         uTimeMisterX = updateTime
         uTimeJaeger = updateTimePlayer
         ref = Database.database().reference()
+    }
+    
+    func setBoostRandom() {
+        boostRandom = true
+    }
+    
+    func timeBoostActivated() {
+        boostTime = 30
+    }
+    
+    func randDegree(locDegree : CLLocationDegrees) -> Double {
+        let flooredDegree = Double(round(1000*Double(locDegree))/1000)
+        let randDegree = flooredDegree + (Double(arc4random_uniform(9999) + 1000) / 1000000)
+        return randDegree
     }
     
     func getGameCode() -> String? {
@@ -101,13 +117,21 @@ class MapFirebaseCom{
     
     
     func updateMisterXLocation(location: UserLocationStruct) {
-        let newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
+        var newPosition: [String:Any] = ["latitude":Double((location.coordinate?.latitude)!), "longitude":Double((location.coordinate?.longitude)!)]
         if newLocation.timestamp == nil {
             newLocation = location
             ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
         }else{
-            if (location.timestamp!) > (newLocation.timestamp! + uTimeMisterX){
+            if (location.timestamp!) > (newLocation.timestamp! + uTimeMisterX + boostTime){
+                if boostTime > 0{
+                    boostTime = 0
+                }
                 newLocation = location
+                
+                if boostRandom{
+                    newPosition = ["latitude": randDegree(locDegree: (location.coordinate?.latitude)!), "longitude" : randDegree(locDegree: (location.coordinate?.longitude)!)]
+                    boostRandom = false
+                }
                 ref.child("game/\(getGameCode()!)/MisterX/\(location.timestamp!)").setValue(newPosition)
             }
         }
