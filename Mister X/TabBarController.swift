@@ -48,9 +48,6 @@ class TabBarController: UITabBarController {
             //listen if one self becomes mister X
             self.ref.child("game").child(self.currentGame).child("player").child(self.userid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                //Dismiss all alert Windows
-                self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                
                 //needed to stop posting the location
                 defaults.set("", forKey: "activeGame")
                 
