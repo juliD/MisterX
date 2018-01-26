@@ -140,7 +140,10 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     @IBAction func misterxImageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = UIScreen.main.bounds
+        let height = UIScreen.main.fixedCoordinateSpace.bounds.height
+        let width = UIScreen.main.fixedCoordinateSpace.bounds.width
+        
+        newImageView.frame = CGRect(x:0 , y:20, width: width, height: height-20)
         newImageView.backgroundColor = .black
         newImageView.isUserInteractionEnabled = true
         //show the image properly and do not let it be streched
@@ -314,7 +317,10 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     @IBAction func foundPictureTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = UIScreen.main.bounds
+        let height = UIScreen.main.fixedCoordinateSpace.bounds.height
+        let width = UIScreen.main.fixedCoordinateSpace.bounds.width
+        
+        newImageView.frame = CGRect(x:0 , y:20, width: width, height: height-20)
         newImageView.backgroundColor = .black
         if(newImageView.image?.size.height.isLess(than: (newImageView.image?.size.width)!))!{
             newImageView.contentMode = .scaleAspectFit
