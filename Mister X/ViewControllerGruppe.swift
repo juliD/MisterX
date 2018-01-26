@@ -15,6 +15,7 @@ class ViewControllerGruppe: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var qrcode: UIImageView!
     @IBOutlet weak var gameCodeLabel: UILabel!
+    @IBOutlet weak var publicSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,14 @@ class ViewControllerGruppe: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func startGame(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        let currentGame = defaults.string(forKey: "gameCode")
+        
+        Database.database().reference().child("game").child(currentGame!).child("isPublic").setValue(publicSwitch.isOn)
+        self.performSegue(withIdentifier: "startGame", sender: self)
     }
     
     func generateQRCode(from string: String) -> UIImage? {
