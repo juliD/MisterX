@@ -61,7 +61,7 @@ class LobbyViewController: UIViewController {
             self.participants = self.participants.filter{$0 != snapshot.key}
 
             self.personController.persons = self.personController.persons-1
-            if(self.personController.persons<2){
+            if(self.personController.persons<1){
                 // create the alert
                 let alert = UIAlertController(title: "Jemand ist gegangen", message: "Leider hat jemand das Spiel verlassen. Ihr seid nicht mehr genug Teilnehmer, um ein Spiel zu starten.", preferredStyle: UIAlertControllerStyle.alert)
                 

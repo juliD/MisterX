@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister X muss gefangen werden! Die Jäger sind ihm auf den Fersen. Es dürfen nur öffentliche Verkehrsmittel genutzt werden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGy-0v-gfH">
-                                <rect key="frame" x="55" y="181.5" width="210" height="94.5"/>
+                                <rect key="frame" x="55" y="181.5" width="210" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vGy-0v-gfH" secondAttribute="height" multiplier="265:81" constant="-98.148148148148152" id="lLZ-rC-LKM"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
-                                <rect key="frame" x="87" y="302" width="146" height="36"/>
+                                <rect key="frame" x="87" y="301.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Mister X"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
-                                <rect key="frame" x="87" y="365" width="146" height="36"/>
+                                <rect key="frame" x="87" y="364.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Jäger"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-HU-EaV">
-                                <rect key="frame" x="87" y="486" width="146" height="36"/>
+                                <rect key="frame" x="87" y="485.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Öffentliche Spiele"/>
@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-uU-I3U">
-                                <rect key="frame" x="87" y="427" width="146" height="36"/>
+                                <rect key="frame" x="87" y="426.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Laufendes Spiel"/>
@@ -355,7 +355,7 @@
                         <outlet property="misterXName" destination="JnY-mV-yrI" id="3fa-q6-YsX"/>
                         <outlet property="nextMisteXButton" destination="ZHk-PN-kce" id="IXv-Dk-2YB"/>
                         <outlet property="resetPictureButton" destination="76A-F8-V2c" id="BsX-uf-Ugo"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGame" id="sLa-bg-gzE"/>
+                        <segue destination="khd-0s-y1Z" kind="presentation" identifier="endGame" id="Blk-Ac-u8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tid-FJ-VEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,7 +762,7 @@
                         <segue destination="sqW-UV-ABh" kind="relationship" relationship="viewControllers" id="vPm-2l-VVZ"/>
                         <segue destination="G6c-eD-5Jl" kind="relationship" relationship="viewControllers" id="Wc5-6h-cmi"/>
                         <segue destination="3tW-EX-tfF" kind="presentation" identifier="newGameJaeger" id="d5s-CD-rT5"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGame" id="BCm-OO-ti8"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGameFromTab" id="BCm-OO-ti8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHB-3m-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1052,7 +1052,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR Code detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntk-cw-Qy3">
-                                <rect key="frame" x="0.0" y="536.5" width="320" height="39.5"/>
+                                <rect key="frame" x="0.0" y="536" width="320" height="40"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.90168353873239437" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ntk-cw-Qy3" secondAttribute="height" multiplier="169:21" id="Irg-m0-dqI"/>
@@ -1116,8 +1116,8 @@
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
         <segue reference="q6G-Ov-NdA"/>
-        <segue reference="SYV-CQ-5sg"/>
+        <segue reference="d5s-CD-rT5"/>
         <segue reference="KA2-J9-0Nc"/>
-        <segue reference="sLa-bg-gzE"/>
+        <segue reference="BCm-OO-ti8"/>
     </inferredMetricsTieBreakers>
 </document>

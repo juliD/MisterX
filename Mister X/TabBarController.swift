@@ -15,7 +15,6 @@ class TabBarController: UITabBarController {
     var userid: String = ""
     
     var nextMisterX = false
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +26,21 @@ class TabBarController: UITabBarController {
         userid = defaults.string(forKey: "uid")!
         
         
-        
-        
-        //listen if game is deleted complety
-        ref.child("game").child(currentGame).child("gameClosed").observeSingleEvent(of: .childChanged, with: {(snapshot) in
-            
-            //needed to stop posting the location
-            defaults.set("", forKey: "activeGame")
-            defaults.set("", forKey: "gameCode")
-            defaults.set("y", forKey: "misterX")
-            let alert = UIAlertController(title: "Spiel beendet!", message: "Mister-X hat das Spiel beendet!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
-                self.performSegue(withIdentifier: "endGame", sender: self)
-            }))
-            self.present(alert, animated: true, completion: nil)
+        ref.child("game").child(currentGame).observe(.childAdded, with: {(snapshot) -> Void in
+            if snapshot.key == "gameClosed"{
+                //needed to stop posting the location
+                defaults.set("", forKey: "activeGame")
+                defaults.set("", forKey: "gameCode")
+                defaults.set("y", forKey: "misterX")
+                let alert = UIAlertController(title: "Spiel beendet!", message: "Mister-X hat das Spiel beendet!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
+                    self.performSegue(withIdentifier: "endGameFromTab", sender: self)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
         })
+        
+        
 
 
         //listen if MisterX is deleted which means a new game is created
