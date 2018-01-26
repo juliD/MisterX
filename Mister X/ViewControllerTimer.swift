@@ -88,9 +88,9 @@ class ViewControllerTimer : UIViewController {
     
     private func setText() {
         if(isMisterX){
-            timerTextView.text = "MisterX"
+            timerTextView.text = "Du hast Zeit bis der Timer abgelaufen ist um dich vonn allen Jägern zu entfernen! Sobald der Timer Abgelaufen ist, können dich alle Jäger sehen!"
         } else {
-            timerTextView.text = "Not MisterX"
+            timerTextView.text = "Waete bis der Timer abgelaufen ist! Erst dann darfst du los um den Mister X zu finden!"
         }
     }
     
