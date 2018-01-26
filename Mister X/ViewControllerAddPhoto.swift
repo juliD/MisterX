@@ -126,6 +126,7 @@ class ViewControllerAddPhoto: UIViewController, UIImagePickerControllerDelegate,
         let time = "\(day):\(month):\(year):\(hour):\(minutes):\(seconds)"
         var ref: DatabaseReference
         ref = Database.database().reference()
+        self.ref.child("game").child(currentGame).child("gameClosed").setValue(false)
         ref.child("game/\(currentGame)/startetAt").setValue(time)
     }
 

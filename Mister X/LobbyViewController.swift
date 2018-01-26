@@ -58,11 +58,14 @@ class LobbyViewController: UIViewController {
         listenIfBecameMisterX()
         
         //listen if a player leaves the group
-        ref.child("game").child(currentGame).child("player").observeSingleEvent(of: .childRemoved, with: {(snapshot) in
+        ref.child("game").child(currentGame).child("player").observe(.childRemoved, with: {(snapshot) in
             
             self.participants = self.participants.filter{$0 != snapshot.key}
 
             self.personController.persons = self.personController.persons-1
+            
+            
+            //muss erhöht werden zum schluss
             if(self.personController.persons<1){
                 // create the alert
                 let alert = UIAlertController(title: "Jemand ist gegangen", message: "Leider hat jemand das Spiel verlassen. Ihr seid nicht mehr genug Teilnehmer, um ein Spiel zu starten.", preferredStyle: UIAlertControllerStyle.alert)
@@ -131,10 +134,8 @@ class LobbyViewController: UIViewController {
         defaults.set("", forKey:"gameCode")
         defaults.set("", forKey:"misterX")
         self.ref.child("game").child(currentGame).child("player").child(userid).removeValue()
-        print(self.participants)
         self.participants = self.participants.filter{$0 != userid}
-        print(self.participants)
-        if(participants.count > 0){ self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
+        if(participants.count > 0 && self.isMisterX == "y"){ self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
         }
     }
     
@@ -165,11 +166,6 @@ class LobbyViewController: UIViewController {
             }else{
                 self.oncePresented = true
             }
-            
-            
-            
-            
-            
             
         })
     }
