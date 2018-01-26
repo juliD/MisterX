@@ -244,7 +244,7 @@
                                 <rect key="frame" x="16" y="571" width="343" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nächsten Mister X wählen">
+                                <state key="normal" title="Spiel beenden">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -371,7 +371,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle den nächsten Mister X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-3E-djT">
-                                <rect key="frame" x="16" y="60" width="343" height="26.5"/>
+                                <rect key="frame" x="16" y="104" width="343" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1005,17 +1005,6 @@
                                     <segue destination="aRm-t8-CLs" kind="show" id="U8q-Ph-af3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-uo-JOf">
-                                <rect key="frame" x="16" y="577" width="343" height="48"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="DAa-2L-rlf"/>
-                                </constraints>
-                                <state key="normal" title="Spiel wechseln"/>
-                                <connections>
-                                    <action selector="changeGame:" destination="r44-0d-5DV" eventType="touchUpInside" id="F1c-Zh-Eep"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1119,7 +1108,7 @@
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
         <segue reference="q6G-Ov-NdA"/>
-        <segue reference="SYV-CQ-5sg"/>
+        <segue reference="Snc-hQ-apX"/>
         <segue reference="KA2-J9-0Nc"/>
         <segue reference="sLa-bg-gzE"/>
     </inferredMetricsTieBreakers>
