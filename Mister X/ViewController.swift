@@ -24,6 +24,35 @@ class ViewController: UIViewController {
         //always use locally stored uid otherwise we get problems with firebase
         let defaults = UserDefaults.standard
         
+        //go to current Game if exists
+        let currentGame = defaults.string(forKey: "gameCode")
+        if currentGame != nil {
+            if !(currentGame?.isEmpty)!{
+                var ref: DatabaseReference!
+                ref = Database.database().reference().child("game")
+                
+                ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                    if snapshot.hasChild(currentGame!){
+                        
+                        ref = Database.database().reference().child("game").child(currentGame!)
+                        ref.observe(.childAdded, with: {(snapshot) -> Void in
+                            if snapshot.key == "startetAt"{
+                                self.performSegue(withIdentifier: "runningGame", sender: self)
+                            }
+                        })
+                        
+                    }else{
+                        print("game code doesn't exist")
+                        let alert = UIAlertController(title: "Achtung", message: "Dein Spiel wurde gelöscht...", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                    }
+                    
+                })
+            }
+        }
+        
+        
         if let uid = defaults.string(forKey: "uid"){
             print("already logged in: "+uid)
         }
@@ -82,42 +111,7 @@ class ViewController: UIViewController {
         defaults.set(key, forKey: "gameCode")
         defaults.set("y", forKey: "misterX")
     }
-    
-    @IBAction func joinGame(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        let currentGame = defaults.string(forKey: "gameCode")
-        if (currentGame?.isEmpty)!{
-            let alert = UIAlertController(title: "Achtung", message: "Du hast kein laufendes Spiel...", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-        }else{
-            
-            var ref: DatabaseReference!
-            ref = Database.database().reference().child("game")
-            
-            ref.observeSingleEvent(of: .value, with: {(snapshot) in
-                if snapshot.hasChild(currentGame!){
-                    
-                    ref = Database.database().reference().child("game").child(currentGame!)
-                    ref.observe(.childAdded, with: {(snapshot) -> Void in
-                        if snapshot.key == "startetAt"{
-                            self.performSegue(withIdentifier: "runningGame", sender: self)
-                        }
-                    })
-                    
-                }else{
-                    print("game code doesn't exist")
-                    let alert = UIAlertController(title: "Achtung", message: "Dein Spiel wurde gelöscht...", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
-                }
-            
-            })
-        }
-    }
+
     
     
     func displayTutorial(){
