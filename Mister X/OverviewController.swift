@@ -157,6 +157,7 @@ class OverviewController: UIViewController, CLLocationManagerDelegate, MKMapView
             defaults.set(game.gameCode!, forKey:"gameCode")
             defaults.set("", forKey:"misterX")
             let uid = defaults.string(forKey: "uid")
+            defaults.set("y", forKey: "activeGame")
             Database.database().reference().child("game").child(game.gameCode!).child("player").child(uid!).setValue(["MisterX" : false])
             
             

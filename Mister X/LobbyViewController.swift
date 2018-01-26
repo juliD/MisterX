@@ -73,6 +73,9 @@ class LobbyViewController: UIViewController {
                 // add the actions (buttons)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                     self.quitGame()
+                    self.ref.child("game").child(self.currentGame).removeValue()
+
+                    
                     self.performSegue(withIdentifier: "leaveGame", sender: self)
                 }))
                 
