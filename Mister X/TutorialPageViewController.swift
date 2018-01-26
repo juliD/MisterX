@@ -12,7 +12,7 @@ class TutorialPageViewController: UIPageViewController {
     
     
     let pageHeaders =  ["Entkomme Scotland Yard!", "Ziel", "Standort mitteilen", "Bleib auf dem Laufenden"]
-    let pageDescriptions = ["Versuche deinen Gegenspielern zu entkommen indem du öffentliche Verkehrsmittel benutzt", "Wenn du 2 Stunden lang unentdeckt fliehen konntest, hast du gewonnen!", "Alle 10 Minuten wird dein Standort mit den Mitspielern geteilt, damit diese wissen an welcher Station du gerade warst", "Sieh was im Chat los ist. Gib hierfür deinen Namen an."]
+    let pageDescriptions = ["Versuche deinen Gegenspielern zu entkommen indem du öffentliche Verkehrsmittel benutzt", "Wenn du 2 Stunden lang unentdeckt fliehen konntest, hast du gewonnen!", "Alle 5 Minuten wird dein Standort mit den Mitspielern geteilt, damit diese wissen an welcher Station du gerade warst", "Sieh was im Chat los ist. Gib hierfür deinen Namen an."]
     let colors = [UIColor(rgb: 0xFF9500),UIColor(rgb: 0xFFCC00),UIColor(rgb: 0x4CD964),UIColor(rgb: 0x5AC8FA)]
     let pageImage = ["tram", "anonymous-mask", "navigation_map", "nopicture"]
 
