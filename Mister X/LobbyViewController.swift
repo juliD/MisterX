@@ -134,7 +134,7 @@ class LobbyViewController: UIViewController {
         print(self.participants)
         self.participants = self.participants.filter{$0 != userid}
         print(self.participants)
-        if(participants.count > 1){ self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
+        if(participants.count > 0){ self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
         }
     }
     
