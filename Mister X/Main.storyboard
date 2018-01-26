@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mister X muss gefangen werden! Die Jäger sind ihm auf den Fersen. Es dürfen nur öffentliche Verkehrsmittel genutzt werden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGy-0v-gfH">
-                                <rect key="frame" x="55" y="181.5" width="210" height="94"/>
+                                <rect key="frame" x="55" y="225.5" width="210" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vGy-0v-gfH" secondAttribute="height" multiplier="265:81" constant="-98.148148148148152" id="lLZ-rC-LKM"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YY-Ol-lem">
-                                <rect key="frame" x="87" y="301.5" width="146" height="36"/>
+                                <rect key="frame" x="87" y="345.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Mister X"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-FZ-TeR">
-                                <rect key="frame" x="87" y="364.5" width="146" height="36"/>
+                                <rect key="frame" x="87" y="408.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Jäger"/>
@@ -64,13 +64,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="EGu-fE-bTF">
-                                <rect key="frame" x="67" y="50" width="185" height="98.5"/>
+                                <rect key="frame" x="67" y="94" width="185" height="98.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EGu-fE-bTF" secondAttribute="height" multiplier="15:8" id="3fT-Kl-21V"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-HU-EaV">
-                                <rect key="frame" x="87" y="485.5" width="146" height="36"/>
+                                <rect key="frame" x="87" y="529.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Öffentliche Spiele"/>
@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-uU-I3U">
-                                <rect key="frame" x="87" y="426.5" width="146" height="36"/>
+                                <rect key="frame" x="87" y="470.5" width="146" height="36"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Laufendes Spiel"/>
@@ -131,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1567.2" y="29.23538230884558"/>
+            <point key="canvasLocation" x="-1821" y="32"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -142,20 +142,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jäger müssen diesen Code eingeben. Ihr braucht mindestens 4 Personen!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLT-FQ-xTg">
-                                <rect key="frame" x="28" y="31" width="264" height="118"/>
+                                <rect key="frame" x="28" y="75" width="264" height="96"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-uy-QAQ">
-                                <rect key="frame" x="96" y="230" width="128" height="128"/>
+                                <rect key="frame" x="96" y="252" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="5e5-Gk-wax"/>
                                     <constraint firstAttribute="width" constant="128" id="Qg7-rI-MId"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-vN-b9i" customClass="CopyableLabel" customModule="Mister_X" customModuleProvider="target">
-                                <rect key="frame" x="28" y="157" width="264" height="32"/>
+                                <rect key="frame" x="28" y="179" width="264" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="8PS-bo-RCq"/>
                                 </constraints>
@@ -164,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
-                                <rect key="frame" x="10" y="380" width="300" height="75"/>
+                                <rect key="frame" x="10" y="402" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="jhT-Gw-4VC"/>
                                     <constraint firstAttribute="height" constant="75" id="tU4-Aw-yVD"/>
@@ -376,7 +376,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-lF-sZH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-lF-sZH">
                                 <rect key="frame" x="16" y="465" width="288" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Neues Spiel starten"/>
@@ -390,7 +390,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLJ-5l-RkA">
-                                <rect key="frame" x="0.0" y="217" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="170.5" width="320" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="QZX-8q-iax" id="dag-0g-Spg"/>
                                     <outlet property="delegate" destination="QZX-8q-iax" id="cWA-11-1Gb"/>
@@ -399,7 +399,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dUe-lF-sZH" firstAttribute="top" secondItem="QLJ-5l-RkA" secondAttribute="bottom" constant="32" id="0L8-Jn-FPo"/>
                             <constraint firstItem="dUe-lF-sZH" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="BDk-ie-cK1"/>
                             <constraint firstAttribute="bottom" secondItem="dUe-lF-sZH" secondAttribute="bottom" constant="20" symbolic="YES" id="BnG-7e-3R1"/>
                             <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="dUe-lF-sZH" secondAttribute="trailing" constant="16" id="CHd-gc-y0z"/>
@@ -587,7 +586,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="32" y="20" width="256" height="140"/>
+                                <rect key="frame" x="32" y="64" width="256" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="K6p-Cn-69G"/>
                                 </constraints>
@@ -632,7 +631,7 @@
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
-                                <rect key="frame" x="32" y="200" width="256" height="227"/>
+                                <rect key="frame" x="32" y="244" width="256" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="7AZ-F9-hFt"/>
                                 </constraints>
@@ -762,7 +761,7 @@
                         <segue destination="sqW-UV-ABh" kind="relationship" relationship="viewControllers" id="vPm-2l-VVZ"/>
                         <segue destination="G6c-eD-5Jl" kind="relationship" relationship="viewControllers" id="Wc5-6h-cmi"/>
                         <segue destination="3tW-EX-tfF" kind="presentation" identifier="newGameJaeger" id="d5s-CD-rT5"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="endGameFromTab" id="BCm-OO-ti8"/>
+                        <segue destination="khd-0s-y1Z" kind="presentation" identifier="endGameFromTab" id="if1-w8-RAO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHB-3m-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -991,19 +990,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gib den Code des Spieles ein dem du beitreten willst oder scanne einen QR-Code!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-aV-hsU">
-                                <rect key="frame" x="64" y="38" width="192" height="81.5"/>
+                                <rect key="frame" x="64" y="82" width="192" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spiel Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x3e-Oe-bgf">
-                                <rect key="frame" x="64" y="156" width="192" height="30"/>
+                                <rect key="frame" x="64" y="200" width="192" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj6-pQ-gA0">
-                                <rect key="frame" x="85" y="226" width="150" height="150"/>
+                                <rect key="frame" x="85" y="270" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="KQj-2C-zkT"/>
                                     <constraint firstAttribute="height" constant="150" id="oSk-OP-uag"/>
@@ -1115,9 +1114,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="Qtv-dW-pne"/>
+        <segue reference="if1-w8-RAO"/>
         <segue reference="q6G-Ov-NdA"/>
         <segue reference="d5s-CD-rT5"/>
         <segue reference="KA2-J9-0Nc"/>
-        <segue reference="BCm-OO-ti8"/>
+        <segue reference="dgS-7s-WJu"/>
     </inferredMetricsTieBreakers>
 </document>
