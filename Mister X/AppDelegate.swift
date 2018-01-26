@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let location = locations.last {
             myLocation.coordinate = location.coordinate
             myLocation.timestamp = location.timestamp
-            print(myLocation)
+            //print(myLocation)
         }
         manager.stopUpdatingLocation()
     }
