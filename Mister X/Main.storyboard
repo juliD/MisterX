@@ -376,8 +376,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-lF-sZH">
-                                <rect key="frame" x="16" y="564" width="343" height="30"/>
+                                <rect key="frame" x="16" y="550" width="343" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="yO9-LX-Ugk"/>
+                                </constraints>
                                 <state key="normal" title="Neues Spiel starten"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -418,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8d-hG-MTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4244" y="791.37931034482767"/>
+            <point key="canvasLocation" x="4244" y="791.15442278860576"/>
         </scene>
         <!--Karte-->
         <scene sceneID="Yrv-mm-sGx">
