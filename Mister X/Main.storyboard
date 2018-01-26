@@ -744,7 +744,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qXf-sV-Qgk">
             <objects>
-                <tabBarController id="ncE-C4-1Lf" customClass="TabBarController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="ncE-C4-1Lf" customClass="TabBarController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mff-e2-xgF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1110,9 +1110,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2CU-vn-WtE"/>
-        <segue reference="ONZ-bM-yHo"/>
+        <segue reference="Qtv-dW-pne"/>
         <segue reference="q6G-Ov-NdA"/>
-        <segue reference="Snc-hQ-apX"/>
+        <segue reference="d5s-CD-rT5"/>
         <segue reference="wt4-he-gyz"/>
         <segue reference="rej-ZQ-fSy"/>
     </inferredMetricsTieBreakers>

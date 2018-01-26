@@ -145,7 +145,21 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([])
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let alert = aps["alert"] as? NSDictionary {
+                if let title = alert["title"] as? NSString {
+                    if title == "Update Location" {
+                        completionHandler([])
+                    } else {
+                        completionHandler([.alert])
+                    }
+                } else {
+                    completionHandler([.alert])
+                }
+            } else {
+                completionHandler([.alert])
+            }
+        }
     }
 
 }
