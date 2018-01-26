@@ -400,7 +400,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dUe-lF-sZH" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="BDk-ie-cK1"/>
-                            <constraint firstAttribute="bottom" secondItem="dUe-lF-sZH" secondAttribute="bottom" constant="20" symbolic="YES" id="BnG-7e-3R1"/>
                             <constraint firstItem="e5k-Xk-PJE" firstAttribute="trailing" secondItem="dUe-lF-sZH" secondAttribute="trailing" constant="16" id="CHd-gc-y0z"/>
                             <constraint firstItem="QLJ-5l-RkA" firstAttribute="top" secondItem="AvW-3E-djT" secondAttribute="bottom" constant="40" id="J4c-cn-Pf2"/>
                             <constraint firstItem="AvW-3E-djT" firstAttribute="leading" secondItem="e5k-Xk-PJE" secondAttribute="leading" constant="16" id="TFb-C4-PWK"/>
@@ -1116,7 +1115,7 @@
         <segue reference="Qtv-dW-pne"/>
         <segue reference="if1-w8-RAO"/>
         <segue reference="q6G-Ov-NdA"/>
-        <segue reference="d5s-CD-rT5"/>
+        <segue reference="SYV-CQ-5sg"/>
         <segue reference="KA2-J9-0Nc"/>
         <segue reference="dgS-7s-WJu"/>
     </inferredMetricsTieBreakers>

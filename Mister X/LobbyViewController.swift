@@ -21,6 +21,8 @@ class LobbyViewController: UIViewController {
     var currentGame: String = ""
     var userid: String = ""
     
+    var oncePresented: Bool = false
+    
     var participants: [String] = [String]()
 
 
@@ -132,8 +134,8 @@ class LobbyViewController: UIViewController {
         print(self.participants)
         self.participants = self.participants.filter{$0 != userid}
         print(self.participants)
-        self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
-
+        if(participants.count > 1){ self.ref.child("game").child(currentGame).child("player").child(participants[0]).child("MisterX").setValue(true)
+        }
     }
     
     func fillPersonController(){
@@ -148,21 +150,25 @@ class LobbyViewController: UIViewController {
     }
     
     func listenIfBecameMisterX(){
-        self.ref.child("game").child(self.currentGame).child("player").child(self.userid).observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("game").child(self.currentGame).child("player").child(self.userid).observe( .value, with: { (snapshot) in
             
-            let nextMisterX = snapshot.childSnapshot(forPath: "MisterX").value! as! Bool
-            
-            //check if you are going to become a jaeger or mister-x
-            if(nextMisterX){
+            if(self.oncePresented){
                 let defaults = UserDefaults.standard
                 defaults.set("y", forKey: "misterX")
+                self.isMisterX = "y"
                 self.startButton.isEnabled = true
-                let alert = UIAlertController(title: "Spiel beendet!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Mister X hat die Lobby verlassen!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
                     self.misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"
                 }))
                 self.present(alert, animated: true, completion: nil)
+            }else{
+                self.oncePresented = true
             }
+            
+            
+            
+            
             
             
         })
