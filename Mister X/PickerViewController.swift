@@ -101,7 +101,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 //set yourself to not be misterx anymore
                 defaults.set("", forKey:"misterX")
                 self.ref.child("game").child(self.currentGame).child("player").child(self.userid).child("MisterX").setValue(false)
-                //set other person as misterx
+                    //set other person as misterx
                 self.ref.child("game").child(self.currentGame).child("player").child(self.nextMisterXid).child("MisterX").setValue(true)
                 
             }

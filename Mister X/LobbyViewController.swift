@@ -40,6 +40,7 @@ class LobbyViewController: UIViewController {
             misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"
         }else{
             misterxStatus.text = "Du bist ab jetzt ein Jäger. Schanpp dir Mister X!"
+            startButton.isEnabled = false
         }
 
         //add listener for new players
@@ -155,6 +156,7 @@ class LobbyViewController: UIViewController {
             if(nextMisterX){
                 let defaults = UserDefaults.standard
                 defaults.set("y", forKey: "misterX")
+                self.startButton.isEnabled = true
                 let alert = UIAlertController(title: "Spiel beendet!", message: "Du bist der neue Mister-X", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { action in
                     self.misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"

@@ -138,7 +138,7 @@ class OverviewController: UIViewController, CLLocationManagerDelegate, MKMapView
         print(game.gameCode!)
         let alert = UIAlertController(title: "Achtung", message: "Willst du diesem Spiel beitreten?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.default, handler: { action in
             //add player to game
             let defaults = UserDefaults.standard
             defaults.set(game.gameCode!, forKey:"gameCode")

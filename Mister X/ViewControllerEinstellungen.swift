@@ -181,33 +181,43 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func reset_picture(_ sender: UIButton) {
-        // create the alert
-        let alert = UIAlertController(title: "Wirklich zurücksetzen?", message: "Sicher, dass nicht du der Mister X auf dem Bild im Chat bist?", preferredStyle: UIAlertControllerStyle.alert)
         
-        // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
-            self.imageRef.child("foundPhoto").removeValue()
-            // Create a reference to the file to delete
-            let filePath = "\(self.currentGame)/\("foundPhoto")"
-            self.foundPicture.isHidden = true
-            self.finderName.text = "Offen"
-            self.foundPhotoPosted = false
+        if(foundPhotoPosted){
+            // create the alert
+            let alert = UIAlertController(title: "Wirklich zurücksetzen?", message: "Sicher, dass nicht du der Mister X auf dem Bild im Chat bist?", preferredStyle: UIAlertControllerStyle.alert)
             
-            let deleteref = self.storageRef.child(filePath)
-            
-            // Delete the file
-            deleteref.delete { error in
-                if let error = error {
-                    print("Error: Unable to delete picture,\(error)")
-                } else {
-                    print("Picture reseted successfully!")
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
+                self.imageRef.child("foundPhoto").removeValue()
+                // Create a reference to the file to delete
+                let filePath = "\(self.currentGame)/\("foundPhoto")"
+                self.foundPicture.isHidden = true
+                self.finderName.text = "Offen"
+                self.foundPhotoPosted = false
+                
+                let deleteref = self.storageRef.child(filePath)
+                
+                // Delete the file
+                deleteref.delete { error in
+                    if let error = error {
+                        print("Error: Unable to delete picture,\(error)")
+                    } else {
+                        print("Picture reseted successfully!")
+                    }
                 }
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
+            }))
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            // create the alert
+            let alert = UIAlertController(title: "Nicht zurücksetzbar", message: "Es wurde noch kein Foto gepostet.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -270,22 +280,34 @@ class ViewControllerEinstellungen: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func button_newgame(_ sender: UIButton) {
-        /*
+        
         // create the alert
-        let alert = UIAlertController(title: "Achtung", message: "Sicher ein neues Spiel anfangen?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Achtung", message: "Spiel beenden oder eine neue Runde mit den gleichen Mitspielern beginnen?", preferredStyle: UIAlertControllerStyle.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Ja!", style: UIAlertActionStyle.destructive, handler: { action in
-            let defaults = UserDefaults.standard
-            defaults.set("", forKey:"gameCode")
-            defaults.set("", forKey:"misterX")
-            self.performSegue(withIdentifier: "newgame", sender: self)
+        alert.addAction(UIAlertAction(title: "Neue Runde", style: UIAlertActionStyle.default, handler: { action in
+            self.performSegue(withIdentifier: "toPicker", sender: self)
+        }))
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Spiel beenden", style: UIAlertActionStyle.destructive, handler: { action in
+            
+            let alert = UIAlertController(title: "Achtung", message: "Wirklich das Spiel beenden und die Lobby auflösen?", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive, handler: { action in
+                let defaults = UserDefaults.standard
+                defaults.set("", forKey:"gameCode")
+                defaults.set("", forKey:"misterX")
+                defaults.set("", forKey:"activeGame")
+                self.ref.child("game").child(self.currentGame).child("gameClosed").setValue(true)
+                self.performSegue(withIdentifier: "endGame", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel, handler: nil))
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
- */
+ 
     }
     
     //has to be defined a second time because apple only wants one gesture for one thing
