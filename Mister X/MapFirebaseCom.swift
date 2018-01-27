@@ -46,9 +46,14 @@ class MapFirebaseCom{
     }
     
     func randDegree(locDegree : CLLocationDegrees) -> Double {
-        let flooredDegree = Double(round(1000*Double(locDegree))/1000)
-        let randDegree = flooredDegree + (Double(arc4random_uniform(9999) + 1000) / 1000000)
-        return randDegree
+        let isNegative : Int = Int(arc4random_uniform(2))
+        var randDegree = (Double(arc4random_uniform(700) + 300) / 100000)
+        if isNegative == 0{
+            randDegree = randDegree * -1
+        }
+        print(locDegree)
+        print(randDegree)
+        return randDegree + locDegree
     }
     
     func getGameCode() -> String? {

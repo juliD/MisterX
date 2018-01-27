@@ -16,7 +16,7 @@ class ViewControllerKarte: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var mfc = MapFirebaseCom(updateTime: 30.0, updateTimePlayer: 10.0)
+    var mfc = MapFirebaseCom(updateTime: 300.0, updateTimePlayer: 30.0)
     var myLocation = UserLocationStruct()
     var boost1 : [UserLocationStruct] = []
     var lookAtMap : Bool = true
