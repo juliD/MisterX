@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,12 +109,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Start" id="sDB-4q-psa"/>
                     <connections>
-                        <segue destination="ncE-C4-1Lf" kind="show" identifier="runningGame" id="QfI-Ra-urq"/>
+                        <segue destination="ncE-C4-1Lf" kind="presentation" id="m3B-Ob-Wto"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1884" y="690"/>
+            <point key="canvasLocation" x="-2402" y="737"/>
         </scene>
         <!--Gruppe erstellen-->
         <scene sceneID="AEc-tY-eTo">
@@ -587,7 +587,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast geschafft!  Damit die Jäger dich erkennen musst du nur noch ein Foto von dir hochladen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-KN-Ae6">
-                                <rect key="frame" x="32" y="20" width="311" height="140"/>
+                                <rect key="frame" x="32" y="64" width="311" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="K6p-Cn-69G"/>
                                 </constraints>
@@ -632,7 +632,7 @@
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-R6-eOt">
-                                <rect key="frame" x="32" y="200" width="311" height="227"/>
+                                <rect key="frame" x="32" y="244" width="311" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="7AZ-F9-hFt"/>
                                 </constraints>
@@ -1185,9 +1185,9 @@
         <segue reference="kx3-fH-h7Z"/>
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="rLf-65-2wD"/>
-        <segue reference="0kK-FY-ZJh"/>
-        <segue reference="ssL-mY-8r4"/>
-        <segue reference="SYV-CQ-5sg"/>
-        <segue reference="wt4-he-gyz"/>
+        <segue reference="if1-w8-RAO"/>
+        <segue reference="m3B-Ob-Wto"/>
+        <segue reference="d5s-CD-rT5"/>
+        <segue reference="aBl-6h-sJu"/>
     </inferredMetricsTieBreakers>
 </document>

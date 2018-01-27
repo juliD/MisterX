@@ -1,0 +1,31 @@
+MisterX
+--------------
+MisterX versucht den Jägern zu entkommen. Alle 5 min wird den Jägern seine 
+neue Position angezeigt, was MisterX durch Powerups im Kartenmenü verhindern kann.
+Mit diesen Powerups kann er außerdem seinen Standpunkt randomisieren und die Position 
+der Jäger anzeigen lassen. Jedes Powerup ist nur einmal verwendbar.
+Wenn MisterX gefunden ist wird ein Beweisbild hochgeladen, MisterX entscheidet 
+dann ob er das ist, wenn ja kann er ein neues Spiel mit allen beteiligten und einem 
+anderen MisterX starten oder das Spiel für alle beenden.
+Spiele können öffentlich oder privat sein. Laufende öffentliche Spiele werden 
+in einem Karten Overview angezeigt wo man ihnen nachträglich beitreten kann.
+
+Installation
+------------
+evtl. ist eine installation von cocoa pods nötig
+pod install
+pod 'Firebase/Database'
+pod 'Firebase/Messaging'
+pod 'Firebase/Storage'
+pod 'Firebase/Auth'
+
+Testen
+-----------
+es werden mindestens 2 Spieler gebraucht (1 MisterX, 1 Jäger)
+
+Mögliche Testszenarien
+- Spiel erstellen/beitreten mit QR Reader oder Texteingabe
+- Nutzen der Powerups
+- Chat
+- neues Spiel starten
+- aus Spiel austreten nach Neustart
