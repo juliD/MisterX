@@ -1,23 +1,22 @@
 //
-//  LobbyViewController.swift
+//  FirstNewGameLobbyViewController.swift
 //  Mister X
 //
-//  Created by admin on 22.01.18.
+//  Created by Tobias Wittmann on 27.01.18.
 //  Copyright © 2018 Praktikum. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class firstNewGameLobbyViewController: UIViewController {
-    
+class FirstNewGameLobbyViewController: UIViewController {
     
     @IBOutlet weak var misterxStatus: UILabel!
     @IBOutlet weak var personController: PersonController!
     @IBOutlet weak var startButton: UIButton!
     
     var ref: DatabaseReference!
-    var currentGame: String = ""    
+    var currentGame: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +45,7 @@ class firstNewGameLobbyViewController: UIViewController {
             
             self.personController.persons = self.personController.persons-1
             
-            
-            //muss erhöht werden zum schluss
-            //Todo: set it to 2
-            if(self.personController.persons<1){
+            if(self.personController.persons<2){
                 // create the alert
                 let alert = UIAlertController(title: "Jemand ist gegangen", message: "Leider hat jemand das Spiel verlassen. Ihr seid nicht mehr genug Teilnehmer, um ein Spiel zu starten.", preferredStyle: UIAlertControllerStyle.alert)
                 

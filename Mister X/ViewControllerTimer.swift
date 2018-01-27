@@ -22,13 +22,13 @@ class ViewControllerTimer : UIViewController {
     let MINUTE = 4
     let SECONDS = 5
     
-    let TEN_MINUTES = 1
-    let FULL_MINUTE = 1
+    let FIVE_MINUTES = 5
+    let FULL_MINUTE = 60
     
-    var minutes = 1
-    var seconds = 1
+    var minutes = 5
+    var seconds = 60
     
-    var text = "10:00"
+    var text = "5:00"
     
     var timer = Timer()
     let defaults = UserDefaults.standard
@@ -58,13 +58,13 @@ class ViewControllerTimer : UIViewController {
     
     @objc private func updateCounter() {
         var sec = ""
-        if minutes == TEN_MINUTES && seconds == FULL_MINUTE {
+        if minutes == FIVE_MINUTES && seconds == FULL_MINUTE {
             minutes -= 1
         }
         seconds -= 1
         if seconds == 0 {
             sec = "00"
-        } else if seconds < TEN_MINUTES {
+        } else if seconds < 10 {
             sec = "0\(seconds)"
         } else if seconds == FULL_MINUTE {
             sec = "00"
@@ -90,7 +90,7 @@ class ViewControllerTimer : UIViewController {
         if(isMisterX){
             timerTextView.text = "Du hast Zeit bis der Timer abgelaufen ist um dich vonn allen Jägern zu entfernen! Sobald der Timer Abgelaufen ist, können dich alle Jäger sehen!"
         } else {
-            timerTextView.text = "Waete bis der Timer abgelaufen ist! Erst dann darfst du los um den Mister X zu finden!"
+            timerTextView.text = "Warte bis der Timer abgelaufen ist! Erst dann darfst du los um den Mister X zu finden!"
         }
     }
     
@@ -126,15 +126,14 @@ class ViewControllerTimer : UIViewController {
                     if self.isTimeEqual(&startTimeInt, &currentTimeInt) {
                         let differenceMinute = self.getDifferenceMinute(currentTimeInt, startTimeInt)
                         
-                        if differenceMinute >= self.TEN_MINUTES {
+                        if differenceMinute >= self.FIVE_MINUTES {
                             self.performSegue(withIdentifier: "startGame", sender: self)
                             self.timer.invalidate()
                         }
-                        if differenceMinute < self.TEN_MINUTES {
+                        if differenceMinute < self.FIVE_MINUTES {
                             let differenceSeconds = self.getDifferenceSeconds(currentTimeInt, startTimeInt)
-                            self.minutes = self.TEN_MINUTES - differenceMinute
+                            self.minutes = self.FIVE_MINUTES - differenceMinute
                             self.seconds = self.FULL_MINUTE - differenceSeconds
-                            print("\(self.minutes):\(self.seconds)")
                             if (self.seconds >= self.FULL_MINUTE) {
                                 self.minutes += self.seconds/self.FULL_MINUTE
                                 self.seconds -= self.FULL_MINUTE
@@ -153,7 +152,7 @@ class ViewControllerTimer : UIViewController {
             minutes += 1
         }
         if currentTimeInt[self.MINUTE] < startTimeInt[self.MINUTE] {
-            minutes += currentTimeInt[self.MINUTE] + (self.TEN_MINUTES - startTimeInt[self.MINUTE])
+            minutes += currentTimeInt[self.MINUTE] + (self.FIVE_MINUTES - startTimeInt[self.MINUTE])
         } else {
             minutes += currentTimeInt[self.MINUTE] - startTimeInt[self.MINUTE]
         }

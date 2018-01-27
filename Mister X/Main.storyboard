@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="khd-0s-y1Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,7 +109,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Start" id="sDB-4q-psa"/>
                     <connections>
-                        <segue destination="ncE-C4-1Lf" kind="presentation" id="m3B-Ob-Wto"/>
+                        <segue destination="ncE-C4-1Lf" kind="presentation" identifier="runningGame" id="NFv-xQ-JnS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,20 +124,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Jäger müssen diesen Code eingeben. Ihr braucht mindestens 4 Personen!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLT-FQ-xTg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jäger müssen diesen Code eingeben. Ihr braucht mindestens 4 Personen!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLT-FQ-xTg">
                                 <rect key="frame" x="28" y="75" width="319" height="81"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-uy-QAQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-uy-QAQ">
                                 <rect key="frame" x="123" y="216" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="5e5-Gk-wax"/>
                                     <constraint firstAttribute="width" constant="128" id="Qg7-rI-MId"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-vN-b9i" customClass="CopyableLabel" customModule="Mister_X" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-vN-b9i" customClass="CopyableLabel" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="28" y="164" width="319" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="8PS-bo-RCq"/>
@@ -169,7 +169,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-3n-Cvg" customClass="PersonController" customModule="Mister_X" customModuleProvider="target">
                                 <rect key="frame" x="37" y="368" width="300" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="jhT-Gw-4VC"/>
@@ -186,16 +186,16 @@
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="60" id="GDj-21-5Ez"/>
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="top" secondItem="Enn-4Q-kUH" secondAttribute="bottom" constant="30" id="Gqq-oH-gLM"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="28" id="HMz-Uo-bRD"/>
-                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="top" secondItem="TBQ-vN-b9i" secondAttribute="bottom" constant="41" id="OI7-7d-fnL"/>
+                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="top" secondItem="TBQ-vN-b9i" secondAttribute="bottom" constant="20" id="OI7-7d-fnL"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="d4Z-8z-Rck" secondAttribute="trailing" constant="60" id="S2v-dV-mPn"/>
                             <constraint firstItem="TBQ-vN-b9i" firstAttribute="top" secondItem="ZLT-FQ-xTg" secondAttribute="bottom" constant="8" id="Umy-Ui-kHv"/>
                             <constraint firstItem="TBQ-vN-b9i" firstAttribute="leading" secondItem="BjW-Ll-bz9" secondAttribute="leading" constant="28" id="Uqc-hH-7BT"/>
                             <constraint firstItem="ZLT-FQ-xTg" firstAttribute="top" secondItem="BjW-Ll-bz9" secondAttribute="top" constant="11" id="Vgb-Ax-cFN"/>
-                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="top" secondItem="GUb-uy-QAQ" secondAttribute="bottom" constant="22" id="e9T-8M-V1C"/>
+                            <constraint firstItem="aQc-3n-Cvg" firstAttribute="top" secondItem="GUb-uy-QAQ" secondAttribute="bottom" constant="24" id="e9T-8M-V1C"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="TBQ-vN-b9i" secondAttribute="trailing" constant="28" id="hdb-qc-IIr"/>
                             <constraint firstItem="d4Z-8z-Rck" firstAttribute="top" secondItem="dur-qY-HzS" secondAttribute="bottom" constant="25" id="iRX-ZP-mxA"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="trailing" secondItem="ZLT-FQ-xTg" secondAttribute="trailing" constant="28" id="iru-8p-pyO"/>
-                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="centerY" secondItem="BjW-Ll-bz9" secondAttribute="centerY" id="jFr-dQ-hKF"/>
+                            <constraint firstItem="GUb-uy-QAQ" firstAttribute="centerY" secondItem="BjW-Ll-bz9" secondAttribute="centerY" constant="-85.5" id="jFr-dQ-hKF"/>
                             <constraint firstItem="BjW-Ll-bz9" firstAttribute="bottom" secondItem="d4Z-8z-Rck" secondAttribute="bottom" constant="20" id="voQ-GH-yo3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BjW-Ll-bz9"/>
@@ -1100,7 +1100,7 @@
         <!--First New Game Lobby View Controller-->
         <scene sceneID="H3o-fT-an3">
             <objects>
-                <viewController id="9Sh-d0-n8o" customClass="firstNewGameLobbyViewController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9Sh-d0-n8o" customClass="FirstNewGameLobbyViewController" customModule="Mister_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rsr-sI-uef">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1156,9 +1156,9 @@
                         <viewLayoutGuide key="safeArea" id="UIJ-Kp-CZX"/>
                     </view>
                     <connections>
-                        <outlet property="misterxStatus" destination="E1l-zt-fpz" id="BU2-2u-TAS"/>
-                        <outlet property="personController" destination="vUt-pJ-KcW" id="SaB-Zm-uwM"/>
-                        <outlet property="startButton" destination="2y6-h1-eFM" id="5Fq-tu-mJa"/>
+                        <outlet property="misterxStatus" destination="E1l-zt-fpz" id="i2S-AS-41C"/>
+                        <outlet property="personController" destination="vUt-pJ-KcW" id="Xzr-Lf-XIY"/>
+                        <outlet property="startButton" destination="2y6-h1-eFM" id="PRa-xr-8eF"/>
                         <segue destination="iun-hC-G3n" kind="presentation" identifier="firstNewGameFromLobbyJaeger" id="rLf-65-2wD"/>
                     </connections>
                 </viewController>
@@ -1186,8 +1186,8 @@
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="rLf-65-2wD"/>
         <segue reference="if1-w8-RAO"/>
-        <segue reference="m3B-Ob-Wto"/>
-        <segue reference="d5s-CD-rT5"/>
+        <segue reference="NFv-xQ-JnS"/>
+        <segue reference="SYV-CQ-5sg"/>
         <segue reference="aBl-6h-sJu"/>
     </inferredMetricsTieBreakers>
 </document>

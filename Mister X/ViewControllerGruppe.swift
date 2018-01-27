@@ -34,7 +34,7 @@ class ViewControllerGruppe: UIViewController {
         ref = Database.database().reference().child("game").child(currentGame!).child("player")
         ref.observe(.childAdded, with: {(snapshot) -> Void in
             self.personController.persons = self.personController.persons+1
-            if self.personController.persons == 1 {
+            if self.personController.persons > 1 {
                 self.startButton.isEnabled = true
             }
         })
