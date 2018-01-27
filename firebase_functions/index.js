@@ -10,7 +10,7 @@ exports.sendPush = functions.database.ref('/game/{gid}/MisterX').onWrite(event =
 
     let gameId = event.params.gid;
     sendLocationUpdatedMessage(gameId);
-    setTimeout(function(){ sendUpdateLocationMessage(gameId); }, 290000);
+    setTimeout(function(){ sendUpdateLocationMessage(gameId); }, 299000);
     return 0;
 });
 
@@ -132,10 +132,14 @@ function sendNewGame(gameId) {
     });
 }
 
-exports.sendDeletePush = functions.database.ref('/game/{gid}/gameClosed').onCreate(event => {
+exports.sendDeletePush = functions.database.ref('/game/{gid}/gameClosed').onWrite(event => {
 
     let gameId = event.params.gid;
-    sendGameDelete(gameId);
+    let gameClosed = event.data.val();
+    console.log(event.data.val());
+    if (gameClosed) {
+        sendGameDelete(gameId);
+    }
     return 0;
 });
 
@@ -147,7 +151,9 @@ function sendGameDelete(gameId) {
         }
         let tokens = [];
         for (let user of users) {
-            tokens.push(user.pushToken);
+            if (!user.MisterX) {
+                tokens.push(user.pushToken);
+            }
         }
         let payload = {
             notification: {
