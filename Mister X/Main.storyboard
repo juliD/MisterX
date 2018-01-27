@@ -927,7 +927,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neo-j6-apc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neo-j6-apc">
                                 <rect key="frame" x="55.5" y="159" width="264" height="161"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" id="KfY-sb-Y8E"/>
@@ -1186,7 +1186,7 @@
         <segue reference="1J6-i7-Wh7"/>
         <segue reference="rLf-65-2wD"/>
         <segue reference="if1-w8-RAO"/>
-        <segue reference="NFv-xQ-JnS"/>
+        <segue reference="ssL-mY-8r4"/>
         <segue reference="SYV-CQ-5sg"/>
         <segue reference="aBl-6h-sJu"/>
     </inferredMetricsTieBreakers>
