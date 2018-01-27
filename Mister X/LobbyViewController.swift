@@ -41,7 +41,7 @@ class LobbyViewController: UIViewController {
         if(isMisterX == "y"){
             misterxStatus.text = "Du bist der nächste Mister X! Viel Spaß!"
         }else{
-            misterxStatus.text = "Du bist ab jetzt ein Jäger. Schanpp dir Mister X!"
+            misterxStatus.text = "Du bist ab jetzt ein Jäger. Schnapp dir Mister X!"
             startButton.isEnabled = false
         }
 
