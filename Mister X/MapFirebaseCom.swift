@@ -51,8 +51,6 @@ class MapFirebaseCom{
         if isNegative == 0{
             randDegree = randDegree * -1
         }
-        print(locDegree)
-        print(randDegree)
         return randDegree + locDegree
     }
     
